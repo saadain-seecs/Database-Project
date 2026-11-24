@@ -1,0 +1,157 @@
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: 
+== Medicines below their reorder level ==
+product_id  product_name               on_hand  reorder_level  shortage
+----------  -------------------------  -------  -------------  --------
+7           Augmentin 625mg Tablets    3        40             37      
+14          Nexum 40mg Capsules        6        40             34      
+32          Diamicron MR 60mg          11       40             29      
+34          Norvasc 5mg Tablets        19       40             21      
+23          Benylin Cough Syrup 100ml  0        20             20      
+15          Gaviscon Liquid 150ml      0        15             15      
+26          Ventolin Inhaler 100mcg    18       30             12      
+(7 row(s))
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: 
+== Batches expiring within 30 days ==
+product_name           batch_no     quantity  expiry_date  days_left
+---------------------  -----------  --------  -----------  ---------
+Avil 25mg Tablets      AVI-2608-01  105       2026-11-30   12       
+Motilium 10mg Tablets  MOT-2608-01  73        2026-12-05   17       
+Actifed Syrup 90ml     ACT-2608-01  53        2026-12-14   26       
+(3 row(s))
+
+== Expired batches still in stock (remove from shelf) ==
+product_name               batch_no     quantity  expiry_date  days_expired  loss_at_cost
+-------------------------  -----------  --------  -----------  ------------  ------------
+Canesten Cream 20g         CAN-2608-01  82        2026-10-31   18            21835.78    
+Benylin Cough Syrup 100ml  BEN-2608-01  18        2026-11-05   13            4607.46     
+(2 row(s))
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: Customer id (1 = walk-in): Employee id serving (pharmacist/cashier): Payment method [Cash/Card/Mobile Wallet] (Enter = Cash): Add items (empty product id to finish)
+  product id:   quantity:   product id:   quantity:   product id: 
+== Bill #63 ==
+product                  quantity  unit_price  line_total
+-----------------------  --------  ----------  ----------
+Panadol 500mg Tablets    2         35.00       70.00     
+Dettol Antiseptic 250ml  1         330.00      330.00    
+(2 row(s))
+TOTAL: Rs 400.00
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: Customer id (1 = walk-in): Employee id serving (pharmacist/cashier): Payment method [Cash/Card/Mobile Wallet] (Enter = Cash): Add items (empty product id to finish)
+  product id:   quantity:   product id: 
+Sale REJECTED and rolled back: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: Year (e.g. 2026): Month (1-12): 
+== Summary ==
+report_month  bills  units_sold  revenue  cost  profit  margin_pct
+2026-10  22  154  26965.00  20459.33  6505.67  24.13
+
+== Top 5 products by profit ==
+product  units  revenue  profit
+Augmentin 625mg Tablets  9  4320.00  1186.56
+Nexum 40mg Capsules  10  4200.00  849.80
+Telfast 120mg Tablets  4  1520.00  411.64
+Panadol 500mg Tablets  52  1820.00  407.47
+Benylin Cough Syrup 100ml  6  1920.00  384.18
+
+== Revenue by category ==
+category_name  units  revenue
+Antacids & Gastro  25  5600.00
+Antibiotics  11  4500.00
+Cough, Cold & Respiratory  16  4055.00
+Analgesics & Antipyretics  64  3360.00
+Antihistamines & Allergy  15  2380.00
+First Aid & Devices  5  2010.00
+Cardiovascular  5  1730.00
+Diabetes Care  3  1410.00
+Vitamins & Supplements  8  1200.00
+Dermatology  2  720.00
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: Customer id: 
+== Purchase history of customer 3 ==
+sale_id  sale_date            payment_method  total_amount
+-------  -------------------  --------------  ------------
+63       2026-11-18 12:37:54  Cash            400.00      
+48       2026-11-07 12:02:33  Cash            660.00      
+41       2026-10-28 10:54:24  Cash            695.00      
+(3 row(s))
+
+===== PHARMACY MANAGEMENT SYSTEM =====
+ 1. Stock overview / search
+ 2. Low-stock medicines
+ 3. Expiry report
+ 4. New sale (checkout)
+ 5. Receive stock from a supplier
+ 6. Daily sales summary
+ 7. Monthly sales & profit report
+ 8. Top 10 best sellers
+ 9. Customer purchase history
+ 0. Exit
+Choose: Goodbye.

@@ -1,0 +1,987 @@
+[
+ {
+  "sql": "USE pharmacy_db",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "START TRANSACTION",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT 'D1  INSERT one row (new customer)' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D1  INSERT one row (new customer)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO customers (name, phone) VALUES ('Sara Imtiaz', '0300-5550101')",
+  "results": [],
+  "error": null,
+  "info": "OK, 1 row(s) affected"
+ },
+ {
+  "sql": "SELECT customer_id, name, phone, registered_on FROM customers WHERE phone = '0300-5550101'",
+  "results": [
+   {
+    "columns": [
+     "customer_id",
+     "name",
+     "phone",
+     "registered_on"
+    ],
+    "rows": [
+     [
+      41,
+      "Sara Imtiaz",
+      "0300-5550101",
+      "2026-11-18"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D2  INSERT several rows (two new products in one statement)' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D2  INSERT several rows (two new products in one statement)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, generic_name, category_id, unit_price, reorder_level, requires_prescription)\nVALUES ('Panadol Extra Tablets', 'Paracetamol + Caffeine', 1, 55.00, 40, FALSE),\n       ('Hydrite Sachet', 'Oral rehydration salts', 3, 30.00, 60, FALSE)",
+  "results": [],
+  "error": null,
+  "info": "OK, 2 row(s) affected"
+ },
+ {
+  "sql": "SELECT product_id, name, unit_price FROM products WHERE name IN ('Panadol Extra Tablets', 'Hydrite Sachet')",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "unit_price"
+    ],
+    "rows": [
+     [
+      43,
+      "Hydrite Sachet",
+      30
+     ],
+     [
+      42,
+      "Panadol Extra Tablets",
+      55
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D3  INSERT ... SELECT (sub-query in DML): copy today''s low-stock list into stock_alerts' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D3  INSERT ... SELECT (sub-query in DML): copy today's low-stock list into stock_alerts"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO stock_alerts (alert_type, product_id, message)\nSELECT 'LOW_STOCK', product_id, CONCAT(product_name, ' needs re-ordering (', on_hand, ' left)')\nFROM   v_low_stock\nWHERE  on_hand = 0",
+  "results": [],
+  "error": null,
+  "info": "OK, 4 row(s) affected"
+ },
+ {
+  "sql": "SELECT alert_id, alert_type, product_id, message FROM stock_alerts",
+  "results": [
+   {
+    "columns": [
+     "alert_id",
+     "alert_type",
+     "product_id",
+     "message"
+    ],
+    "rows": [
+     [
+      1,
+      "LOW_STOCK",
+      15,
+      "Gaviscon Liquid 150ml needs re-ordering (0 left)"
+     ],
+     [
+      2,
+      "LOW_STOCK",
+      23,
+      "Benylin Cough Syrup 100ml needs re-ordering (0 left)"
+     ],
+     [
+      3,
+      "LOW_STOCK",
+      42,
+      "Panadol Extra Tablets needs re-ordering (0 left)"
+     ],
+     [
+      4,
+      "LOW_STOCK",
+      43,
+      "Hydrite Sachet needs re-ordering (0 left)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D4  UPDATE with a sub-query in WHERE: raise every antibiotic price by 5 percent' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D4  UPDATE with a sub-query in WHERE: raise every antibiotic price by 5 percent"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "UPDATE products\nSET    unit_price = ROUND(unit_price * 1.05, 2)\nWHERE  category_id = (SELECT category_id FROM categories WHERE category_name = 'Antibiotics')",
+  "results": [],
+  "error": null,
+  "info": "OK, 6 row(s) affected"
+ },
+ {
+  "sql": "SELECT product_id, name, unit_price FROM products WHERE category_id = 2 ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "unit_price"
+    ],
+    "rows": [
+     [
+      7,
+      "Augmentin 625mg Tablets",
+      504
+     ],
+     [
+      8,
+      "Flagyl 400mg Tablets",
+      94.5
+     ],
+     [
+      9,
+      "Zithromax 500mg Tablets",
+      651
+     ],
+     [
+      10,
+      "Cipro 500mg Tablets",
+      273
+     ],
+     [
+      11,
+      "Amoxil 500mg Capsules",
+      220.5
+     ],
+     [
+      12,
+      "Septran DS Tablets",
+      136.5
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'trigger trg_products_au wrote the audit trail:' AS note",
+  "results": [
+   {
+    "columns": [
+     "note"
+    ],
+    "rows": [
+     [
+      "trigger trg_products_au wrote the audit trail:"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT table_name, record_id, action, old_value, new_value FROM audit_log ORDER BY log_id",
+  "results": [
+   {
+    "columns": [
+     "table_name",
+     "record_id",
+     "action",
+     "old_value",
+     "new_value"
+    ],
+    "rows": [
+     [
+      "products",
+      7,
+      "PRICE_CHANGE",
+      "480.00",
+      "504.00"
+     ],
+     [
+      "products",
+      8,
+      "PRICE_CHANGE",
+      "90.00",
+      "94.50"
+     ],
+     [
+      "products",
+      9,
+      "PRICE_CHANGE",
+      "620.00",
+      "651.00"
+     ],
+     [
+      "products",
+      10,
+      "PRICE_CHANGE",
+      "260.00",
+      "273.00"
+     ],
+     [
+      "products",
+      11,
+      "PRICE_CHANGE",
+      "210.00",
+      "220.50"
+     ],
+     [
+      "products",
+      12,
+      "PRICE_CHANGE",
+      "130.00",
+      "136.50"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D5  UPDATE with a correlated sub-query: best sellers (30+ units) get reorder level 80' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D5  UPDATE with a correlated sub-query: best sellers (30+ units) get reorder level 80"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "UPDATE products p\nSET    reorder_level = 80\nWHERE  (SELECT COALESCE(SUM(si.quantity), 0) FROM sale_items si WHERE si.product_id = p.product_id) >= 30\n  AND  reorder_level < 80",
+  "results": [],
+  "error": null,
+  "info": "OK, 1 row(s) affected"
+ },
+ {
+  "sql": "SELECT product_id, name, reorder_level FROM products WHERE reorder_level = 80 ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "reorder_level"
+    ],
+    "rows": [
+     [
+      1,
+      "Panadol 500mg Tablets",
+      80
+     ],
+     [
+      17,
+      "ORS Sachet",
+      80
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D6  DELETE with a sub-query: remove cancelled purchase orders that have no stock batches' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D6  DELETE with a sub-query: remove cancelled purchase orders that have no stock batches"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS cancelled_before FROM purchase_orders WHERE status = 'Cancelled'",
+  "results": [
+   {
+    "columns": [
+     "cancelled_before"
+    ],
+    "rows": [
+     [
+      3
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM purchase_orders\nWHERE  status = 'Cancelled'\n  AND  po_id NOT IN (SELECT po_id FROM stock_batches)",
+  "results": [],
+  "error": null,
+  "info": "OK, 3 row(s) affected"
+ },
+ {
+  "sql": "SELECT COUNT(*) AS cancelled_after FROM purchase_orders WHERE status = 'Cancelled'",
+  "results": [
+   {
+    "columns": [
+     "cancelled_after"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D7  UPSERT: INSERT ... ON DUPLICATE KEY UPDATE (category name is UNIQUE)' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D7  UPSERT: INSERT ... ON DUPLICATE KEY UPDATE (category name is UNIQUE)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO categories (category_name, description)\nVALUES ('Dermatology', 'Creams, ointments and lotions for the skin')\nON DUPLICATE KEY UPDATE description = VALUES(description)",
+  "results": [],
+  "error": null,
+  "info": "OK, 2 row(s) affected"
+ },
+ {
+  "sql": "SELECT category_id, category_name, description FROM categories WHERE category_name = 'Dermatology'",
+  "results": [
+   {
+    "columns": [
+     "category_id",
+     "category_name",
+     "description"
+    ],
+    "rows": [
+     [
+      9,
+      "Dermatology",
+      "Creams, ointments and lotions for the skin"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'D8  Savepoint: undo only the last of two price changes' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "D8  Savepoint: undo only the last of two price changes"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 1",
+  "results": [],
+  "error": null,
+  "info": "OK, 1 row(s) affected"
+ },
+ {
+  "sql": "SAVEPOINT after_panadol",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 3",
+  "results": [],
+  "error": null,
+  "info": "OK, 1 row(s) affected"
+ },
+ {
+  "sql": "ROLLBACK TO SAVEPOINT after_panadol",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT product_id, name, unit_price FROM products WHERE product_id IN (1, 3)",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "unit_price"
+    ],
+    "rows": [
+     [
+      1,
+      "Panadol 500mg Tablets",
+      40
+     ],
+     [
+      3,
+      "Brufen 400mg Tablets",
+      95
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT 'ROLLBACK done - nothing above was saved' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "ROLLBACK done - nothing above was saved"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS products_now, (SELECT COUNT(*) FROM customers) AS customers_now,\n       (SELECT COUNT(*) FROM audit_log) AS audit_rows FROM products",
+  "results": [
+   {
+    "columns": [
+     "products_now",
+     "customers_now",
+     "audit_rows"
+    ],
+    "rows": [
+     [
+      41,
+      40,
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'DDL1  CREATE TABLE ... AS SELECT (sub-query in DDL): archive of expired stock' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL1  CREATE TABLE ... AS SELECT (sub-query in DDL): archive of expired stock"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "CREATE TABLE expired_stock_archive AS\nSELECT batch_id, product_name, batch_no, quantity, expiry_date, loss_at_cost, CURRENT_DATE AS archived_on\nFROM   v_expired_stock",
+  "results": [],
+  "error": null,
+  "info": "OK, 2 row(s) affected"
+ },
+ {
+  "sql": "SELECT * FROM expired_stock_archive",
+  "results": [
+   {
+    "columns": [
+     "batch_id",
+     "product_name",
+     "batch_no",
+     "quantity",
+     "expiry_date",
+     "loss_at_cost",
+     "archived_on"
+    ],
+    "rows": [
+     [
+      16,
+      "Canesten Cream 20g",
+      "CAN-2608-01",
+      82,
+      "2026-10-31",
+      21835.78,
+      "2026-11-18"
+     ],
+     [
+      15,
+      "Benylin Cough Syrup 100ml",
+      "BEN-2608-01",
+      18,
+      "2026-11-05",
+      4607.46,
+      "2026-11-18"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'DDL2  CREATE VIEW over a sub-query: prescription-only medicines that sold in October' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL2  CREATE VIEW over a sub-query: prescription-only medicines that sold in October"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "CREATE OR REPLACE VIEW v_rx_sold_october AS\nSELECT p.product_id, p.name,\n       (SELECT SUM(si.quantity)\n        FROM   sale_items si JOIN sales s ON s.sale_id = si.sale_id\n        WHERE  si.product_id = p.product_id\n          AND  s.sale_date >= '2026-10-01' AND s.sale_date < '2026-11-01') AS units_sold\nFROM   products p\nWHERE  p.requires_prescription = TRUE",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT * FROM v_rx_sold_october WHERE units_sold IS NOT NULL ORDER BY units_sold DESC",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "units_sold"
+    ],
+    "rows": [
+     [
+      7,
+      "Augmentin 625mg Tablets",
+      9
+     ],
+     [
+      36,
+      "Lipiget 20mg Tablets",
+      4
+     ],
+     [
+      32,
+      "Diamicron MR 60mg",
+      3
+     ],
+     [
+      8,
+      "Flagyl 400mg Tablets",
+      2
+     ],
+     [
+      26,
+      "Ventolin Inhaler 100mcg",
+      1
+     ],
+     [
+      35,
+      "Concor 5mg Tablets",
+      1
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'DDL3  ALTER TABLE: add, modify, rename a column, add and drop a constraint' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL3  ALTER TABLE: add, modify, rename a column, add and drop a constraint"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "ALTER TABLE expired_stock_archive ADD COLUMN disposal_method VARCHAR(30) NOT NULL DEFAULT 'Return to supplier'",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "ALTER TABLE expired_stock_archive MODIFY COLUMN disposal_method VARCHAR(60) NOT NULL DEFAULT 'Return to supplier'",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "ALTER TABLE expired_stock_archive RENAME COLUMN disposal_method TO disposal",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "ALTER TABLE expired_stock_archive ADD CONSTRAINT ck_archive_qty CHECK (quantity >= 0)",
+  "results": [],
+  "error": null,
+  "info": "OK, 2 row(s) affected"
+ },
+ {
+  "sql": "ALTER TABLE expired_stock_archive DROP CONSTRAINT ck_archive_qty",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "DESCRIBE expired_stock_archive",
+  "results": [
+   {
+    "columns": [
+     "Field",
+     "Type",
+     "Null",
+     "Key",
+     "Default",
+     "Extra"
+    ],
+    "rows": [
+     [
+      "batch_id",
+      "int(10) unsigned",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "product_name",
+      "varchar(100)",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "batch_no",
+      "varchar(30)",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "quantity",
+      "int(11)",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "expiry_date",
+      "date",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "loss_at_cost",
+      "decimal(20,2)",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "archived_on",
+      "date",
+      "NO",
+      "",
+      null,
+      ""
+     ],
+     [
+      "disposal",
+      "varchar(60)",
+      "NO",
+      "",
+      "Return to supplier",
+      ""
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'DDL4  CREATE INDEX, SHOW INDEX, DROP INDEX' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL4  CREATE INDEX, SHOW INDEX, DROP INDEX"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "CREATE INDEX idx_archive_expiry ON expired_stock_archive (expiry_date)",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SHOW INDEX FROM expired_stock_archive",
+  "results": [
+   {
+    "columns": [
+     "Table",
+     "Non_unique",
+     "Key_name",
+     "Seq_in_index",
+     "Column_name",
+     "Collation",
+     "Cardinality",
+     "Sub_part",
+     "Packed",
+     "Null",
+     "Index_type",
+     "Comment",
+     "Index_comment",
+     "Ignored"
+    ],
+    "rows": [
+     [
+      "expired_stock_archive",
+      1,
+      "idx_archive_expiry",
+      1,
+      "expiry_date",
+      "A",
+      2,
+      null,
+      null,
+      "",
+      "BTREE",
+      "",
+      "",
+      "NO"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DROP INDEX idx_archive_expiry ON expired_stock_archive",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT 'DDL5  RENAME TABLE, TRUNCATE TABLE, DROP TABLE / VIEW' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL5  RENAME TABLE, TRUNCATE TABLE, DROP TABLE / VIEW"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "RENAME TABLE expired_stock_archive TO expired_archive_2026",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "TRUNCATE TABLE expired_archive_2026",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT COUNT(*) AS rows_after_truncate FROM expired_archive_2026",
+  "results": [
+   {
+    "columns": [
+     "rows_after_truncate"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DROP TABLE expired_archive_2026",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "DROP VIEW v_rx_sold_october",
+  "results": [],
+  "error": null,
+  "info": "OK, 0 row(s) affected"
+ },
+ {
+  "sql": "SELECT 'DDL demo finished - temporary objects dropped' AS step",
+  "results": [
+   {
+    "columns": [
+     "step"
+    ],
+    "rows": [
+     [
+      "DDL demo finished - temporary objects dropped"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ }
+]

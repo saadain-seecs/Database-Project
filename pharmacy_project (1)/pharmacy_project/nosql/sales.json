@@ -1,0 +1,3014 @@
+[
+ {
+  "_id": 1,
+  "sale_date": "2026-08-07T11:37:11",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 2,
+   "name": "Maryam Hussain"
+  },
+  "employee": {
+   "employee_id": 9,
+   "name": "Zeeshan Malik",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 10,
+    "unit_price": 25.0,
+    "line_total": 250.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 10,
+      "cost_price": 17.44
+     }
+    ]
+   }
+  ],
+  "total_amount": 250.0
+ },
+ {
+  "_id": 2,
+  "sale_date": "2026-08-11T20:32:03",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 7,
+   "name": "Asad Qureshi"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 13,
+    "name": "Risek 20mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 180.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "RIS-2608-01",
+      "qty": 2,
+      "cost_price": 123.06
+     }
+    ]
+   },
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 320.0,
+    "line_total": 320.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 1,
+      "cost_price": 255.97
+     }
+    ]
+   }
+  ],
+  "total_amount": 680.0
+ },
+ {
+  "_id": 3,
+  "sale_date": "2026-08-13T10:26:04",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 2,
+   "name": "Maryam Hussain"
+  },
+  "employee": {
+   "employee_id": 9,
+   "name": "Zeeshan Malik",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 5,
+    "name": "Disprin 300mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 28.0,
+    "line_total": 84.0,
+    "batches": [
+     {
+      "batch_no": "DIS-2608-01",
+      "qty": 3,
+      "cost_price": 20.13
+     }
+    ]
+   }
+  ],
+  "total_amount": 84.0
+ },
+ {
+  "_id": 4,
+  "sale_date": "2026-08-14T21:25:43",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 21,
+   "name": "Adeel Siddiqui"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 120.0,
+    "line_total": 240.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 2,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 3,
+    "unit_price": 150.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 3,
+      "cost_price": 109.04
+     }
+    ]
+   }
+  ],
+  "total_amount": 740.0
+ },
+ {
+  "_id": 5,
+  "sale_date": "2026-08-16T14:15:59",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 2,
+   "name": "Maryam Hussain"
+  },
+  "employee": {
+   "employee_id": 5,
+   "name": "Bilal Ahmed",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 120.0,
+    "line_total": 240.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 2,
+      "cost_price": 92.57
+     }
+    ]
+   }
+  ],
+  "total_amount": 240.0
+ },
+ {
+  "_id": 6,
+  "sale_date": "2026-08-21T14:49:16",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 15,
+   "name": "Ahmed Aslam"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 5,
+    "unit_price": 35.0,
+    "line_total": 175.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2608-01",
+      "qty": 5,
+      "cost_price": 27.51
+     }
+    ]
+   }
+  ],
+  "total_amount": 175.0
+ },
+ {
+  "_id": 7,
+  "sale_date": "2026-08-22T19:42:45",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 9,
+   "name": "Zeeshan Malik",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 4,
+    "unit_price": 120.0,
+    "line_total": 480.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 4,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 3,
+    "unit_price": 420.0,
+    "line_total": 1260.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 3,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 40,
+    "name": "Band-Aid Strips (20)",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 95.0,
+    "line_total": 95.0,
+    "batches": [
+     {
+      "batch_no": "BAN-2608-01",
+      "qty": 1,
+      "cost_price": 67.72
+     }
+    ]
+   }
+  ],
+  "total_amount": 1835.0
+ },
+ {
+  "_id": 8,
+  "sale_date": "2026-08-23T15:03:44",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 12,
+   "name": "Amna Chaudhry"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 2,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 150.0,
+    "line_total": 150.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 1,
+      "cost_price": 109.04
+     }
+    ]
+   },
+   {
+    "product_id": 34,
+    "name": "Norvasc 5mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "NOR-2608-01",
+      "qty": 1,
+      "cost_price": 302.08
+     }
+    ]
+   },
+   {
+    "product_id": 35,
+    "name": "Concor 5mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 3,
+    "unit_price": 410.0,
+    "line_total": 1230.0,
+    "batches": [
+     {
+      "batch_no": "CON-2608-01",
+      "qty": 3,
+      "cost_price": 292.29
+     }
+    ]
+   }
+  ],
+  "total_amount": 1950.0
+ },
+ {
+  "_id": 9,
+  "sale_date": "2026-08-26T12:01:22",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 28,
+   "name": "Mehwish Rana"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 2,
+    "unit_price": 320.0,
+    "line_total": 640.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 2,
+      "cost_price": 255.97
+     }
+    ]
+   },
+   {
+    "product_id": 27,
+    "name": "Surbex Z Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "SUR-2608-01",
+      "qty": 1,
+      "cost_price": 296.28
+     }
+    ]
+   }
+  ],
+  "total_amount": 1020.0
+ },
+ {
+  "_id": 10,
+  "sale_date": "2026-09-03T14:14:46",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 5,
+   "name": "Amna Mirza"
+  },
+  "employee": {
+   "employee_id": 9,
+   "name": "Zeeshan Malik",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 120.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 3,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 26,
+    "name": "Ventolin Inhaler 100mcg",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 550.0,
+    "line_total": 550.0,
+    "batches": [
+     {
+      "batch_no": "VEN-2608-01",
+      "qty": 1,
+      "cost_price": 418.81
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 150.0,
+    "line_total": 150.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 1,
+      "cost_price": 109.04
+     }
+    ]
+   }
+  ],
+  "total_amount": 1060.0
+ },
+ {
+  "_id": 11,
+  "sale_date": "2026-09-03T20:28:33",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 10,
+    "unit_price": 35.0,
+    "line_total": 350.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2608-01",
+      "qty": 10,
+      "cost_price": 27.51
+     }
+    ]
+   },
+   {
+    "product_id": 2,
+    "name": "Calpol 120mg/5ml Syrup",
+    "category": "Analgesics & Antipyretics",
+    "qty": 1,
+    "unit_price": 145.0,
+    "line_total": 145.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 1,
+      "cost_price": 104.16
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 4,
+    "unit_price": 25.0,
+    "line_total": 100.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 4,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 27,
+    "name": "Surbex Z Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 3,
+    "unit_price": 380.0,
+    "line_total": 1140.0,
+    "batches": [
+     {
+      "batch_no": "SUR-2608-01",
+      "qty": 3,
+      "cost_price": 296.28
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 330.0,
+    "line_total": 660.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 2,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 2395.0
+ },
+ {
+  "_id": 12,
+  "sale_date": "2026-09-05T11:30:19",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 1,
+    "unit_price": 420.0,
+    "line_total": 420.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 1,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 2,
+    "unit_price": 150.0,
+    "line_total": 300.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 2,
+      "cost_price": 109.04
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 330.0,
+    "line_total": 660.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 2,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 1380.0
+ },
+ {
+  "_id": 13,
+  "sale_date": "2026-09-06T17:08:19",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 30,
+   "name": "Ali Hussain"
+  },
+  "employee": {
+   "employee_id": 7,
+   "name": "Kamran Ali",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 28,
+    "name": "Calcium + Vitamin D3 Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 650.0,
+    "line_total": 650.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 1,
+      "cost_price": 454.05
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 980.0
+ },
+ {
+  "_id": 14,
+  "sale_date": "2026-09-12T11:20:00",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 5,
+   "name": "Amna Mirza"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   },
+   {
+    "product_id": 40,
+    "name": "Band-Aid Strips (20)",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BAN-2608-01",
+      "qty": 2,
+      "cost_price": 67.72
+     }
+    ]
+   }
+  ],
+  "total_amount": 520.0
+ },
+ {
+  "_id": 15,
+  "sale_date": "2026-09-13T21:49:45",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 27,
+    "name": "Surbex Z Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "SUR-2608-01",
+      "qty": 1,
+      "cost_price": 296.28
+     }
+    ]
+   },
+   {
+    "product_id": 34,
+    "name": "Norvasc 5mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 4,
+    "unit_price": 380.0,
+    "line_total": 1520.0,
+    "batches": [
+     {
+      "batch_no": "NOR-2608-01",
+      "qty": 4,
+      "cost_price": 302.08
+     }
+    ]
+   }
+  ],
+  "total_amount": 1900.0
+ },
+ {
+  "_id": 16,
+  "sale_date": "2026-09-14T11:21:46",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 2,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 1600.0
+ },
+ {
+  "_id": 17,
+  "sale_date": "2026-09-16T11:58:01",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 7,
+   "name": "Asad Qureshi"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 26,
+    "name": "Ventolin Inhaler 100mcg",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 550.0,
+    "line_total": 550.0,
+    "batches": [
+     {
+      "batch_no": "VEN-2608-01",
+      "qty": 1,
+      "cost_price": 418.81
+     }
+    ]
+   }
+  ],
+  "total_amount": 1510.0
+ },
+ {
+  "_id": 18,
+  "sale_date": "2026-09-21T12:38:11",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 8,
+   "name": "Mehwish Aslam"
+  },
+  "employee": {
+   "employee_id": 7,
+   "name": "Kamran Ali",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 2,
+    "name": "Calpol 120mg/5ml Syrup",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 145.0,
+    "line_total": 435.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 3,
+      "cost_price": 104.16
+     }
+    ]
+   },
+   {
+    "product_id": 8,
+    "name": "Flagyl 400mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 90.0,
+    "line_total": 180.0,
+    "batches": [
+     {
+      "batch_no": "FLA-2608-01",
+      "qty": 2,
+      "cost_price": 72.95
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 330.0,
+    "line_total": 660.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 2,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 1275.0
+ },
+ {
+  "_id": 19,
+  "sale_date": "2026-09-21T15:06:43",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 17,
+   "name": "Nadia Mirza"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 1,
+    "unit_price": 95.0,
+    "line_total": 95.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 1,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 3,
+    "unit_price": 320.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 3,
+      "cost_price": 255.97
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 4,
+    "unit_price": 470.0,
+    "line_total": 1880.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 4,
+      "cost_price": 379.78
+     }
+    ]
+   },
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 3385.0
+ },
+ {
+  "_id": 20,
+  "sale_date": "2026-09-22T21:32:12",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 7,
+   "name": "Asad Qureshi"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 4,
+    "unit_price": 420.0,
+    "line_total": 1680.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 4,
+      "cost_price": 335.02
+     }
+    ]
+   }
+  ],
+  "total_amount": 2640.0
+ },
+ {
+  "_id": 21,
+  "sale_date": "2026-09-25T13:40:00",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 9,
+   "name": "Noor Chaudhry"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   },
+   {
+    "product_id": 40,
+    "name": "Band-Aid Strips (20)",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 95.0,
+    "line_total": 95.0,
+    "batches": [
+     {
+      "batch_no": "BAN-2608-01",
+      "qty": 1,
+      "cost_price": 67.72
+     }
+    ]
+   },
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 875.0
+ },
+ {
+  "_id": 22,
+  "sale_date": "2026-09-26T12:45:07",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 26,
+   "name": "Amna Siddiqui"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 150.0,
+    "line_total": 150.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 1,
+      "cost_price": 109.04
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 3,
+    "unit_price": 470.0,
+    "line_total": 1410.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 3,
+      "cost_price": 379.78
+     }
+    ]
+   }
+  ],
+  "total_amount": 1610.0
+ },
+ {
+  "_id": 23,
+  "sale_date": "2026-09-27T17:01:19",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 18,
+   "name": "Saad Qureshi"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 40,
+    "name": "Band-Aid Strips (20)",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 95.0,
+    "line_total": 95.0,
+    "batches": [
+     {
+      "batch_no": "BAN-2608-01",
+      "qty": 1,
+      "cost_price": 67.72
+     }
+    ]
+   }
+  ],
+  "total_amount": 95.0
+ },
+ {
+  "_id": 24,
+  "sale_date": "2026-09-27T19:33:56",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 12,
+   "name": "Amna Chaudhry"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 4,
+    "unit_price": 95.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 4,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 6,
+    "unit_price": 25.0,
+    "line_total": 150.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 6,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 2,
+    "unit_price": 150.0,
+    "line_total": 300.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2608-01",
+      "qty": 2,
+      "cost_price": 109.04
+     }
+    ]
+   }
+  ],
+  "total_amount": 830.0
+ },
+ {
+  "_id": 25,
+  "sale_date": "2026-10-03T17:05:00",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 5,
+   "name": "Amna Mirza"
+  },
+  "employee": {
+   "employee_id": 7,
+   "name": "Kamran Ali",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 450.0
+ },
+ {
+  "_id": 26,
+  "sale_date": "2026-10-03T20:48:39",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 22,
+    "name": "Telfast 120mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "TEL-2608-01",
+      "qty": 1,
+      "cost_price": 277.09
+     }
+    ]
+   }
+  ],
+  "total_amount": 380.0
+ },
+ {
+  "_id": 27,
+  "sale_date": "2026-10-06T15:52:00",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 29,
+   "name": "Junaid Malik"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 2,
+    "name": "Calpol 120mg/5ml Syrup",
+    "category": "Analgesics & Antipyretics",
+    "qty": 4,
+    "unit_price": 145.0,
+    "line_total": 580.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 4,
+      "cost_price": 104.16
+     }
+    ]
+   },
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 4,
+    "unit_price": 480.0,
+    "line_total": 1920.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 4,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 3,
+    "unit_price": 420.0,
+    "line_total": 1260.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 3,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 22,
+    "name": "Telfast 120mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "TEL-2608-01",
+      "qty": 1,
+      "cost_price": 277.09
+     }
+    ]
+   },
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 320.0,
+    "line_total": 320.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 1,
+      "cost_price": 255.97
+     }
+    ]
+   }
+  ],
+  "total_amount": 4460.0
+ },
+ {
+  "_id": 28,
+  "sale_date": "2026-10-07T18:33:56",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 21,
+   "name": "Adeel Siddiqui"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 36,
+    "name": "Lipiget 20mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 4,
+    "unit_price": 330.0,
+    "line_total": 1320.0,
+    "batches": [
+     {
+      "batch_no": "LIP-2608-01",
+      "qty": 4,
+      "cost_price": 265.22
+     }
+    ]
+   }
+  ],
+  "total_amount": 1370.0
+ },
+ {
+  "_id": 29,
+  "sale_date": "2026-10-09T12:10:00",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 2,
+   "name": "Maryam Hussain"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 20,
+    "name": "Avil 25mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 3,
+    "unit_price": 40.0,
+    "line_total": 120.0,
+    "batches": [
+     {
+      "batch_no": "AVI-2608-01",
+      "qty": 3,
+      "cost_price": 31.59
+     }
+    ]
+   },
+   {
+    "product_id": 25,
+    "name": "Actifed Syrup 90ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 2,
+    "unit_price": 290.0,
+    "line_total": 580.0,
+    "batches": [
+     {
+      "batch_no": "ACT-2608-01",
+      "qty": 2,
+      "cost_price": 208.56
+     }
+    ]
+   }
+  ],
+  "total_amount": 700.0
+ },
+ {
+  "_id": 30,
+  "sale_date": "2026-10-10T13:42:33",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 17,
+   "name": "Nadia Mirza"
+  },
+  "employee": {
+   "employee_id": 7,
+   "name": "Kamran Ali",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 2,
+    "name": "Calpol 120mg/5ml Syrup",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 145.0,
+    "line_total": 435.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 3,
+      "cost_price": 104.16
+     }
+    ]
+   },
+   {
+    "product_id": 13,
+    "name": "Risek 20mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 180.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "RIS-2608-01",
+      "qty": 2,
+      "cost_price": 123.06
+     }
+    ]
+   }
+  ],
+  "total_amount": 795.0
+ },
+ {
+  "_id": 31,
+  "sale_date": "2026-10-13T10:59:50",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 26,
+    "name": "Ventolin Inhaler 100mcg",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 550.0,
+    "line_total": 550.0,
+    "batches": [
+     {
+      "batch_no": "VEN-2608-01",
+      "qty": 1,
+      "cost_price": 418.81
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 4,
+    "unit_price": 150.0,
+    "line_total": 600.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2609-02",
+      "qty": 4,
+      "cost_price": 114.96
+     }
+    ]
+   }
+  ],
+  "total_amount": 1150.0
+ },
+ {
+  "_id": 32,
+  "sale_date": "2026-10-14T10:15:00",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 7,
+   "name": "Asad Qureshi"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 3,
+    "unit_price": 320.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 3,
+      "cost_price": 255.97
+     }
+    ]
+   },
+   {
+    "product_id": 38,
+    "name": "Canesten Cream 20g",
+    "category": "Dermatology",
+    "qty": 2,
+    "unit_price": 360.0,
+    "line_total": 720.0,
+    "batches": [
+     {
+      "batch_no": "CAN-2608-01",
+      "qty": 2,
+      "cost_price": 266.29
+     }
+    ]
+   }
+  ],
+  "total_amount": 1680.0
+ },
+ {
+  "_id": 33,
+  "sale_date": "2026-10-16T12:45:19",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 2,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 1,
+    "unit_price": 120.0,
+    "line_total": 120.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 1,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 24,
+    "name": "Arinac Forte Tablets",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 85.0,
+    "line_total": 85.0,
+    "batches": [
+     {
+      "batch_no": "ARI-2608-01",
+      "qty": 1,
+      "cost_price": 65.29
+     }
+    ]
+   }
+  ],
+  "total_amount": 395.0
+ },
+ {
+  "_id": 34,
+  "sale_date": "2026-10-18T15:18:13",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 29,
+   "name": "Junaid Malik"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 450.0
+ },
+ {
+  "_id": 35,
+  "sale_date": "2026-10-18T21:50:10",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 5,
+    "unit_price": 35.0,
+    "line_total": 175.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2608-01",
+      "qty": 5,
+      "cost_price": 27.51
+     }
+    ]
+   },
+   {
+    "product_id": 24,
+    "name": "Arinac Forte Tablets",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 4,
+    "unit_price": 85.0,
+    "line_total": 340.0,
+    "batches": [
+     {
+      "batch_no": "ARI-2608-01",
+      "qty": 4,
+      "cost_price": 65.29
+     }
+    ]
+   }
+  ],
+  "total_amount": 515.0
+ },
+ {
+  "_id": 36,
+  "sale_date": "2026-10-19T16:00:52",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 7,
+   "name": "Kamran Ali",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 35.0,
+    "line_total": 105.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2608-01",
+      "qty": 3,
+      "cost_price": 27.51
+     }
+    ]
+   },
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 3,
+    "unit_price": 480.0,
+    "line_total": 1440.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 3,
+      "cost_price": 348.16
+     }
+    ]
+   }
+  ],
+  "total_amount": 1545.0
+ },
+ {
+  "_id": 37,
+  "sale_date": "2026-10-20T20:59:03",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 23,
+   "name": "Amna Raza"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 8,
+    "name": "Flagyl 400mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 90.0,
+    "line_total": 180.0,
+    "batches": [
+     {
+      "batch_no": "FLA-2608-01",
+      "qty": 2,
+      "cost_price": 72.95
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 510.0
+ },
+ {
+  "_id": 38,
+  "sale_date": "2026-10-22T19:30:00",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 12,
+   "name": "Amna Chaudhry"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 16,
+    "name": "Motilium 10mg Tablets",
+    "category": "Antacids & Gastro",
+    "qty": 3,
+    "unit_price": 160.0,
+    "line_total": 480.0,
+    "batches": [
+     {
+      "batch_no": "MOT-2608-01",
+      "qty": 3,
+      "cost_price": 130.01
+     }
+    ]
+   },
+   {
+    "product_id": 23,
+    "name": "Benylin Cough Syrup 100ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 2,
+    "unit_price": 320.0,
+    "line_total": 640.0,
+    "batches": [
+     {
+      "batch_no": "BEN-2608-01",
+      "qty": 2,
+      "cost_price": 255.97
+     }
+    ]
+   }
+  ],
+  "total_amount": 1120.0
+ },
+ {
+  "_id": 39,
+  "sale_date": "2026-10-22T20:14:06",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 21,
+   "name": "Adeel Siddiqui"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 19,
+    "name": "Zyrtec 10mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 4,
+    "unit_price": 110.0,
+    "line_total": 440.0,
+    "batches": [
+     {
+      "batch_no": "ZYR-2609-02",
+      "qty": 4,
+      "cost_price": 79.16
+     }
+    ]
+   },
+   {
+    "product_id": 41,
+    "name": "Digital Thermometer",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 450.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "THE-2608-01",
+      "qty": 1,
+      "cost_price": 325.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 890.0
+ },
+ {
+  "_id": 40,
+  "sale_date": "2026-10-25T15:45:00",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 14,
+   "name": "Rukhsana Butt"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 44,
+    "unit_price": 35.0,
+    "line_total": 1540.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2608-01",
+      "qty": 37,
+      "cost_price": 27.51
+     },
+     {
+      "batch_no": "PAN-2609-02",
+      "qty": 7,
+      "cost_price": 24.94
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 6,
+    "unit_price": 25.0,
+    "line_total": 150.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 6,
+      "cost_price": 17.44
+     }
+    ]
+   }
+  ],
+  "total_amount": 1690.0
+ },
+ {
+  "_id": 41,
+  "sale_date": "2026-10-28T10:54:24",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 3,
+   "name": "Iqra Raza"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 1,
+    "unit_price": 95.0,
+    "line_total": 95.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 1,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 4,
+    "unit_price": 150.0,
+    "line_total": 600.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2609-02",
+      "qty": 4,
+      "cost_price": 114.96
+     }
+    ]
+   }
+  ],
+  "total_amount": 695.0
+ },
+ {
+  "_id": 42,
+  "sale_date": "2026-10-28T14:03:13",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 21,
+   "name": "Adeel Siddiqui"
+  },
+  "employee": {
+   "employee_id": 4,
+   "name": "Sana Rehman",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 420.0,
+    "line_total": 840.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 2,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 2,
+    "unit_price": 470.0,
+    "line_total": 940.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 2,
+      "cost_price": 379.78
+     }
+    ]
+   }
+  ],
+  "total_amount": 1780.0
+ },
+ {
+  "_id": 43,
+  "sale_date": "2026-10-29T16:39:06",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 4,
+    "unit_price": 420.0,
+    "line_total": 1680.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 4,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 19,
+    "name": "Zyrtec 10mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 2,
+    "unit_price": 110.0,
+    "line_total": 220.0,
+    "batches": [
+     {
+      "batch_no": "ZYR-2609-02",
+      "qty": 2,
+      "cost_price": 79.16
+     }
+    ]
+   },
+   {
+    "product_id": 25,
+    "name": "Actifed Syrup 90ml",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 2,
+    "unit_price": 290.0,
+    "line_total": 580.0,
+    "batches": [
+     {
+      "batch_no": "ACT-2608-01",
+      "qty": 2,
+      "cost_price": 208.56
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 1,
+    "unit_price": 470.0,
+    "line_total": 470.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 1,
+      "cost_price": 379.78
+     }
+    ]
+   }
+  ],
+  "total_amount": 3910.0
+ },
+ {
+  "_id": 44,
+  "sale_date": "2026-10-29T16:43:29",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 22,
+   "name": "Talha Mirza"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 35,
+    "name": "Concor 5mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 1,
+    "unit_price": 410.0,
+    "line_total": 410.0,
+    "batches": [
+     {
+      "batch_no": "CON-2608-01",
+      "qty": 1,
+      "cost_price": 292.29
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 740.0
+ },
+ {
+  "_id": 45,
+  "sale_date": "2026-10-30T16:41:19",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 28,
+   "name": "Mehwish Rana"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 13,
+    "name": "Risek 20mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 180.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "RIS-2608-01",
+      "qty": 2,
+      "cost_price": 123.06
+     }
+    ]
+   },
+   {
+    "product_id": 20,
+    "name": "Avil 25mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 2,
+    "unit_price": 40.0,
+    "line_total": 80.0,
+    "batches": [
+     {
+      "batch_no": "AVI-2608-01",
+      "qty": 2,
+      "cost_price": 31.59
+     }
+    ]
+   },
+   {
+    "product_id": 22,
+    "name": "Telfast 120mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "TEL-2608-01",
+      "qty": 1,
+      "cost_price": 277.09
+     }
+    ]
+   }
+  ],
+  "total_amount": 820.0
+ },
+ {
+  "_id": 46,
+  "sale_date": "2026-10-31T11:03:28",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 1,
+   "name": "Walk-in Customer"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 1,
+    "unit_price": 120.0,
+    "line_total": 120.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 1,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 14,
+    "name": "Nexum 40mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 1,
+    "unit_price": 420.0,
+    "line_total": 420.0,
+    "batches": [
+     {
+      "batch_no": "NEX-2608-01",
+      "qty": 1,
+      "cost_price": 335.02
+     }
+    ]
+   },
+   {
+    "product_id": 22,
+    "name": "Telfast 120mg Tablets",
+    "category": "Antihistamines & Allergy",
+    "qty": 1,
+    "unit_price": 380.0,
+    "line_total": 380.0,
+    "batches": [
+     {
+      "batch_no": "TEL-2608-01",
+      "qty": 1,
+      "cost_price": 277.09
+     }
+    ]
+   }
+  ],
+  "total_amount": 920.0
+ },
+ {
+  "_id": 47,
+  "sale_date": "2026-11-01T15:21:54",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 9,
+   "name": "Noor Chaudhry"
+  },
+  "employee": {
+   "employee_id": 5,
+   "name": "Bilal Ahmed",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 5,
+    "unit_price": 35.0,
+    "line_total": 175.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2609-02",
+      "qty": 5,
+      "cost_price": 24.94
+     }
+    ]
+   },
+   {
+    "product_id": 13,
+    "name": "Risek 20mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 180.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "RIS-2608-01",
+      "qty": 2,
+      "cost_price": 123.06
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 27,
+    "name": "Surbex Z Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 3,
+    "unit_price": 380.0,
+    "line_total": 1140.0,
+    "batches": [
+     {
+      "batch_no": "SUR-2608-01",
+      "qty": 3,
+      "cost_price": 296.28
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 330.0,
+    "line_total": 660.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 2,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 2385.0
+ },
+ {
+  "_id": 48,
+  "sale_date": "2026-11-07T12:02:33",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 3,
+   "name": "Iqra Raza"
+  },
+  "employee": {
+   "employee_id": 5,
+   "name": "Bilal Ahmed",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 3,
+    "name": "Brufen 400mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BRU-2608-01",
+      "qty": 2,
+      "cost_price": 67.13
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 1,
+    "unit_price": 470.0,
+    "line_total": 470.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 1,
+      "cost_price": 379.78
+     }
+    ]
+   }
+  ],
+  "total_amount": 660.0
+ },
+ {
+  "_id": 49,
+  "sale_date": "2026-11-11T14:47:00",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 7,
+   "name": "Asad Qureshi"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 2,
+    "name": "Calpol 120mg/5ml Syrup",
+    "category": "Analgesics & Antipyretics",
+    "qty": 3,
+    "unit_price": 145.0,
+    "line_total": 435.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2611-02",
+      "qty": 3,
+      "cost_price": 109.65
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   },
+   {
+    "product_id": 40,
+    "name": "Band-Aid Strips (20)",
+    "category": "First Aid & Devices",
+    "qty": 2,
+    "unit_price": 95.0,
+    "line_total": 190.0,
+    "batches": [
+     {
+      "batch_no": "BAN-2608-01",
+      "qty": 2,
+      "cost_price": 67.72
+     }
+    ]
+   }
+  ],
+  "total_amount": 675.0
+ },
+ {
+  "_id": 50,
+  "sale_date": "2026-11-12T14:04:05",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 2,
+   "name": "Maryam Hussain"
+  },
+  "employee": {
+   "employee_id": 8,
+   "name": "Rabia Khan",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 4,
+    "unit_price": 480.0,
+    "line_total": 1920.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 4,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 25.0,
+    "line_total": 50.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 2,
+      "cost_price": 17.44
+     }
+    ]
+   }
+  ],
+  "total_amount": 1970.0
+ },
+ {
+  "_id": 51,
+  "sale_date": "2026-11-12T18:57:05",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 11,
+   "name": "Bushra Abbasi"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 13,
+    "name": "Risek 20mg Capsules",
+    "category": "Antacids & Gastro",
+    "qty": 2,
+    "unit_price": 180.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "RIS-2608-01",
+      "qty": 2,
+      "cost_price": 123.06
+     }
+    ]
+   },
+   {
+    "product_id": 26,
+    "name": "Ventolin Inhaler 100mcg",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 1,
+    "unit_price": 550.0,
+    "line_total": 550.0,
+    "batches": [
+     {
+      "batch_no": "VEN-2608-01",
+      "qty": 1,
+      "cost_price": 418.81
+     }
+    ]
+   },
+   {
+    "product_id": 32,
+    "name": "Diamicron MR 60mg",
+    "category": "Diabetes Care",
+    "qty": 3,
+    "unit_price": 470.0,
+    "line_total": 1410.0,
+    "batches": [
+     {
+      "batch_no": "DIA-2608-01",
+      "qty": 3,
+      "cost_price": 379.78
+     }
+    ]
+   },
+   {
+    "product_id": 33,
+    "name": "Glucometer Test Strips (50)",
+    "category": "Diabetes Care",
+    "qty": 1,
+    "unit_price": 1650.0,
+    "line_total": 1650.0,
+    "batches": [
+     {
+      "batch_no": "STR-2608-01",
+      "qty": 1,
+      "cost_price": 1327.73
+     }
+    ]
+   }
+  ],
+  "total_amount": 3970.0
+ },
+ {
+  "_id": 52,
+  "sale_date": "2026-11-13T19:40:37",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 29,
+   "name": "Junaid Malik"
+  },
+  "employee": {
+   "employee_id": 2,
+   "name": "Ayesha Siddiqui",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 28,
+    "name": "Calcium + Vitamin D3 Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 1,
+    "unit_price": 650.0,
+    "line_total": 650.0,
+    "batches": [
+     {
+      "batch_no": "CAL-2608-01",
+      "qty": 1,
+      "cost_price": 454.05
+     }
+    ]
+   },
+   {
+    "product_id": 31,
+    "name": "Glucophage 500mg Tablets",
+    "category": "Diabetes Care",
+    "qty": 3,
+    "unit_price": 120.0,
+    "line_total": 360.0,
+    "batches": [
+     {
+      "batch_no": "GLU-2608-01",
+      "qty": 3,
+      "cost_price": 92.5
+     }
+    ]
+   }
+  ],
+  "total_amount": 1010.0
+ },
+ {
+  "_id": 53,
+  "sale_date": "2026-11-13T19:43:25",
+  "payment_method": "Card",
+  "customer": {
+   "customer_id": 14,
+   "name": "Rukhsana Butt"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 1,
+    "name": "Panadol 500mg Tablets",
+    "category": "Analgesics & Antipyretics",
+    "qty": 2,
+    "unit_price": 35.0,
+    "line_total": 70.0,
+    "batches": [
+     {
+      "batch_no": "PAN-2609-02",
+      "qty": 2,
+      "cost_price": 24.94
+     }
+    ]
+   },
+   {
+    "product_id": 34,
+    "name": "Norvasc 5mg Tablets",
+    "category": "Cardiovascular",
+    "qty": 4,
+    "unit_price": 380.0,
+    "line_total": 1520.0,
+    "batches": [
+     {
+      "batch_no": "NOR-2608-01",
+      "qty": 4,
+      "cost_price": 302.08
+     }
+    ]
+   }
+  ],
+  "total_amount": 1590.0
+ },
+ {
+  "_id": 54,
+  "sale_date": "2026-11-13T21:36:02",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 13,
+   "name": "Fatima Qureshi"
+  },
+  "employee": {
+   "employee_id": 3,
+   "name": "Usman Ghani",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 29,
+    "name": "Vitamin C 500mg Tablets",
+    "category": "Vitamins & Supplements",
+    "qty": 3,
+    "unit_price": 150.0,
+    "line_total": 450.0,
+    "batches": [
+     {
+      "batch_no": "VIT-2609-02",
+      "qty": 3,
+      "cost_price": 114.96
+     }
+    ]
+   },
+   {
+    "product_id": 39,
+    "name": "Dettol Antiseptic 250ml",
+    "category": "First Aid & Devices",
+    "qty": 1,
+    "unit_price": 330.0,
+    "line_total": 330.0,
+    "batches": [
+     {
+      "batch_no": "DET-2608-01",
+      "qty": 1,
+      "cost_price": 250.98
+     }
+    ]
+   }
+  ],
+  "total_amount": 1740.0
+ },
+ {
+  "_id": 55,
+  "sale_date": "2026-11-13T21:55:41",
+  "payment_method": "Mobile Wallet",
+  "customer": {
+   "customer_id": 23,
+   "name": "Amna Raza"
+  },
+  "employee": {
+   "employee_id": 5,
+   "name": "Bilal Ahmed",
+   "role": "Pharmacist"
+  },
+  "items": [
+   {
+    "product_id": 18,
+    "name": "Buscopan 10mg Tablets",
+    "category": "Antacids & Gastro",
+    "qty": 4,
+    "unit_price": 140.0,
+    "line_total": 560.0,
+    "batches": [
+     {
+      "batch_no": "BUS-2608-01",
+      "qty": 4,
+      "cost_price": 100.4
+     }
+    ]
+   },
+   {
+    "product_id": 24,
+    "name": "Arinac Forte Tablets",
+    "category": "Cough, Cold & Respiratory",
+    "qty": 2,
+    "unit_price": 85.0,
+    "line_total": 170.0,
+    "batches": [
+     {
+      "batch_no": "ARI-2608-01",
+      "qty": 2,
+      "cost_price": 65.29
+     }
+    ]
+   }
+  ],
+  "total_amount": 730.0
+ },
+ {
+  "_id": 56,
+  "sale_date": "2026-11-15T10:40:22",
+  "payment_method": "Cash",
+  "customer": {
+   "customer_id": 29,
+   "name": "Junaid Malik"
+  },
+  "employee": {
+   "employee_id": 6,
+   "name": "Hina Farooq",
+   "role": "Cashier"
+  },
+  "items": [
+   {
+    "product_id": 4,
+    "name": "Ponstan Forte 500mg",
+    "category": "Analgesics & Antipyretics",
+    "qty": 4,
+    "unit_price": 120.0,
+    "line_total": 480.0,
+    "batches": [
+     {
+      "batch_no": "PON-2608-01",
+      "qty": 4,
+      "cost_price": 92.57
+     }
+    ]
+   },
+   {
+    "product_id": 7,
+    "name": "Augmentin 625mg Tablets",
+    "category": "Antibiotics",
+    "qty": 2,
+    "unit_price": 480.0,
+    "line_total": 960.0,
+    "batches": [
+     {
+      "batch_no": "AUG-2608-01",
+      "qty": 2,
+      "cost_price": 348.16
+     }
+    ]
+   },
+   {
+    "product_id": 17,
+    "name": "ORS Sachet",
+    "category": "Antacids & Gastro",
+    "qty": 4,
+    "unit_price": 25.0,
+    "line_total": 100.0,
+    "batches": [
+     {
+      "batch_no": "ORS-2608-01",
+      "qty": 4,
+      "cost_price": 17.44
+     }
+    ]
+   }
+  ],
+  "total_amount": 1540.0
+ }
+]

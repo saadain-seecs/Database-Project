@@ -1,0 +1,504 @@
+pharmacy_db=> SELECT 'T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS (function = one atomic transaction)' AS test;
++-----------------------------------------------------------------------------------+
+| test                                                                              |
++-----------------------------------------------------------------------------------+
+| T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS (function = one atomic transaction) |
++-----------------------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 126     |
+| 17         | 168     |
+| 39         | 206     |
++------------+---------+
+(3 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[{"product_id":1,"qty":3},{"product_id":39,"qty":1},{"product_id":17,"qty":2}]') AS new_sale_id;
++-------------+
+| new_sale_id |
++-------------+
+| 57          |
++-------------+
+(1 rows)
+
+pharmacy_db=> SELECT sale_id, customer, served_by, product, quantity, unit_price, line_total FROM v_sale_details WHERE sale_id = (SELECT MAX(sale_id) FROM sales);
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+| sale_id | customer  | served_by   | product                 | quantity | unit_price | line_total |
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+| 57      | Iqra Raza | Hina Farooq | Panadol 500mg Tablets   | 3        | 35.00      | 105.00     |
+| 57      | Iqra Raza | Hina Farooq | ORS Sachet              | 2        | 25.00      | 50.00      |
+| 57      | Iqra Raza | Hina Farooq | Dettol Antiseptic 250ml | 1        | 330.00     | 330.00     |
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+(3 rows)
+
+pharmacy_db=> SELECT sale_id, total_amount FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales);
++---------+--------------+
+| sale_id | total_amount |
++---------+--------------+
+| 57      | 485.00       |
++---------+--------------+
+(1 rows)
+
+pharmacy_db=> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 123     |
+| 17         | 166     |
+| 39         | 205     |
++------------+---------+
+(3 rows)
+
+pharmacy_db=> SELECT 'T1b deleting that bill puts the stock back (cascade fires trg_sale_items_bd)' AS test;
++------------------------------------------------------------------------------+
+| test                                                                         |
++------------------------------------------------------------------------------+
+| T1b deleting that bill puts the stock back (cascade fires trg_sale_items_bd) |
++------------------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> DELETE FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales);
+DELETE 1
+
+pharmacy_db=> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 126     |
+| 17         | 168     |
+| 39         | 206     |
++------------+---------+
+(3 rows)
+
+pharmacy_db=> SELECT 'T2  EXPECTED ERROR: 100 Augmentin requested, only a few in stock' AS test;
++------------------------------------------------------------------+
+| test                                                             |
++------------------------------------------------------------------+
+| T2  EXPECTED ERROR: 100 Augmentin requested, only a few in stock |
++------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT COUNT(*) AS sales_before FROM sales;
++--------------+
+| sales_before |
++--------------+
+| 56           |
++--------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[{"product_id":7,"qty":100}]');
+ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+pharmacy_db=> SELECT COUNT(*) AS sales_after FROM sales;
++-------------+
+| sales_after |
++-------------+
+| 56          |
++-------------+
+(1 rows)
+
+pharmacy_db=> SELECT 'T3  EXPECTED ERROR: second line fails, first line is rolled back too' AS test;
++----------------------------------------------------------------------+
+| test                                                                 |
++----------------------------------------------------------------------+
+| T3  EXPECTED ERROR: second line fails, first line is rolled back too |
++----------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT on_hand AS panadol_before FROM v_product_stock WHERE product_id = 1;
++----------------+
+| panadol_before |
++----------------+
+| 126            |
++----------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[{"product_id":1,"qty":2},{"product_id":7,"qty":500}]');
+ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+pharmacy_db=> SELECT on_hand AS panadol_after FROM v_product_stock WHERE product_id = 1;
++---------------+
+| panadol_after |
++---------------+
+| 126           |
++---------------+
+(1 rows)
+
+pharmacy_db=> SELECT 'T4  EXPECTED ERROR: expired stock cannot be sold (Benylin)' AS test;
++------------------------------------------------------------+
+| test                                                       |
++------------------------------------------------------------+
+| T4  EXPECTED ERROR: expired stock cannot be sold (Benylin) |
++------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT product_name, on_hand, expired_qty FROM v_product_stock WHERE product_id = 23;
++---------------------------+---------+-------------+
+| product_name              | on_hand | expired_qty |
++---------------------------+---------+-------------+
+| Benylin Cough Syrup 100ml | 0       | 18          |
++---------------------------+---------+-------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[{"product_id":23,"qty":1}]');
+ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+pharmacy_db=> SELECT 'T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method' AS test;
++---------------------------------------------------------------------------+
+| test                                                                      |
++---------------------------------------------------------------------------+
+| T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method |
++---------------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[]');
+ERROR: A bill must contain at least one item
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Cash', '[{"product_id":999,"qty":1}]');
+ERROR: Unknown product in bill
+
+pharmacy_db=> SELECT sp_checkout(3, 6, 'Bitcoin', '[{"product_id":1,"qty":1}]');
+ERROR: invalid input value for enum payment_method_t: "Bitcoin"
+
+pharmacy_db=> SELECT 'T6  EXPECTED ERROR: a Manager / an inactive cashier cannot sell' AS test;
++-----------------------------------------------------------------+
+| test                                                            |
++-----------------------------------------------------------------+
+| T6  EXPECTED ERROR: a Manager / an inactive cashier cannot sell |
++-----------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_checkout(3, 1, 'Cash', '[{"product_id":1,"qty":1}]');
+ERROR: Only active pharmacists or cashiers can make a sale
+
+pharmacy_db=> SELECT sp_checkout(3, 9, 'Cash', '[{"product_id":1,"qty":1}]');
+ERROR: Only active pharmacists or cashiers can make a sale
+
+pharmacy_db=> SELECT 'T7  EXPECTED ERRORS: CHECK / NOT NULL / UNIQUE / FOREIGN KEY' AS test;
++--------------------------------------------------------------+
+| test                                                         |
++--------------------------------------------------------------+
+| T7  EXPECTED ERRORS: CHECK / NOT NULL / UNIQUE / FOREIGN KEY |
++--------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> INSERT INTO products (name, category_id, unit_price) VALUES ('Bad Price Medicine', 1, -10);
+ERROR: new row for relation "products" violates check constraint "ck_product_price"
+
+pharmacy_db=> INSERT INTO products (name, category_id, unit_price, reorder_level) VALUES ('Bad Reorder Medicine', 1, 10, -5);
+ERROR: new row for relation "products" violates check constraint "ck_product_reorder"
+
+pharmacy_db=> INSERT INTO products (name, category_id, unit_price) VALUES (NULL, 1, 10);
+ERROR: null value in column "name" of relation "products" violates not-null constraint
+
+pharmacy_db=> INSERT INTO products (name, category_id, unit_price) VALUES ('Panadol 500mg Tablets', 1, 10);
+ERROR: duplicate key value violates unique constraint "uq_product_name"
+
+pharmacy_db=> INSERT INTO products (name, category_id, unit_price) VALUES ('Orphan Medicine', 999, 10);
+ERROR: insert or update on table "products" violates foreign key constraint "fk_products_category"
+
+pharmacy_db=> DELETE FROM categories WHERE category_id = 1;
+ERROR: update or delete on table "categories" violates foreign key constraint "fk_products_category" on table "products"
+
+pharmacy_db=> INSERT INTO customers (name, phone) VALUES ('Bad Phone', '12345');
+ERROR: new row for relation "customers" violates check constraint "ck_customer_phone"
+
+pharmacy_db=> INSERT INTO customers (name, phone) SELECT 'Phone Thief', phone FROM customers WHERE customer_id = 2;
+ERROR: duplicate key value violates unique constraint "uq_customer_phone"
+
+pharmacy_db=> SELECT 'T7b transaction with SAVEPOINTs: CHECK / PK / immutability errors, then ROLLBACK' AS test;
++----------------------------------------------------------------------------------+
+| test                                                                             |
++----------------------------------------------------------------------------------+
+| T7b transaction with SAVEPOINTs: CHECK / PK / immutability errors, then ROLLBACK |
++----------------------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> BEGIN;
+BEGIN
+
+pharmacy_db=> INSERT INTO sales (customer_id, employee_id, payment_method) VALUES (2, 6, 'Cash');
+INSERT 0 1
+
+pharmacy_db=> SAVEPOINT s1;
+SAVEPOINT
+
+pharmacy_db=> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 0, 35 FROM sales;
+ERROR: new row for relation "sale_items" violates check constraint "ck_item_quantity"
+
+pharmacy_db=> ROLLBACK TO SAVEPOINT s1;
+ROLLBACK
+
+pharmacy_db=> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, -35 FROM sales;
+ERROR: new row for relation "sale_items" violates check constraint "ck_item_price"
+
+pharmacy_db=> ROLLBACK TO SAVEPOINT s1;
+ROLLBACK
+
+pharmacy_db=> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, 35 FROM sales;
+INSERT 0 1
+
+pharmacy_db=> SAVEPOINT s2;
+SAVEPOINT
+
+pharmacy_db=> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, 35 FROM sales;
+ERROR: duplicate key value violates unique constraint "pk_sale_items"
+
+pharmacy_db=> ROLLBACK TO SAVEPOINT s2;
+ROLLBACK
+
+pharmacy_db=> UPDATE sale_items SET quantity = 5 WHERE sale_id = (SELECT MAX(sale_id) FROM sales) AND product_id = 1;
+ERROR: Sale items cannot be updated; delete the line and add it again
+
+pharmacy_db=> ROLLBACK TO SAVEPOINT s2;
+ROLLBACK
+
+pharmacy_db=> SELECT total_amount AS total_before_delete FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales);
++---------------------+
+| total_before_delete |
++---------------------+
+| 35.00               |
++---------------------+
+(1 rows)
+
+pharmacy_db=> DELETE FROM sale_items WHERE sale_id = (SELECT MAX(sale_id) FROM sales) AND product_id = 1;
+DELETE 1
+
+pharmacy_db=> SELECT total_amount AS total_after_delete FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales);
++--------------------+
+| total_after_delete |
++--------------------+
+| 0.00               |
++--------------------+
+(1 rows)
+
+pharmacy_db=> ROLLBACK;
+ROLLBACK
+
+pharmacy_db=> SELECT 'T8  EXPECTED ERRORS: EER subclass rule and purchase-order triggers' AS test;
++--------------------------------------------------------------------+
+| test                                                               |
++--------------------------------------------------------------------+
+| T8  EXPECTED ERRORS: EER subclass rule and purchase-order triggers |
++--------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> INSERT INTO pharmacists (employee_id, license_no) VALUES (6, 'PC-XXX-0001');
+ERROR: Only employees with role Pharmacist can be stored in pharmacists
+
+pharmacy_db=> INSERT INTO stock_batches (product_id, po_id, batch_no, received_qty, quantity, expiry_date, cost_price)
+    SELECT 1, po_id, 'TEST-01', 10, 10, '2028-01-01', 20 FROM purchase_orders WHERE status = 'Cancelled' LIMIT 1;
+ERROR: Cannot add stock to a cancelled purchase order
+
+pharmacy_db=> SELECT sp_receive_stock(1, '2026-11-18', '[{"product_id":1,"qty":10,"cost_price":20,"expiry_date":"2026-11-01","batch_no":"OLD-01"}]');
+ERROR: Batch is already expired on the purchase-order date
+
+pharmacy_db=> UPDATE purchase_orders SET status = 'Pending' WHERE po_id = 1;
+ERROR: A Received or Cancelled purchase order cannot change status
+
+pharmacy_db=> SELECT 'T9  sp_receive_stock: two batches, total_cost calculated by trigger' AS test;
++---------------------------------------------------------------------+
+| test                                                                |
++---------------------------------------------------------------------+
+| T9  sp_receive_stock: two batches, total_cost calculated by trigger |
++---------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT sp_receive_stock(2, '2026-11-18', '[{"product_id":7,"qty":100,"cost_price":340.5,"expiry_date":"2028-06-30","batch_no":"AUG-2611-01"},{"product_id":14,"qty":80,"cost_price":295,"expiry_date":"2028-05-31","batch_no":"NEX-2611-01"}]') AS new_po_id;
++-----------+
+| new_po_id |
++-----------+
+| 32        |
++-----------+
+(1 rows)
+
+pharmacy_db=> SELECT po_id, supplier_id, order_date, status, total_cost FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders);
++-------+-------------+------------+----------+------------+
+| po_id | supplier_id | order_date | status   | total_cost |
++-------+-------------+------------+----------+------------+
+| 32    | 2           | 2026-11-18 | Received | 57650.00   |
++-------+-------------+------------+----------+------------+
+(1 rows)
+
+pharmacy_db=> SELECT product_id, product_name, on_hand, reorder_level FROM v_product_stock WHERE product_id IN (7, 14) ORDER BY product_id;
++------------+-------------------------+---------+---------------+
+| product_id | product_name            | on_hand | reorder_level |
++------------+-------------------------+---------+---------------+
+| 7          | Augmentin 625mg Tablets | 103     | 40            |
+| 14         | Nexum 40mg Capsules     | 86      | 40            |
++------------+-------------------------+---------+---------------+
+(2 rows)
+
+pharmacy_db=> DELETE FROM stock_batches WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders);
+DELETE 2
+
+pharmacy_db=> SELECT total_cost AS total_cost_after_batch_delete FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders);
++-------------------------------+
+| total_cost_after_batch_delete |
++-------------------------------+
+| 0.00                          |
++-------------------------------+
+(1 rows)
+
+pharmacy_db=> DELETE FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders);
+DELETE 1
+
+pharmacy_db=> SELECT 'T10 monthly report functions (October 2026)' AS test;
++---------------------------------------------+
+| test                                        |
++---------------------------------------------+
+| T10 monthly report functions (October 2026) |
++---------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT * FROM fn_monthly_report(2026, 10);
++--------------+-------+------------+----------+----------+---------+------------+
+| report_month | bills | units_sold | revenue  | cost     | profit  | margin_pct |
++--------------+-------+------------+----------+----------+---------+------------+
+| 2026-10      | 22    | 154        | 26965.00 | 20459.33 | 6505.67 | 24.13      |
++--------------+-------+------------+----------+----------+---------+------------+
+(1 rows)
+
+pharmacy_db=> SELECT * FROM fn_monthly_top_products(2026, 10, 5);
++---------------------------+-------+---------+---------+
+| product                   | units | revenue | profit  |
++---------------------------+-------+---------+---------+
+| Augmentin 625mg Tablets   | 9     | 4320.00 | 1186.56 |
+| Nexum 40mg Capsules       | 10    | 4200.00 | 849.80  |
+| Telfast 120mg Tablets     | 4     | 1520.00 | 411.64  |
+| Panadol 500mg Tablets     | 52    | 1820.00 | 407.47  |
+| Benylin Cough Syrup 100ml | 6     | 1920.00 | 384.18  |
++---------------------------+-------+---------+---------+
+(5 rows)
+
+pharmacy_db=> SELECT * FROM fn_monthly_report(2026, 13);
+ERROR: Month must be 1-12 and year 2000-2100
+
+pharmacy_db=> SELECT 'T10b CALL sp_refresh_stock_alerts()' AS test;
++-------------------------------------+
+| test                                |
++-------------------------------------+
+| T10b CALL sp_refresh_stock_alerts() |
++-------------------------------------+
+(1 rows)
+
+pharmacy_db=> CALL sp_refresh_stock_alerts();
+CALL
+
+pharmacy_db=> SELECT alert_type, COUNT(*) AS alerts FROM stock_alerts GROUP BY alert_type ORDER BY alert_type;
++-------------+--------+
+| alert_type  | alerts |
++-------------+--------+
+| LOW_STOCK   | 7      |
+| NEAR_EXPIRY | 3      |
+| EXPIRED     | 2      |
++-------------+--------+
+(3 rows)
+
+pharmacy_db=> DELETE FROM stock_alerts;
+DELETE 12
+
+pharmacy_db=> SELECT 'T11 PostgreSQL extras: RETURNING, partial index plan, writable CTE' AS test;
++--------------------------------------------------------------------+
+| test                                                               |
++--------------------------------------------------------------------+
+| T11 PostgreSQL extras: RETURNING, partial index plan, writable CTE |
++--------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> BEGIN;
+BEGIN
+
+pharmacy_db=> UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 1 RETURNING product_id, name, unit_price;
++------------+-----------------------+------------+
+| product_id | name                  | unit_price |
++------------+-----------------------+------------+
+| 1          | Panadol 500mg Tablets | 40.00      |
++------------+-----------------------+------------+
+(1 rows)
+
+pharmacy_db=> SELECT table_name, record_id, action, old_value, new_value FROM audit_log;
++------------+-----------+--------------+-----------+-----------+
+| table_name | record_id | action       | old_value | new_value |
++------------+-----------+--------------+-----------+-----------+
+| products   | 1         | PRICE_CHANGE | 35.00     | 40.00     |
++------------+-----------+--------------+-----------+-----------+
+(1 rows)
+
+pharmacy_db=> ROLLBACK;
+ROLLBACK
+
+pharmacy_db=> WITH moved AS (DELETE FROM stock_alerts WHERE FALSE RETURNING *) SELECT COUNT(*) AS rows_moved FROM moved;
++------------+
+| rows_moved |
++------------+
+| 0          |
++------------+
+(1 rows)
+
+pharmacy_db=> EXPLAIN (COSTS OFF) SELECT batch_id FROM stock_batches WHERE product_id = 1 AND quantity > 0 ORDER BY expiry_date;
++----------------------------------------------------+
+| QUERY PLAN                                         |
++----------------------------------------------------+
+| Index Scan using idx_batches_fefo on stock_batches |
+|   Index Cond: (product_id = 1)                     |
++----------------------------------------------------+
+(2 rows)
+
+pharmacy_db=> EXPLAIN (COSTS OFF) SELECT product_id FROM products WHERE to_tsvector('english', name || ' ' || COALESCE(generic_name, '')) @@ to_tsquery('english', 'paracetamol');
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QUERY PLAN                                                                                                                                                                    |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Bitmap Heap Scan on products                                                                                                                                                  |
+|   Recheck Cond: (to_tsvector('english'::regconfig, (((name)::text || ' '::text) || (COALESCE(generic_name, ''::character varying))::text)) @@ '''paracetamol'''::tsquery)     |
+|   ->  Bitmap Index Scan on idx_products_fts                                                                                                                                   |
+|         Index Cond: (to_tsvector('english'::regconfig, (((name)::text || ' '::text) || (COALESCE(generic_name, ''::character varying))::text)) @@ '''paracetamol'''::tsquery) |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+(4 rows)
+
+pharmacy_db=> SELECT 'T12 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch)' AS test;
++------------------------------------------------------------------------------------------------------------------------------+
+| test                                                                                                                         |
++------------------------------------------------------------------------------------------------------------------------------+
+| T12 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch) |
++------------------------------------------------------------------------------------------------------------------------------+
+(1 rows)
+
+pharmacy_db=> SELECT COUNT(*) AS sale_total_mismatches FROM sales s
+    WHERE  s.total_amount <> (SELECT SUM(si.line_total) FROM sale_items si WHERE si.sale_id = s.sale_id);
++-----------------------+
+| sale_total_mismatches |
++-----------------------+
+| 0                     |
++-----------------------+
+(1 rows)
+
+pharmacy_db=> SELECT COUNT(*) AS po_total_mismatches FROM purchase_orders p
+    WHERE  p.total_cost <> COALESCE((SELECT SUM(b.received_qty * b.cost_price) FROM stock_batches b WHERE b.po_id = p.po_id), 0);
++---------------------+
+| po_total_mismatches |
++---------------------+
+| 0                   |
++---------------------+
+(1 rows)
+
+pharmacy_db=> SELECT COUNT(*) AS stock_mismatches FROM stock_batches b
+    WHERE  b.received_qty - b.quantity <> COALESCE((SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.batch_id = b.batch_id), 0);
++------------------+
+| stock_mismatches |
++------------------+
+| 0                |
++------------------+
+(1 rows)
+
+pharmacy_db=> SELECT COUNT(*) AS allocation_mismatches FROM sale_items si
+    WHERE  si.quantity <> (SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.sale_id = si.sale_id AND a.product_id = si.product_id);
++-----------------------+
+| allocation_mismatches |
++-----------------------+
+| 0                     |
++-----------------------+
+(1 rows)

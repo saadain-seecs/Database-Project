@@ -1,0 +1,102 @@
+[
+ {
+  "title": "Q5  monthly sales  (SQL: GROUP BY month)",
+  "ok": true,
+  "mongo_rows": 4,
+  "sql_rows": 4,
+  "sample": [
+   [
+    "2026-08",
+    "9",
+    "6974.0"
+   ],
+   [
+    "2026-09",
+    "15",
+    "22055.0"
+   ],
+   [
+    "2026-10",
+    "22",
+    "26965.0"
+   ]
+  ]
+ },
+ {
+  "title": "Q6  top 10 best-selling medicines  (SQL: GROUP BY product ... LIMIT 10)",
+  "ok": true,
+  "mongo_rows": 10,
+  "sql_rows": 10,
+  "sample": [
+   [
+    "Panadol 500mg Tablets",
+    "74",
+    "2590.0"
+   ],
+   [
+    "ORS Sachet",
+    "42",
+    "1050.0"
+   ],
+   [
+    "Augmentin 625mg Tablets",
+    "23",
+    "11040.0"
+   ]
+  ]
+ },
+ {
+  "title": "Q8  customers with highest spending  (SQL: GROUP BY ... HAVING)",
+  "ok": true,
+  "mongo_rows": 10,
+  "sql_rows": 10,
+  "sample": [
+   [
+    "22",
+    "7",
+    "12895.0"
+   ],
+   [
+    "29",
+    "4",
+    "7460.0"
+   ],
+   [
+    "7",
+    "5",
+    "7185.0"
+   ]
+  ]
+ },
+ {
+  "title": "Q11 revenue per category  (SQL: 4-table JOIN + GROUP BY)",
+  "ok": true,
+  "mongo_rows": 10,
+  "sql_rows": 10,
+  "sample": [
+   [
+    "Analgesics & Antipyretics",
+    "122",
+    "8074.0"
+   ],
+   [
+    "Antacids & Gastro",
+    "77",
+    "11450.0"
+   ],
+   [
+    "Antibiotics",
+    "27",
+    "11400.0"
+   ]
+  ]
+ },
+ {
+  "title": "Q9  products below reorder level  (SQL: correlated sub-query)",
+  "ok": null,
+  "python_logic_matches_sql": true,
+  "mongo_rows": 7,
+  "sql_rows": 7,
+  "note": "mongomock cannot evaluate $$variables; same logic checked in Python - run on a real MongoDB to confirm the pipeline"
+ }
+]

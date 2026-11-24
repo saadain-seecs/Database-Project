@@ -1,0 +1,4 @@
+customtkinter>=5.2
+mysql-connector-python>=8.0
+matplotlib>=3.7
+pillow>=10.0

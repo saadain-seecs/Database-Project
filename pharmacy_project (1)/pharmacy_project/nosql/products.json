@@ -1,0 +1,1043 @@
+[
+ {
+  "_id": 1,
+  "name": "Panadol 500mg Tablets",
+  "generic_name": "Paracetamol",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 35.0,
+  "reorder_level": 60,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 23,
+    "batch_no": "PAN-2608-01",
+    "po_id": 8,
+    "received_qty": 60,
+    "qty": 0,
+    "expiry_date": "2028-01-31",
+    "cost_price": 27.51
+   },
+   {
+    "batch_id": 41,
+    "batch_no": "PAN-2609-02",
+    "po_id": 17,
+    "received_qty": 140,
+    "qty": 126,
+    "expiry_date": "2028-05-31",
+    "cost_price": 24.94
+   }
+  ]
+ },
+ {
+  "_id": 2,
+  "name": "Calpol 120mg/5ml Syrup",
+  "generic_name": "Paracetamol",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 145.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 52,
+    "batch_no": "CAL-2611-02",
+    "po_id": 24,
+    "received_qty": 50,
+    "qty": 47,
+    "expiry_date": "2028-12-31",
+    "cost_price": 109.65
+   },
+   {
+    "batch_id": 19,
+    "batch_no": "CAL-2608-01",
+    "po_id": 7,
+    "received_qty": 108,
+    "qty": 97,
+    "expiry_date": "2029-02-28",
+    "cost_price": 104.16
+   }
+  ]
+ },
+ {
+  "_id": 3,
+  "name": "Brufen 400mg Tablets",
+  "generic_name": "Ibuprofen",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 95.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 21,
+    "batch_no": "BRU-2608-01",
+    "po_id": 7,
+    "received_qty": 99,
+    "qty": 85,
+    "expiry_date": "2028-06-30",
+    "cost_price": 67.13
+   },
+   {
+    "batch_id": 44,
+    "batch_no": "BRU-2609-02",
+    "po_id": 18,
+    "received_qty": 90,
+    "qty": 90,
+    "expiry_date": "2029-01-31",
+    "cost_price": 68.66
+   }
+  ]
+ },
+ {
+  "_id": 4,
+  "name": "Ponstan Forte 500mg",
+  "generic_name": "Mefenamic acid",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 120.0,
+  "reorder_level": 35,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 9,
+    "batch_no": "PON-2608-01",
+    "po_id": 3,
+    "received_qty": 100,
+    "qty": 83,
+    "expiry_date": "2028-08-31",
+    "cost_price": 92.57
+   },
+   {
+    "batch_id": 51,
+    "batch_no": "PON-2611-02",
+    "po_id": 23,
+    "received_qty": 60,
+    "qty": 60,
+    "expiry_date": "2028-11-30",
+    "cost_price": 96.39
+   }
+  ]
+ },
+ {
+  "_id": 5,
+  "name": "Disprin 300mg",
+  "generic_name": "Aspirin",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 28.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 3,
+    "batch_no": "DIS-2608-01",
+    "po_id": 1,
+    "received_qty": 106,
+    "qty": 103,
+    "expiry_date": "2029-02-28",
+    "cost_price": 20.13
+   }
+  ]
+ },
+ {
+  "_id": 6,
+  "name": "Voltral 50mg Tablets",
+  "generic_name": "Diclofenac sodium",
+  "category": {
+   "category_id": 1,
+   "name": "Analgesics & Antipyretics"
+  },
+  "unit_price": 170.0,
+  "reorder_level": 25,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 29,
+    "batch_no": "VOL-2608-01",
+    "po_id": 11,
+    "received_qty": 76,
+    "qty": 76,
+    "expiry_date": "2029-01-31",
+    "cost_price": 136.08
+   }
+  ]
+ },
+ {
+  "_id": 7,
+  "name": "Augmentin 625mg Tablets",
+  "generic_name": "Amoxicillin + Clavulanate",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 480.0,
+  "reorder_level": 40,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 24,
+    "batch_no": "AUG-2608-01",
+    "po_id": 8,
+    "received_qty": 26,
+    "qty": 3,
+    "expiry_date": "2029-02-28",
+    "cost_price": 348.16
+   }
+  ]
+ },
+ {
+  "_id": 8,
+  "name": "Flagyl 400mg Tablets",
+  "generic_name": "Metronidazole",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 90.0,
+  "reorder_level": 30,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 7,
+    "batch_no": "FLA-2608-01",
+    "po_id": 3,
+    "received_qty": 107,
+    "qty": 103,
+    "expiry_date": "2028-11-30",
+    "cost_price": 72.95
+   }
+  ]
+ },
+ {
+  "_id": 9,
+  "name": "Zithromax 500mg Tablets",
+  "generic_name": "Azithromycin",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 620.0,
+  "reorder_level": 20,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 2,
+    "batch_no": "ZIT-2608-01",
+    "po_id": 1,
+    "received_qty": 95,
+    "qty": 95,
+    "expiry_date": "2028-01-31",
+    "cost_price": 506.59
+   }
+  ]
+ },
+ {
+  "_id": 10,
+  "name": "Cipro 500mg Tablets",
+  "generic_name": "Ciprofloxacin",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 260.0,
+  "reorder_level": 25,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 17,
+    "batch_no": "CIP-2608-01",
+    "po_id": 6,
+    "received_qty": 46,
+    "qty": 46,
+    "expiry_date": "2029-01-31",
+    "cost_price": 183.65
+   }
+  ]
+ },
+ {
+  "_id": 11,
+  "name": "Amoxil 500mg Capsules",
+  "generic_name": "Amoxicillin",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 210.0,
+  "reorder_level": 30,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 5,
+    "batch_no": "AMO-2608-01",
+    "po_id": 2,
+    "received_qty": 80,
+    "qty": 80,
+    "expiry_date": "2028-01-31",
+    "cost_price": 156.17
+   }
+  ]
+ },
+ {
+  "_id": 12,
+  "name": "Septran DS Tablets",
+  "generic_name": "Co-trimoxazole",
+  "category": {
+   "category_id": 2,
+   "name": "Antibiotics"
+  },
+  "unit_price": 130.0,
+  "reorder_level": 25,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 27,
+    "batch_no": "SEP-2608-01",
+    "po_id": 10,
+    "received_qty": 58,
+    "qty": 58,
+    "expiry_date": "2029-02-28",
+    "cost_price": 93.19
+   }
+  ]
+ },
+ {
+  "_id": 13,
+  "name": "Risek 20mg Capsules",
+  "generic_name": "Omeprazole",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 180.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 28,
+    "batch_no": "RIS-2608-01",
+    "po_id": 10,
+    "received_qty": 155,
+    "qty": 145,
+    "expiry_date": "2028-09-30",
+    "cost_price": 123.06
+   },
+   {
+    "batch_id": 47,
+    "batch_no": "RIS-2610-02",
+    "po_id": 20,
+    "received_qty": 90,
+    "qty": 90,
+    "expiry_date": "2029-04-30",
+    "cost_price": 128.2
+   }
+  ]
+ },
+ {
+  "_id": 14,
+  "name": "Nexum 40mg Capsules",
+  "generic_name": "Esomeprazole",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 420.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 34,
+    "batch_no": "NEX-2608-01",
+    "po_id": 13,
+    "received_qty": 24,
+    "qty": 6,
+    "expiry_date": "2028-10-31",
+    "cost_price": 335.02
+   }
+  ]
+ },
+ {
+  "_id": 15,
+  "name": "Gaviscon Liquid 150ml",
+  "generic_name": "Alginate + Antacid",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 450.0,
+  "reorder_level": 15,
+  "requires_prescription": false,
+  "batches": []
+ },
+ {
+  "_id": 16,
+  "name": "Motilium 10mg Tablets",
+  "generic_name": "Domperidone",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 160.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 40,
+    "batch_no": "MOT-2608-01",
+    "po_id": 16,
+    "received_qty": 76,
+    "qty": 73,
+    "expiry_date": "2026-12-05",
+    "cost_price": 130.01
+   }
+  ]
+ },
+ {
+  "_id": 17,
+  "name": "ORS Sachet",
+  "generic_name": "Oral rehydration salts",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 25.0,
+  "reorder_level": 80,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 18,
+    "batch_no": "ORS-2608-01",
+    "po_id": 6,
+    "received_qty": 90,
+    "qty": 48,
+    "expiry_date": "2028-09-30",
+    "cost_price": 17.44
+   },
+   {
+    "batch_id": 42,
+    "batch_no": "ORS-2609-02",
+    "po_id": 17,
+    "received_qty": 120,
+    "qty": 120,
+    "expiry_date": "2029-03-31",
+    "cost_price": 20.04
+   }
+  ]
+ },
+ {
+  "_id": 18,
+  "name": "Buscopan 10mg Tablets",
+  "generic_name": "Hyoscine butylbromide",
+  "category": {
+   "category_id": 3,
+   "name": "Antacids & Gastro"
+  },
+  "unit_price": 140.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 38,
+    "batch_no": "BUS-2608-01",
+    "po_id": 15,
+    "received_qty": 92,
+    "qty": 88,
+    "expiry_date": "2028-08-31",
+    "cost_price": 100.4
+   }
+  ]
+ },
+ {
+  "_id": 19,
+  "name": "Zyrtec 10mg Tablets",
+  "generic_name": "Cetirizine",
+  "category": {
+   "category_id": 4,
+   "name": "Antihistamines & Allergy"
+  },
+  "unit_price": 110.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 43,
+    "batch_no": "ZYR-2609-02",
+    "po_id": 18,
+    "received_qty": 80,
+    "qty": 74,
+    "expiry_date": "2028-11-30",
+    "cost_price": 79.16
+   },
+   {
+    "batch_id": 25,
+    "batch_no": "ZYR-2608-01",
+    "po_id": 9,
+    "received_qty": 126,
+    "qty": 126,
+    "expiry_date": "2029-02-28",
+    "cost_price": 81.21
+   }
+  ]
+ },
+ {
+  "_id": 20,
+  "name": "Avil 25mg Tablets",
+  "generic_name": "Pheniramine",
+  "category": {
+   "category_id": 4,
+   "name": "Antihistamines & Allergy"
+  },
+  "unit_price": 40.0,
+  "reorder_level": 30,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 6,
+    "batch_no": "AVI-2608-01",
+    "po_id": 2,
+    "received_qty": 110,
+    "qty": 105,
+    "expiry_date": "2026-11-30",
+    "cost_price": 31.59
+   }
+  ]
+ },
+ {
+  "_id": 21,
+  "name": "Claritin 10mg Tablets",
+  "generic_name": "Loratadine",
+  "category": {
+   "category_id": 4,
+   "name": "Antihistamines & Allergy"
+  },
+  "unit_price": 150.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 33,
+    "batch_no": "CLA-2608-01",
+    "po_id": 13,
+    "received_qty": 67,
+    "qty": 67,
+    "expiry_date": "2028-07-31",
+    "cost_price": 106.72
+   }
+  ]
+ },
+ {
+  "_id": 22,
+  "name": "Telfast 120mg Tablets",
+  "generic_name": "Fexofenadine",
+  "category": {
+   "category_id": 4,
+   "name": "Antihistamines & Allergy"
+  },
+  "unit_price": 380.0,
+  "reorder_level": 20,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 13,
+    "batch_no": "TEL-2608-01",
+    "po_id": 5,
+    "received_qty": 78,
+    "qty": 74,
+    "expiry_date": "2028-03-31",
+    "cost_price": 277.09
+   }
+  ]
+ },
+ {
+  "_id": 23,
+  "name": "Benylin Cough Syrup 100ml",
+  "generic_name": "Dextromethorphan",
+  "category": {
+   "category_id": 5,
+   "name": "Cough, Cold & Respiratory"
+  },
+  "unit_price": 320.0,
+  "reorder_level": 20,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 15,
+    "batch_no": "BEN-2608-01",
+    "po_id": 5,
+    "received_qty": 30,
+    "qty": 18,
+    "expiry_date": "2026-11-05",
+    "cost_price": 255.97
+   }
+  ]
+ },
+ {
+  "_id": 24,
+  "name": "Arinac Forte Tablets",
+  "generic_name": "Ibuprofen + Pseudoephedrine",
+  "category": {
+   "category_id": 5,
+   "name": "Cough, Cold & Respiratory"
+  },
+  "unit_price": 85.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 20,
+    "batch_no": "ARI-2608-01",
+    "po_id": 7,
+    "received_qty": 91,
+    "qty": 84,
+    "expiry_date": "2027-12-31",
+    "cost_price": 65.29
+   }
+  ]
+ },
+ {
+  "_id": 25,
+  "name": "Actifed Syrup 90ml",
+  "generic_name": "Triprolidine + Pseudoephedrine",
+  "category": {
+   "category_id": 5,
+   "name": "Cough, Cold & Respiratory"
+  },
+  "unit_price": 290.0,
+  "reorder_level": 20,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 22,
+    "batch_no": "ACT-2608-01",
+    "po_id": 8,
+    "received_qty": 57,
+    "qty": 53,
+    "expiry_date": "2026-12-14",
+    "cost_price": 208.56
+   }
+  ]
+ },
+ {
+  "_id": 26,
+  "name": "Ventolin Inhaler 100mcg",
+  "generic_name": "Salbutamol",
+  "category": {
+   "category_id": 5,
+   "name": "Cough, Cold & Respiratory"
+  },
+  "unit_price": 550.0,
+  "reorder_level": 30,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 37,
+    "batch_no": "VEN-2608-01",
+    "po_id": 15,
+    "received_qty": 22,
+    "qty": 18,
+    "expiry_date": "2028-10-31",
+    "cost_price": 418.81
+   }
+  ]
+ },
+ {
+  "_id": 27,
+  "name": "Surbex Z Tablets",
+  "generic_name": "Multivitamin + Zinc",
+  "category": {
+   "category_id": 6,
+   "name": "Vitamins & Supplements"
+  },
+  "unit_price": 380.0,
+  "reorder_level": 30,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 36,
+    "batch_no": "SUR-2608-01",
+    "po_id": 14,
+    "received_qty": 126,
+    "qty": 118,
+    "expiry_date": "2029-02-28",
+    "cost_price": 296.28
+   },
+   {
+    "batch_id": 45,
+    "batch_no": "SUR-2609-02",
+    "po_id": 19,
+    "received_qty": 70,
+    "qty": 70,
+    "expiry_date": "2029-03-31",
+    "cost_price": 267.71
+   }
+  ]
+ },
+ {
+  "_id": 28,
+  "name": "Calcium + Vitamin D3 Tablets",
+  "generic_name": "Calcium carbonate + Cholecalciferol",
+  "category": {
+   "category_id": 6,
+   "name": "Vitamins & Supplements"
+  },
+  "unit_price": 650.0,
+  "reorder_level": 20,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 26,
+    "batch_no": "CAL-2608-01",
+    "po_id": 9,
+    "received_qty": 100,
+    "qty": 98,
+    "expiry_date": "2028-01-31",
+    "cost_price": 454.05
+   }
+  ]
+ },
+ {
+  "_id": 29,
+  "name": "Vitamin C 500mg Tablets",
+  "generic_name": "Ascorbic acid",
+  "category": {
+   "category_id": 6,
+   "name": "Vitamins & Supplements"
+  },
+  "unit_price": 150.0,
+  "reorder_level": 40,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 46,
+    "batch_no": "VIT-2609-02",
+    "po_id": 19,
+    "received_qty": 90,
+    "qty": 79,
+    "expiry_date": "2028-10-31",
+    "cost_price": 114.96
+   },
+   {
+    "batch_id": 30,
+    "batch_no": "VIT-2608-01",
+    "po_id": 11,
+    "received_qty": 91,
+    "qty": 81,
+    "expiry_date": "2028-11-30",
+    "cost_price": 109.04
+   }
+  ]
+ },
+ {
+  "_id": 30,
+  "name": "Neurobion Tablets",
+  "generic_name": "Vitamin B1 + B6 + B12",
+  "category": {
+   "category_id": 6,
+   "name": "Vitamins & Supplements"
+  },
+  "unit_price": 290.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 39,
+    "batch_no": "NEU-2608-01",
+    "po_id": 16,
+    "received_qty": 82,
+    "qty": 82,
+    "expiry_date": "2028-09-30",
+    "cost_price": 212.13
+   }
+  ]
+ },
+ {
+  "_id": 31,
+  "name": "Glucophage 500mg Tablets",
+  "generic_name": "Metformin",
+  "category": {
+   "category_id": 7,
+   "name": "Diabetes Care"
+  },
+  "unit_price": 120.0,
+  "reorder_level": 40,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 4,
+    "batch_no": "GLU-2608-01",
+    "po_id": 2,
+    "received_qty": 93,
+    "qty": 90,
+    "expiry_date": "2028-04-30",
+    "cost_price": 92.5
+   },
+   {
+    "batch_id": 49,
+    "batch_no": "GLU-2610-02",
+    "po_id": 22,
+    "received_qty": 70,
+    "qty": 70,
+    "expiry_date": "2028-11-30",
+    "cost_price": 91.79
+   }
+  ]
+ },
+ {
+  "_id": 32,
+  "name": "Diamicron MR 60mg",
+  "generic_name": "Gliclazide",
+  "category": {
+   "category_id": 7,
+   "name": "Diabetes Care"
+  },
+  "unit_price": 470.0,
+  "reorder_level": 40,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 35,
+    "batch_no": "DIA-2608-01",
+    "po_id": 14,
+    "received_qty": 25,
+    "qty": 11,
+    "expiry_date": "2028-12-31",
+    "cost_price": 379.78
+   }
+  ]
+ },
+ {
+  "_id": 33,
+  "name": "Glucometer Test Strips (50)",
+  "generic_name": "Blood-glucose test strips",
+  "category": {
+   "category_id": 7,
+   "name": "Diabetes Care"
+  },
+  "unit_price": 1650.0,
+  "reorder_level": 15,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 11,
+    "batch_no": "STR-2608-01",
+    "po_id": 4,
+    "received_qty": 73,
+    "qty": 72,
+    "expiry_date": "2028-06-30",
+    "cost_price": 1327.73
+   }
+  ]
+ },
+ {
+  "_id": 34,
+  "name": "Norvasc 5mg Tablets",
+  "generic_name": "Amlodipine",
+  "category": {
+   "category_id": 8,
+   "name": "Cardiovascular"
+  },
+  "unit_price": 380.0,
+  "reorder_level": 40,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 8,
+    "batch_no": "NOR-2608-01",
+    "po_id": 3,
+    "received_qty": 28,
+    "qty": 19,
+    "expiry_date": "2028-01-31",
+    "cost_price": 302.08
+   }
+  ]
+ },
+ {
+  "_id": 35,
+  "name": "Concor 5mg Tablets",
+  "generic_name": "Bisoprolol",
+  "category": {
+   "category_id": 8,
+   "name": "Cardiovascular"
+  },
+  "unit_price": 410.0,
+  "reorder_level": 25,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 31,
+    "batch_no": "CON-2608-01",
+    "po_id": 12,
+    "received_qty": 65,
+    "qty": 61,
+    "expiry_date": "2028-05-31",
+    "cost_price": 292.29
+   }
+  ]
+ },
+ {
+  "_id": 36,
+  "name": "Lipiget 20mg Tablets",
+  "generic_name": "Atorvastatin",
+  "category": {
+   "category_id": 8,
+   "name": "Cardiovascular"
+  },
+  "unit_price": 330.0,
+  "reorder_level": 25,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 1,
+    "batch_no": "LIP-2608-01",
+    "po_id": 1,
+    "received_qty": 58,
+    "qty": 54,
+    "expiry_date": "2027-11-30",
+    "cost_price": 265.22
+   }
+  ]
+ },
+ {
+  "_id": 37,
+  "name": "Betnovate-N Cream 15g",
+  "generic_name": "Betamethasone + Neomycin",
+  "category": {
+   "category_id": 9,
+   "name": "Dermatology"
+  },
+  "unit_price": 190.0,
+  "reorder_level": 20,
+  "requires_prescription": true,
+  "batches": [
+   {
+    "batch_id": 12,
+    "batch_no": "BET-2608-01",
+    "po_id": 4,
+    "received_qty": 95,
+    "qty": 95,
+    "expiry_date": "2028-04-30",
+    "cost_price": 129.24
+   }
+  ]
+ },
+ {
+  "_id": 38,
+  "name": "Canesten Cream 20g",
+  "generic_name": "Clotrimazole",
+  "category": {
+   "category_id": 9,
+   "name": "Dermatology"
+  },
+  "unit_price": 360.0,
+  "reorder_level": 20,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 16,
+    "batch_no": "CAN-2608-01",
+    "po_id": 6,
+    "received_qty": 84,
+    "qty": 82,
+    "expiry_date": "2026-10-31",
+    "cost_price": 266.29
+   },
+   {
+    "batch_id": 50,
+    "batch_no": "CAN-2611-02",
+    "po_id": 23,
+    "received_qty": 40,
+    "qty": 40,
+    "expiry_date": "2029-02-28",
+    "cost_price": 263.45
+   }
+  ]
+ },
+ {
+  "_id": 39,
+  "name": "Dettol Antiseptic 250ml",
+  "generic_name": "Chloroxylenol",
+  "category": {
+   "category_id": 10,
+   "name": "First Aid & Devices"
+  },
+  "unit_price": 330.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 14,
+    "batch_no": "DET-2608-01",
+    "po_id": 5,
+    "received_qty": 160,
+    "qty": 146,
+    "expiry_date": "2028-07-31",
+    "cost_price": 250.98
+   },
+   {
+    "batch_id": 48,
+    "batch_no": "DET-2610-02",
+    "po_id": 21,
+    "received_qty": 60,
+    "qty": 60,
+    "expiry_date": "2029-02-28",
+    "cost_price": 263.71
+   }
+  ]
+ },
+ {
+  "_id": 40,
+  "name": "Band-Aid Strips (20)",
+  "generic_name": "Adhesive dressing",
+  "category": {
+   "category_id": 10,
+   "name": "First Aid & Devices"
+  },
+  "unit_price": 95.0,
+  "reorder_level": 25,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 32,
+    "batch_no": "BAN-2608-01",
+    "po_id": 12,
+    "received_qty": 93,
+    "qty": 86,
+    "expiry_date": "2028-08-31",
+    "cost_price": 67.72
+   }
+  ]
+ },
+ {
+  "_id": 41,
+  "name": "Digital Thermometer",
+  "generic_name": "Clinical thermometer",
+  "category": {
+   "category_id": 10,
+   "name": "First Aid & Devices"
+  },
+  "unit_price": 450.0,
+  "reorder_level": 10,
+  "requires_prescription": false,
+  "batches": [
+   {
+    "batch_id": 10,
+    "batch_no": "THE-2608-01",
+    "po_id": 4,
+    "received_qty": 104,
+    "qty": 98,
+    "expiry_date": "2028-07-31",
+    "cost_price": 325.5
+   }
+  ]
+ }
+]

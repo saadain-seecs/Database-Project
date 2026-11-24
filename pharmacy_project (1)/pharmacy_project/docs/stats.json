@@ -1,0 +1,13 @@
+{
+ "tables": 14,
+ "PRIMARY KEY": 14,
+ "FOREIGN KEY": 14,
+ "UNIQUE": 9,
+ "CHECK": 15,
+ "triggers": 14,
+ "procedures": 4,
+ "functions": 1,
+ "views": 6,
+ "events": 1,
+ "indexes": 8
+}

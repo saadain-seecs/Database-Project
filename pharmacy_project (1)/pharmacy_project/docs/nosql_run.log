@@ -1,0 +1,5 @@
+True | Q5  monthly sales  (SQL: GROUP BY month) | 4 4 
+True | Q6  top 10 best-selling medicines  (SQL: GROUP BY product ... LIMIT 10) | 10 10 
+True | Q8  customers with highest spending  (SQL: GROUP BY ... HAVING) | 10 10 
+True | Q11 revenue per category  (SQL: 4-table JOIN + GROUP BY) | 10 10 
+None | Q9  products below reorder level  (SQL: correlated sub-query) | 7 7 mongomock cannot evaluate $$variables; same logic checked in Python - run on a real MongoDB to confirm the pipeline

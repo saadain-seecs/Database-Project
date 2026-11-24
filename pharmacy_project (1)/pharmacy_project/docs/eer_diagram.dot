@@ -1,0 +1,36 @@
+digraph EER { graph [rankdir=TB, nodesep=0.55, ranksep=0.8, fontname="Helvetica", splines=true, pad=0.3];
+node [fontname="Helvetica", fontsize=10]; edge [fontname="Helvetica", fontsize=11, color="#444444", arrowhead=none];
+Category [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>CATEGORY</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>category_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">category_name (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="2">description</TD></TR></TABLE>>];
+Product [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>PRODUCT</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>product_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">name (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="2">generic_name</TD></TR><TR><TD ALIGN="LEFT" PORT="3">unit_price</TD></TR><TR><TD ALIGN="LEFT" PORT="4">reorder_level</TD></TR><TR><TD ALIGN="LEFT" PORT="5">requires_prescription</TD></TR></TABLE>>];
+Supplier [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>SUPPLIER</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>supplier_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">name (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="2">phone (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="3">address</TD></TR><TR><TD ALIGN="LEFT" PORT="4">is_active</TD></TR></TABLE>>];
+PurchaseOrder [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>PURCHASE ORDER</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>po_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">order_date</TD></TR><TR><TD ALIGN="LEFT" PORT="2">status</TD></TR><TR><TD ALIGN="LEFT" PORT="3">total_cost (derived)</TD></TR></TABLE>>];
+StockBatch [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>STOCK BATCH</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>batch_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">batch_no</TD></TR><TR><TD ALIGN="LEFT" PORT="2">received_qty</TD></TR><TR><TD ALIGN="LEFT" PORT="3">quantity</TD></TR><TR><TD ALIGN="LEFT" PORT="4">expiry_date</TD></TR><TR><TD ALIGN="LEFT" PORT="5">cost_price</TD></TR></TABLE>>];
+Customer [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>CUSTOMER</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>customer_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">name</TD></TR><TR><TD ALIGN="LEFT" PORT="2">phone (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="3">registered_on</TD></TR></TABLE>>];
+Employee [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#548235"><TR><TD BGCOLOR="#E2F0D9"><B>EMPLOYEE</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>employee_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">name</TD></TR><TR><TD ALIGN="LEFT" PORT="2">role</TD></TR><TR><TD ALIGN="LEFT" PORT="3">phone (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="4">hire_date</TD></TR><TR><TD ALIGN="LEFT" PORT="5">is_active</TD></TR></TABLE>>];
+Pharmacist [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#548235"><TR><TD BGCOLOR="#E2F0D9"><B>PHARMACIST</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0">license_no (U)</TD></TR><TR><TD ALIGN="LEFT" PORT="1">qualification</TD></TR></TABLE>>];
+Cashier [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#548235"><TR><TD BGCOLOR="#E2F0D9"><B>CASHIER</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0">shift</TD></TR><TR><TD ALIGN="LEFT" PORT="1">counter_no</TD></TR></TABLE>>];
+Sale [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#2F5597"><TR><TD BGCOLOR="#DCE9F8"><B>SALE</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>sale_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">sale_date</TD></TR><TR><TD ALIGN="LEFT" PORT="2">payment_method</TD></TR><TR><TD ALIGN="LEFT" PORT="3">total_amount (derived)</TD></TR></TABLE>>];
+SaleItem [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#C55A11"><TR><TD BGCOLOR="#FCE4D6"><B>SALE ITEM</B></TD></TR><TR><TD ALIGN="LEFT" PORT="0"><U>sale_id, product_id</U></TD></TR><TR><TD ALIGN="LEFT" PORT="1">quantity</TD></TR><TR><TD ALIGN="LEFT" PORT="2">unit_price</TD></TR></TABLE>>];
+classifies [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="classifies"];
+supplies [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="supplies"];
+contains [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="contains"];
+stocked_as [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="stocked as"];
+places [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="places"];
+makes [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="makes"];
+includes [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="includes"];
+served_from [shape=diamond, style=filled, fillcolor="#FFF2CC", color="#BF9000", fontsize=10, label="served from", fillcolor="#FCE4D6"];
+isa [shape=circle, label="d", width=0.35, fixedsize=true, style=filled, fillcolor="#E2F0D9", color="#548235"];
+Category -> classifies [label="1"]; classifies -> Product [label="M"];
+Supplier -> supplies [label="1"]; supplies -> PurchaseOrder [label="M"];
+PurchaseOrder -> contains [label="1"]; contains -> StockBatch [label="M"];
+Product -> stocked_as [label="1"]; stocked_as -> StockBatch [label="M"];
+Customer -> places [label="1"]; places -> Sale [label="M"];
+Employee -> makes [label="1"]; makes -> Sale [label="M"];
+Sale -> includes [label="1"]; includes -> SaleItem [label="M", penwidth=2];
+Product -> includes [label="N (M:N via Sale Item)", style=dashed];
+SaleItem -> served_from [label="M"]; served_from -> StockBatch [label="N"];
+Employee -> isa [penwidth=2]; isa -> Pharmacist [dir=forward, arrowhead=none]; isa -> Cashier;
+{rank=same; Category; Supplier; Customer; Employee}
+{rank=same; Pharmacist; Cashier}
+labelloc=t; label=<<B>EER diagram - Pharmacy Inventory &amp; Sales Management System</B><BR/><FONT POINT-SIZE="10">underlined = primary key, (U) = unique, d = disjoint specialisation of EMPLOYEE (partial)</FONT>>;
+}

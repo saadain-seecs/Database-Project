@@ -1,0 +1,242 @@
+[
+ {
+  "_id": 1,
+  "name": "Walk-in Customer",
+  "phone": null,
+  "registered_on": "2025-01-01"
+ },
+ {
+  "_id": 2,
+  "name": "Maryam Hussain",
+  "phone": "0311-2431297",
+  "registered_on": "2026-06-09"
+ },
+ {
+  "_id": 3,
+  "name": "Iqra Raza",
+  "phone": "0306-6949389",
+  "registered_on": "2026-01-22"
+ },
+ {
+  "_id": 4,
+  "name": "Hira Javed",
+  "phone": "0303-8589227",
+  "registered_on": "2025-03-31"
+ },
+ {
+  "_id": 5,
+  "name": "Amna Mirza",
+  "phone": "0335-5154873",
+  "registered_on": "2026-05-24"
+ },
+ {
+  "_id": 6,
+  "name": "Saad Khan",
+  "phone": "0333-3349161",
+  "registered_on": "2026-03-09"
+ },
+ {
+  "_id": 7,
+  "name": "Asad Qureshi",
+  "phone": "0317-7092830",
+  "registered_on": "2025-09-01"
+ },
+ {
+  "_id": 8,
+  "name": "Mehwish Aslam",
+  "phone": "0339-7348347",
+  "registered_on": "2025-07-25"
+ },
+ {
+  "_id": 9,
+  "name": "Noor Chaudhry",
+  "phone": "0341-4366358",
+  "registered_on": "2026-06-10"
+ },
+ {
+  "_id": 10,
+  "name": "Amna Sheikh",
+  "phone": "0327-5183540",
+  "registered_on": "2025-09-07"
+ },
+ {
+  "_id": 11,
+  "name": "Bushra Abbasi",
+  "phone": "0316-7592466",
+  "registered_on": "2025-08-20"
+ },
+ {
+  "_id": 12,
+  "name": "Amna Chaudhry",
+  "phone": "0329-4140288",
+  "registered_on": "2025-04-01"
+ },
+ {
+  "_id": 13,
+  "name": "Fatima Qureshi",
+  "phone": "0306-2904810",
+  "registered_on": "2025-03-17"
+ },
+ {
+  "_id": 14,
+  "name": "Rukhsana Butt",
+  "phone": "0317-3385344",
+  "registered_on": "2025-06-06"
+ },
+ {
+  "_id": 15,
+  "name": "Ahmed Aslam",
+  "phone": "0345-7235522",
+  "registered_on": "2025-09-26"
+ },
+ {
+  "_id": 16,
+  "name": "Iqra Hashmi",
+  "phone": "0339-9187176",
+  "registered_on": "2026-04-25"
+ },
+ {
+  "_id": 17,
+  "name": "Nadia Mirza",
+  "phone": "0339-8428169",
+  "registered_on": "2025-09-08"
+ },
+ {
+  "_id": 18,
+  "name": "Saad Qureshi",
+  "phone": "0320-8610511",
+  "registered_on": "2026-03-15"
+ },
+ {
+  "_id": 19,
+  "name": "Hira Malik",
+  "phone": "0314-5512679",
+  "registered_on": "2025-02-01"
+ },
+ {
+  "_id": 20,
+  "name": "Shahzaib Rana",
+  "phone": "0329-8141659",
+  "registered_on": "2026-04-11"
+ },
+ {
+  "_id": 21,
+  "name": "Adeel Siddiqui",
+  "phone": "0308-3938863",
+  "registered_on": "2025-10-29"
+ },
+ {
+  "_id": 22,
+  "name": "Talha Mirza",
+  "phone": "0314-5900990",
+  "registered_on": "2025-07-04"
+ },
+ {
+  "_id": 23,
+  "name": "Amna Raza",
+  "phone": "0300-9030369",
+  "registered_on": "2026-05-24"
+ },
+ {
+  "_id": 24,
+  "name": "Hamza Javed",
+  "phone": "0315-7201463",
+  "registered_on": "2025-01-08"
+ },
+ {
+  "_id": 25,
+  "name": "Omar Mirza",
+  "phone": "0313-6114948",
+  "registered_on": "2025-04-09"
+ },
+ {
+  "_id": 26,
+  "name": "Amna Siddiqui",
+  "phone": "0304-7559194",
+  "registered_on": "2025-03-28"
+ },
+ {
+  "_id": 27,
+  "name": "Omar Malik",
+  "phone": "0349-2007429",
+  "registered_on": "2025-03-16"
+ },
+ {
+  "_id": 28,
+  "name": "Mehwish Rana",
+  "phone": "0301-8982418",
+  "registered_on": "2026-06-04"
+ },
+ {
+  "_id": 29,
+  "name": "Junaid Malik",
+  "phone": "0304-1183702",
+  "registered_on": "2026-05-13"
+ },
+ {
+  "_id": 30,
+  "name": "Ali Hussain",
+  "phone": "0322-1188236",
+  "registered_on": "2026-07-03"
+ },
+ {
+  "_id": 31,
+  "name": "Kiran Hussain",
+  "phone": "0339-2521977",
+  "registered_on": "2026-04-13"
+ },
+ {
+  "_id": 32,
+  "name": "Mehwish Chaudhry",
+  "phone": "0324-5796954",
+  "registered_on": "2026-06-02"
+ },
+ {
+  "_id": 33,
+  "name": "Hamza Chaudhry",
+  "phone": "0342-7559481",
+  "registered_on": "2026-01-31"
+ },
+ {
+  "_id": 34,
+  "name": "Nadia Hashmi",
+  "phone": "0339-1588298",
+  "registered_on": "2025-08-29"
+ },
+ {
+  "_id": 35,
+  "name": "Omar Javed",
+  "phone": "0300-5714616",
+  "registered_on": "2025-12-29"
+ },
+ {
+  "_id": 36,
+  "name": "Asad Aslam",
+  "phone": "0330-1359901",
+  "registered_on": "2026-02-01"
+ },
+ {
+  "_id": 37,
+  "name": "Ali Raza",
+  "phone": "0303-8066680",
+  "registered_on": "2025-04-07"
+ },
+ {
+  "_id": 38,
+  "name": "Rizwan Mirza",
+  "phone": "0342-7901398",
+  "registered_on": "2025-02-18"
+ },
+ {
+  "_id": 39,
+  "name": "Junaid Hashmi",
+  "phone": "0323-4452404",
+  "registered_on": "2026-07-12"
+ },
+ {
+  "_id": 40,
+  "name": "Hamza Siddiqui",
+  "phone": "0315-8712778",
+  "registered_on": "2025-10-01"
+ }
+]

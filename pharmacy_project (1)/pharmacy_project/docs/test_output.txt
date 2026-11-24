@@ -1,0 +1,674 @@
+mysql> USE pharmacy_db;
+OK, 0 row(s) affected
+
+mysql> SELECT 'T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS sold to customer 3 by cashier 6' AS test;
++-------------------------------------------------------------------------------+
+| test                                                                          |
++-------------------------------------------------------------------------------+
+| T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS sold to customer 3 by cashier 6 |
++-------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 126     |
+| 17         | 168     |
+| 39         | 206     |
++------------+---------+
+3 row(s)
+
+mysql> CALL sp_checkout(3, 6, 'Cash',
+         '[{"product_id":1,"qty":3},{"product_id":39,"qty":1},{"product_id":17,"qty":2}]', @sale);
+OK, 10 row(s) affected
+
+mysql> SELECT @sale AS new_sale_id;
++-------------+
+| new_sale_id |
++-------------+
+| 57          |
++-------------+
+1 row(s)
+
+mysql> SELECT sale_id, customer, served_by, product, quantity, unit_price, line_total FROM v_sale_details WHERE sale_id = @sale;
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+| sale_id | customer  | served_by   | product                 | quantity | unit_price | line_total |
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+| 57      | Iqra Raza | Hina Farooq | Panadol 500mg Tablets   | 3        | 35.00      | 105.00     |
+| 57      | Iqra Raza | Hina Farooq | ORS Sachet              | 2        | 25.00      | 50.00      |
+| 57      | Iqra Raza | Hina Farooq | Dettol Antiseptic 250ml | 1        | 330.00     | 330.00     |
++---------+-----------+-------------+-------------------------+----------+------------+------------+
+3 row(s)
+
+mysql> SELECT sale_id, total_amount FROM sales WHERE sale_id = @sale;
++---------+--------------+
+| sale_id | total_amount |
++---------+--------------+
+| 57      | 485.00       |
++---------+--------------+
+1 row(s)
+
+mysql> SELECT sale_id, product_id, batch_id, quantity, cost_price FROM sale_allocations WHERE sale_id = @sale;
++---------+------------+----------+----------+------------+
+| sale_id | product_id | batch_id | quantity | cost_price |
++---------+------------+----------+----------+------------+
+| 57      | 1          | 41       | 3        | 24.94      |
+| 57      | 17         | 18       | 2        | 17.44      |
+| 57      | 39         | 14       | 1        | 250.98     |
++---------+------------+----------+----------+------------+
+3 row(s)
+
+mysql> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 123     |
+| 17         | 166     |
+| 39         | 205     |
++------------+---------+
+3 row(s)
+
+mysql> SELECT 'T1b deleting that bill puts the stock back (trigger trg_sales_bd)' AS test;
++-------------------------------------------------------------------+
+| test                                                              |
++-------------------------------------------------------------------+
+| T1b deleting that bill puts the stock back (trigger trg_sales_bd) |
++-------------------------------------------------------------------+
+1 row(s)
+
+mysql> DELETE FROM sales WHERE sale_id = @sale;
+OK, 1 row(s) affected
+
+mysql> SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id;
++------------+---------+
+| product_id | on_hand |
++------------+---------+
+| 1          | 126     |
+| 17         | 168     |
+| 39         | 206     |
++------------+---------+
+3 row(s)
+
+mysql> SELECT 'T2  EXPECTED ERROR: 100 Augmentin requested but only a few are in stock' AS test;
++-------------------------------------------------------------------------+
+| test                                                                    |
++-------------------------------------------------------------------------+
+| T2  EXPECTED ERROR: 100 Augmentin requested but only a few are in stock |
++-------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS sales_before FROM sales;
++--------------+
+| sales_before |
++--------------+
+| 56           |
++--------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 6, 'Cash', '[{"product_id":7,"qty":100}]', @s);
+ERROR 1644: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+mysql> SELECT COUNT(*) AS sales_after FROM sales;
++-------------+
+| sales_after |
++-------------+
+| 56          |
++-------------+
+1 row(s)
+
+mysql> SELECT 'T3  EXPECTED ERROR: second line fails, so the first (valid) line is also rolled back' AS test;
++--------------------------------------------------------------------------------------+
+| test                                                                                 |
++--------------------------------------------------------------------------------------+
+| T3  EXPECTED ERROR: second line fails, so the first (valid) line is also rolled back |
++--------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT on_hand AS panadol_before FROM v_product_stock WHERE product_id = 1;
++----------------+
+| panadol_before |
++----------------+
+| 126            |
++----------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 6, 'Cash', '[{"product_id":1,"qty":2},{"product_id":7,"qty":500}]', @s);
+ERROR 1644: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+mysql> SELECT on_hand AS panadol_after FROM v_product_stock WHERE product_id = 1;
++---------------+
+| panadol_after |
++---------------+
+| 126           |
++---------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS sales_after FROM sales;
++-------------+
+| sales_after |
++-------------+
+| 56          |
++-------------+
+1 row(s)
+
+mysql> SELECT 'T4  EXPECTED ERROR: expired stock cannot be sold (Benylin has 18 units but all expired)' AS test;
++-----------------------------------------------------------------------------------------+
+| test                                                                                    |
++-----------------------------------------------------------------------------------------+
+| T4  EXPECTED ERROR: expired stock cannot be sold (Benylin has 18 units but all expired) |
++-----------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT product_name, on_hand, expired_qty FROM v_product_stock WHERE product_id = 23;
++---------------------------+---------+-------------+
+| product_name              | on_hand | expired_qty |
++---------------------------+---------+-------------+
+| Benylin Cough Syrup 100ml | 0       | 18          |
++---------------------------+---------+-------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 6, 'Cash', '[{"product_id":23,"qty":1}]', @s);
+ERROR 1644: Insufficient stock: requested quantity exceeds sellable (unexpired) stock
+
+mysql> SELECT 'T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method' AS test;
++---------------------------------------------------------------------------+
+| test                                                                      |
++---------------------------------------------------------------------------+
+| T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method |
++---------------------------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 6, 'Cash', '[]', @s);
+ERROR 1644: A bill must contain at least one item
+
+mysql> CALL sp_checkout(3, 6, 'Cash', '[{"product_id":999,"qty":1}]', @s);
+ERROR 1644: Unknown product in bill
+
+mysql> CALL sp_checkout(3, 6, 'Bitcoin', '[{"product_id":1,"qty":1}]', @s);
+ERROR 1265: Data truncated for column 'payment_method' at row 1
+
+mysql> SELECT COUNT(*) AS sales_still FROM sales;
++-------------+
+| sales_still |
++-------------+
+| 56          |
++-------------+
+1 row(s)
+
+mysql> SELECT 'T6  EXPECTED ERROR: a Manager cannot make a sale' AS test;
++--------------------------------------------------+
+| test                                             |
++--------------------------------------------------+
+| T6  EXPECTED ERROR: a Manager cannot make a sale |
++--------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 1, 'Cash', '[{"product_id":1,"qty":1}]', @s);
+ERROR 1644: Only active pharmacists or cashiers can make a sale
+
+mysql> SELECT 'T6b EXPECTED ERROR: an inactive cashier (employee 9) cannot make a sale' AS test;
++-------------------------------------------------------------------------+
+| test                                                                    |
++-------------------------------------------------------------------------+
+| T6b EXPECTED ERROR: an inactive cashier (employee 9) cannot make a sale |
++-------------------------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_checkout(3, 9, 'Cash', '[{"product_id":1,"qty":1}]', @s);
+ERROR 1644: Only active pharmacists or cashiers can make a sale
+
+mysql> SELECT 'T7a EXPECTED ERROR: CHECK unit_price >= 0' AS test;
++-------------------------------------------+
+| test                                      |
++-------------------------------------------+
+| T7a EXPECTED ERROR: CHECK unit_price >= 0 |
++-------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, category_id, unit_price) VALUES ('Bad Price Medicine', 1, -10);
+ERROR 4025: CONSTRAINT `ck_product_price` failed for `pharmacy_db`.`products`
+
+mysql> SELECT 'T7b EXPECTED ERROR: CHECK reorder_level >= 0' AS test;
++----------------------------------------------+
+| test                                         |
++----------------------------------------------+
+| T7b EXPECTED ERROR: CHECK reorder_level >= 0 |
++----------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, category_id, unit_price, reorder_level) VALUES ('Bad Reorder Medicine', 1, 10, -5);
+ERROR 4025: CONSTRAINT `ck_product_reorder` failed for `pharmacy_db`.`products`
+
+mysql> SELECT 'T7c EXPECTED ERROR: NOT NULL name' AS test;
++-----------------------------------+
+| test                              |
++-----------------------------------+
+| T7c EXPECTED ERROR: NOT NULL name |
++-----------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, category_id, unit_price) VALUES (NULL, 1, 10);
+ERROR 1048: Column 'name' cannot be null
+
+mysql> SELECT 'T7d EXPECTED ERROR: UNIQUE product name' AS test;
++-----------------------------------------+
+| test                                    |
++-----------------------------------------+
+| T7d EXPECTED ERROR: UNIQUE product name |
++-----------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, category_id, unit_price) VALUES ('Panadol 500mg Tablets', 1, 10);
+ERROR 1062: Duplicate entry 'Panadol 500mg Tablets' for key 'uq_product_name'
+
+mysql> SELECT 'T7e EXPECTED ERROR: FOREIGN KEY - category 999 does not exist' AS test;
++---------------------------------------------------------------+
+| test                                                          |
++---------------------------------------------------------------+
+| T7e EXPECTED ERROR: FOREIGN KEY - category 999 does not exist |
++---------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, category_id, unit_price) VALUES ('Orphan Medicine', 999, 10);
+ERROR 1452: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`products`, CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON UPDATE CASCADE)
+
+mysql> SELECT 'T7f EXPECTED ERROR: FOREIGN KEY RESTRICT - category still has products' AS test;
++------------------------------------------------------------------------+
+| test                                                                   |
++------------------------------------------------------------------------+
+| T7f EXPECTED ERROR: FOREIGN KEY RESTRICT - category still has products |
++------------------------------------------------------------------------+
+1 row(s)
+
+mysql> DELETE FROM categories WHERE category_id = 1;
+ERROR 1451: Cannot delete or update a parent row: a foreign key constraint fails (`pharmacy_db`.`products`, CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON UPDATE CASCADE)
+
+mysql> SELECT 'T7g EXPECTED ERROR: CHECK phone format' AS test;
++----------------------------------------+
+| test                                   |
++----------------------------------------+
+| T7g EXPECTED ERROR: CHECK phone format |
++----------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO customers (name, phone) VALUES ('Bad Phone', '12345');
+ERROR 4025: CONSTRAINT `ck_customer_phone` failed for `pharmacy_db`.`customers`
+
+mysql> SELECT 'T7h EXPECTED ERROR: UNIQUE phone (customer 2 already owns it)' AS test;
++---------------------------------------------------------------+
+| test                                                          |
++---------------------------------------------------------------+
+| T7h EXPECTED ERROR: UNIQUE phone (customer 2 already owns it) |
++---------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO customers (name, phone) SELECT 'Phone Thief', phone FROM customers WHERE customer_id = 2;
+ERROR 1062: Duplicate entry '0311-2431297' for key 'uq_customer_phone'
+
+mysql> START TRANSACTION;
+OK, 0 row(s) affected
+
+mysql> INSERT INTO sales (customer_id, employee_id, payment_method) VALUES (2, 6, 'Cash');
+OK, 1 row(s) affected
+
+mysql> SET @tmp = LAST_INSERT_ID();
+OK, 0 row(s) affected
+
+mysql> SELECT 'T7i EXPECTED ERROR: CHECK quantity > 0 on sale_items' AS test;
++------------------------------------------------------+
+| test                                                 |
++------------------------------------------------------+
+| T7i EXPECTED ERROR: CHECK quantity > 0 on sale_items |
++------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) VALUES (@tmp, 1, 0, 35);
+ERROR 4025: CONSTRAINT `ck_item_quantity` failed for `pharmacy_db`.`sale_items`
+
+mysql> SELECT 'T7j EXPECTED ERROR: CHECK unit_price >= 0 on sale_items' AS test;
++---------------------------------------------------------+
+| test                                                    |
++---------------------------------------------------------+
+| T7j EXPECTED ERROR: CHECK unit_price >= 0 on sale_items |
++---------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) VALUES (@tmp, 1, 1, -35);
+ERROR 4025: CONSTRAINT `ck_item_price` failed for `pharmacy_db`.`sale_items`
+
+mysql> SELECT 'T7k EXPECTED ERROR: composite primary key (same product twice on one bill)' AS test;
++----------------------------------------------------------------------------+
+| test                                                                       |
++----------------------------------------------------------------------------+
+| T7k EXPECTED ERROR: composite primary key (same product twice on one bill) |
++----------------------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) VALUES (@tmp, 1, 1, 35);
+OK, 1 row(s) affected
+
+mysql> INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) VALUES (@tmp, 1, 1, 35);
+ERROR 1062: Duplicate entry '62-1' for key 'PRIMARY'
+
+mysql> SELECT 'T7l EXPECTED ERROR: sale items are immutable (trigger)' AS test;
++--------------------------------------------------------+
+| test                                                   |
++--------------------------------------------------------+
+| T7l EXPECTED ERROR: sale items are immutable (trigger) |
++--------------------------------------------------------+
+1 row(s)
+
+mysql> UPDATE sale_items SET quantity = 5 WHERE sale_id = @tmp AND product_id = 1;
+ERROR 1644: Sale items cannot be updated; delete the line and add it again
+
+mysql> SELECT 'T7m deleting one line returns its stock and lowers the bill total' AS test;
++-------------------------------------------------------------------+
+| test                                                              |
++-------------------------------------------------------------------+
+| T7m deleting one line returns its stock and lowers the bill total |
++-------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT total_amount AS total_before FROM sales WHERE sale_id = @tmp;
++--------------+
+| total_before |
++--------------+
+| 35.00        |
++--------------+
+1 row(s)
+
+mysql> DELETE FROM sale_items WHERE sale_id = @tmp AND product_id = 1;
+OK, 1 row(s) affected
+
+mysql> SELECT total_amount AS total_after FROM sales WHERE sale_id = @tmp;
++-------------+
+| total_after |
++-------------+
+| 0.00        |
++-------------+
+1 row(s)
+
+mysql> ROLLBACK;
+OK, 0 row(s) affected
+
+mysql> SELECT 'T8a EXPECTED ERROR: a Cashier cannot be stored in the pharmacists table' AS test;
++-------------------------------------------------------------------------+
+| test                                                                    |
++-------------------------------------------------------------------------+
+| T8a EXPECTED ERROR: a Cashier cannot be stored in the pharmacists table |
++-------------------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO pharmacists (employee_id, license_no) VALUES (6, 'PC-XXX-0001');
+ERROR 1644: Only employees with role Pharmacist can be stored in pharmacists
+
+mysql> SELECT 'T8b EXPECTED ERROR: cannot add a batch to a cancelled purchase order' AS test;
++----------------------------------------------------------------------+
+| test                                                                 |
++----------------------------------------------------------------------+
+| T8b EXPECTED ERROR: cannot add a batch to a cancelled purchase order |
++----------------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO stock_batches (product_id, po_id, batch_no, received_qty, quantity, expiry_date, cost_price)
+    SELECT 1, po_id, 'TEST-01', 10, 10, '2028-01-01', 20 FROM purchase_orders WHERE status = 'Cancelled' LIMIT 1;
+ERROR 1644: Cannot add stock to a cancelled purchase order
+
+mysql> SELECT 'T8c EXPECTED ERROR: a batch that is already expired on the order date' AS test;
++-----------------------------------------------------------------------+
+| test                                                                  |
++-----------------------------------------------------------------------+
+| T8c EXPECTED ERROR: a batch that is already expired on the order date |
++-----------------------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_receive_stock(1, '2026-11-18', '[{"product_id":1,"qty":10,"cost_price":20,"expiry_date":"2026-11-01","batch_no":"OLD-01"}]', @po);
+ERROR 1644: Batch is already expired on the purchase-order date
+
+mysql> SELECT 'T8d EXPECTED ERROR: a Received purchase order cannot go back to Pending' AS test;
++-------------------------------------------------------------------------+
+| test                                                                    |
++-------------------------------------------------------------------------+
+| T8d EXPECTED ERROR: a Received purchase order cannot go back to Pending |
++-------------------------------------------------------------------------+
+1 row(s)
+
+mysql> UPDATE purchase_orders SET status = 'Pending' WHERE po_id = 1;
+ERROR 1644: A Received or Cancelled purchase order cannot change status
+
+mysql> SELECT 'T9  sp_receive_stock: two new batches, PO total_cost is calculated by trigger' AS test;
++-------------------------------------------------------------------------------+
+| test                                                                          |
++-------------------------------------------------------------------------------+
+| T9  sp_receive_stock: two new batches, PO total_cost is calculated by trigger |
++-------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_receive_stock(2, '2026-11-18',
+         '[{"product_id":7,"qty":100,"cost_price":340.5,"expiry_date":"2028-06-30","batch_no":"AUG-2611-01"},
+           {"product_id":14,"qty":80,"cost_price":295,"expiry_date":"2028-05-31","batch_no":"NEX-2611-01"}]', @po);
+OK, 5 row(s) affected
+
+mysql> SELECT po_id, supplier_id, order_date, status, total_cost FROM purchase_orders WHERE po_id = @po;
++-------+-------------+------------+----------+------------+
+| po_id | supplier_id | order_date | status   | total_cost |
++-------+-------------+------------+----------+------------+
+| 32    | 2           | 2026-11-18 | Received | 57650.00   |
++-------+-------------+------------+----------+------------+
+1 row(s)
+
+mysql> SELECT batch_id, product_id, batch_no, received_qty, quantity, expiry_date, cost_price FROM stock_batches WHERE po_id = @po;
++----------+------------+-------------+--------------+----------+-------------+------------+
+| batch_id | product_id | batch_no    | received_qty | quantity | expiry_date | cost_price |
++----------+------------+-------------+--------------+----------+-------------+------------+
+| 53       | 7          | AUG-2611-01 | 100          | 100      | 2028-06-30  | 340.50     |
+| 54       | 14         | NEX-2611-01 | 80           | 80       | 2028-05-31  | 295.00     |
++----------+------------+-------------+--------------+----------+-------------+------------+
+2 row(s)
+
+mysql> SELECT product_id, product_name, on_hand, reorder_level FROM v_product_stock WHERE product_id IN (7, 14);
++------------+-------------------------+---------+---------------+
+| product_id | product_name            | on_hand | reorder_level |
++------------+-------------------------+---------+---------------+
+| 7          | Augmentin 625mg Tablets | 103     | 40            |
+| 14         | Nexum 40mg Capsules     | 86      | 40            |
++------------+-------------------------+---------+---------------+
+2 row(s)
+
+mysql> SELECT 'T9b clean-up: remove the test purchase order again (trigger lowers total_cost first)' AS test;
++--------------------------------------------------------------------------------------+
+| test                                                                                 |
++--------------------------------------------------------------------------------------+
+| T9b clean-up: remove the test purchase order again (trigger lowers total_cost first) |
++--------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> DELETE FROM stock_batches WHERE po_id = @po;
+OK, 2 row(s) affected
+
+mysql> SELECT total_cost AS total_cost_after_batch_delete FROM purchase_orders WHERE po_id = @po;
++-------------------------------+
+| total_cost_after_batch_delete |
++-------------------------------+
+| 0.00                          |
++-------------------------------+
+1 row(s)
+
+mysql> DELETE FROM purchase_orders WHERE po_id = @po;
+OK, 1 row(s) affected
+
+mysql> SELECT 'T10a sp_monthly_report(2026, 10) - three result sets' AS test;
++------------------------------------------------------+
+| test                                                 |
++------------------------------------------------------+
+| T10a sp_monthly_report(2026, 10) - three result sets |
++------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_monthly_report(2026, 10);
++--------------+-------+------------+----------+----------+---------+------------+
+| report_month | bills | units_sold | revenue  | cost     | profit  | margin_pct |
++--------------+-------+------------+----------+----------+---------+------------+
+| 2026-10      | 22    | 154        | 26965.00 | 20459.33 | 6505.67 | 24.13      |
++--------------+-------+------------+----------+----------+---------+------------+
+1 row(s)
++---------------------------+-------+---------+---------+
+| product                   | units | revenue | profit  |
++---------------------------+-------+---------+---------+
+| Augmentin 625mg Tablets   | 9     | 4320.00 | 1186.56 |
+| Nexum 40mg Capsules       | 10    | 4200.00 | 849.80  |
+| Telfast 120mg Tablets     | 4     | 1520.00 | 411.64  |
+| Panadol 500mg Tablets     | 52    | 1820.00 | 407.47  |
+| Benylin Cough Syrup 100ml | 6     | 1920.00 | 384.18  |
++---------------------------+-------+---------+---------+
+5 row(s)
++---------------------------+-------+---------+
+| category_name             | units | revenue |
++---------------------------+-------+---------+
+| Antacids & Gastro         | 25    | 5600.00 |
+| Antibiotics               | 11    | 4500.00 |
+| Cough, Cold & Respiratory | 16    | 4055.00 |
+| Analgesics & Antipyretics | 64    | 3360.00 |
+| Antihistamines & Allergy  | 15    | 2380.00 |
+| First Aid & Devices       | 5     | 2010.00 |
+| Cardiovascular            | 5     | 1730.00 |
+| Diabetes Care             | 3     | 1410.00 |
+| Vitamins & Supplements    | 8     | 1200.00 |
+| Dermatology               | 2     | 720.00  |
++---------------------------+-------+---------+
+10 row(s)
+
+mysql> SELECT 'T10b EXPECTED ERROR: invalid month' AS test;
++------------------------------------+
+| test                               |
++------------------------------------+
+| T10b EXPECTED ERROR: invalid month |
++------------------------------------+
+1 row(s)
+
+mysql> CALL sp_monthly_report(2026, 13);
+ERROR 1644: Month must be 1-12 and year 2000-2100
+
+mysql> SELECT 'T10c sp_refresh_stock_alerts and the stock_alerts table' AS test;
++---------------------------------------------------------+
+| test                                                    |
++---------------------------------------------------------+
+| T10c sp_refresh_stock_alerts and the stock_alerts table |
++---------------------------------------------------------+
+1 row(s)
+
+mysql> CALL sp_refresh_stock_alerts();
+OK, 12 row(s) affected
+
+mysql> SELECT alert_type, COUNT(*) AS alerts FROM stock_alerts GROUP BY alert_type ORDER BY alert_type;
++-------------+--------+
+| alert_type  | alerts |
++-------------+--------+
+| LOW_STOCK   | 7      |
+| NEAR_EXPIRY | 3      |
+| EXPIRED     | 2      |
++-------------+--------+
+3 row(s)
+
+mysql> SELECT alert_type, message FROM stock_alerts ORDER BY alert_type, alert_id;
++-------------+---------------------------------------------------------------------------------------+
+| alert_type  | message                                                                               |
++-------------+---------------------------------------------------------------------------------------+
+| LOW_STOCK   | Augmentin 625mg Tablets: only 3 left (reorder level 40)                               |
+| LOW_STOCK   | Nexum 40mg Capsules: only 6 left (reorder level 40)                                   |
+| LOW_STOCK   | Gaviscon Liquid 150ml: only 0 left (reorder level 15)                                 |
+| LOW_STOCK   | Benylin Cough Syrup 100ml: only 0 left (reorder level 20)                             |
+| LOW_STOCK   | Ventolin Inhaler 100mcg: only 18 left (reorder level 30)                              |
+| LOW_STOCK   | Diamicron MR 60mg: only 11 left (reorder level 40)                                    |
+| LOW_STOCK   | Norvasc 5mg Tablets: only 19 left (reorder level 40)                                  |
+| NEAR_EXPIRY | Avil 25mg Tablets batch AVI-2608-01 expires in 12 day(s)                              |
+| NEAR_EXPIRY | Motilium 10mg Tablets batch MOT-2608-01 expires in 17 day(s)                          |
+| NEAR_EXPIRY | Actifed Syrup 90ml batch ACT-2608-01 expires in 26 day(s)                             |
+| EXPIRED     | Canesten Cream 20g batch CAN-2608-01 expired 18 day(s) ago - remove from shelf        |
+| EXPIRED     | Benylin Cough Syrup 100ml batch BEN-2608-01 expired 13 day(s) ago - remove from shelf |
++-------------+---------------------------------------------------------------------------------------+
+12 row(s)
+
+mysql> SELECT 'T10d the scheduled event' AS test;
++--------------------------+
+| test                     |
++--------------------------+
+| T10d the scheduled event |
++--------------------------+
+1 row(s)
+
+mysql> SELECT event_name, interval_value, interval_field, status FROM information_schema.events WHERE event_schema = 'pharmacy_db';
++-----------------------+----------------+----------------+---------+
+| event_name            | interval_value | interval_field | status  |
++-----------------------+----------------+----------------+---------+
+| ev_daily_stock_alerts | 1              | DAY            | ENABLED |
++-----------------------+----------------+----------------+---------+
+1 row(s)
+
+mysql> SELECT 'T10e stored function fn_stock_on_hand' AS test;
++---------------------------------------+
+| test                                  |
++---------------------------------------+
+| T10e stored function fn_stock_on_hand |
++---------------------------------------+
+1 row(s)
+
+mysql> SELECT product_id, name, fn_stock_on_hand(product_id, CURRENT_DATE) AS sellable_today
+    FROM products WHERE product_id IN (1, 7, 23, 38) ORDER BY product_id;
++------------+---------------------------+----------------+
+| product_id | name                      | sellable_today |
++------------+---------------------------+----------------+
+| 1          | Panadol 500mg Tablets     | 126            |
+| 7          | Augmentin 625mg Tablets   | 3              |
+| 23         | Benylin Cough Syrup 100ml | 0              |
+| 38         | Canesten Cream 20g        | 40             |
++------------+---------------------------+----------------+
+4 row(s)
+
+mysql> DELETE FROM stock_alerts;
+OK, 12 row(s) affected
+
+mysql> SELECT 'T11 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch)' AS test;
++------------------------------------------------------------------------------------------------------------------------------+
+| test                                                                                                                         |
++------------------------------------------------------------------------------------------------------------------------------+
+| T11 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch) |
++------------------------------------------------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS sale_total_mismatches FROM sales s
+    WHERE  s.total_amount <> (SELECT SUM(si.quantity * si.unit_price) FROM sale_items si WHERE si.sale_id = s.sale_id);
++-----------------------+
+| sale_total_mismatches |
++-----------------------+
+| 0                     |
++-----------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS po_total_mismatches FROM purchase_orders p
+    WHERE  p.total_cost <> COALESCE((SELECT SUM(b.received_qty * b.cost_price) FROM stock_batches b WHERE b.po_id = p.po_id), 0);
++---------------------+
+| po_total_mismatches |
++---------------------+
+| 0                   |
++---------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS stock_mismatches FROM stock_batches b
+    WHERE  b.received_qty - b.quantity <> COALESCE((SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.batch_id = b.batch_id), 0);
++------------------+
+| stock_mismatches |
++------------------+
+| 0                |
++------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS allocation_mismatches FROM sale_items si
+    WHERE  si.quantity <> (SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.sale_id = si.sale_id AND a.product_id = si.product_id);
++-----------------------+
+| allocation_mismatches |
++-----------------------+
+| 0                     |
++-----------------------+
+1 row(s)

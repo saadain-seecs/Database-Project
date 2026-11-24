@@ -1,0 +1,1170 @@
+[
+ {
+  "sql": "SELECT 'T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS (function = one atomic transaction)' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T1  sp_checkout: 3 Panadol + 1 Dettol + 2 ORS (function = one atomic transaction)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "on_hand"
+    ],
+    "rows": [
+     [
+      1,
+      126
+     ],
+     [
+      17,
+      168
+     ],
+     [
+      39,
+      206
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[{\"product_id\":1,\"qty\":3},{\"product_id\":39,\"qty\":1},{\"product_id\":17,\"qty\":2}]') AS new_sale_id",
+  "results": [
+   {
+    "columns": [
+     "new_sale_id"
+    ],
+    "rows": [
+     [
+      57
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sale_id, customer, served_by, product, quantity, unit_price, line_total FROM v_sale_details WHERE sale_id = (SELECT MAX(sale_id) FROM sales)",
+  "results": [
+   {
+    "columns": [
+     "sale_id",
+     "customer",
+     "served_by",
+     "product",
+     "quantity",
+     "unit_price",
+     "line_total"
+    ],
+    "rows": [
+     [
+      57,
+      "Iqra Raza",
+      "Hina Farooq",
+      "Panadol 500mg Tablets",
+      3,
+      35,
+      105
+     ],
+     [
+      57,
+      "Iqra Raza",
+      "Hina Farooq",
+      "ORS Sachet",
+      2,
+      25,
+      50
+     ],
+     [
+      57,
+      "Iqra Raza",
+      "Hina Farooq",
+      "Dettol Antiseptic 250ml",
+      1,
+      330,
+      330
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sale_id, total_amount FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales)",
+  "results": [
+   {
+    "columns": [
+     "sale_id",
+     "total_amount"
+    ],
+    "rows": [
+     [
+      57,
+      485
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "on_hand"
+    ],
+    "rows": [
+     [
+      1,
+      123
+     ],
+     [
+      17,
+      166
+     ],
+     [
+      39,
+      205
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T1b deleting that bill puts the stock back (cascade fires trg_sale_items_bd)' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T1b deleting that bill puts the stock back (cascade fires trg_sale_items_bd)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales)",
+  "results": [],
+  "error": null,
+  "info": "DELETE 1"
+ },
+ {
+  "sql": "SELECT product_id, on_hand FROM v_product_stock WHERE product_id IN (1, 17, 39) ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "on_hand"
+    ],
+    "rows": [
+     [
+      1,
+      126
+     ],
+     [
+      17,
+      168
+     ],
+     [
+      39,
+      206
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T2  EXPECTED ERROR: 100 Augmentin requested, only a few in stock' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T2  EXPECTED ERROR: 100 Augmentin requested, only a few in stock"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS sales_before FROM sales",
+  "results": [
+   {
+    "columns": [
+     "sales_before"
+    ],
+    "rows": [
+     [
+      56
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[{\"product_id\":7,\"qty\":100}]')",
+  "results": [],
+  "error": "ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock",
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS sales_after FROM sales",
+  "results": [
+   {
+    "columns": [
+     "sales_after"
+    ],
+    "rows": [
+     [
+      56
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T3  EXPECTED ERROR: second line fails, first line is rolled back too' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T3  EXPECTED ERROR: second line fails, first line is rolled back too"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT on_hand AS panadol_before FROM v_product_stock WHERE product_id = 1",
+  "results": [
+   {
+    "columns": [
+     "panadol_before"
+    ],
+    "rows": [
+     [
+      126
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[{\"product_id\":1,\"qty\":2},{\"product_id\":7,\"qty\":500}]')",
+  "results": [],
+  "error": "ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock",
+  "info": null
+ },
+ {
+  "sql": "SELECT on_hand AS panadol_after FROM v_product_stock WHERE product_id = 1",
+  "results": [
+   {
+    "columns": [
+     "panadol_after"
+    ],
+    "rows": [
+     [
+      126
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T4  EXPECTED ERROR: expired stock cannot be sold (Benylin)' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T4  EXPECTED ERROR: expired stock cannot be sold (Benylin)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT product_name, on_hand, expired_qty FROM v_product_stock WHERE product_id = 23",
+  "results": [
+   {
+    "columns": [
+     "product_name",
+     "on_hand",
+     "expired_qty"
+    ],
+    "rows": [
+     [
+      "Benylin Cough Syrup 100ml",
+      0,
+      18
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[{\"product_id\":23,\"qty\":1}]')",
+  "results": [],
+  "error": "ERROR: Insufficient stock: requested quantity exceeds sellable (unexpired) stock",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T5  EXPECTED ERROR: empty bill / unknown product / invalid payment method"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[]')",
+  "results": [],
+  "error": "ERROR: A bill must contain at least one item",
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Cash', '[{\"product_id\":999,\"qty\":1}]')",
+  "results": [],
+  "error": "ERROR: Unknown product in bill",
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 6, 'Bitcoin', '[{\"product_id\":1,\"qty\":1}]')",
+  "results": [],
+  "error": "ERROR: invalid input value for enum payment_method_t: \"Bitcoin\"",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T6  EXPECTED ERROR: a Manager / an inactive cashier cannot sell' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T6  EXPECTED ERROR: a Manager / an inactive cashier cannot sell"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 1, 'Cash', '[{\"product_id\":1,\"qty\":1}]')",
+  "results": [],
+  "error": "ERROR: Only active pharmacists or cashiers can make a sale",
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_checkout(3, 9, 'Cash', '[{\"product_id\":1,\"qty\":1}]')",
+  "results": [],
+  "error": "ERROR: Only active pharmacists or cashiers can make a sale",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T7  EXPECTED ERRORS: CHECK / NOT NULL / UNIQUE / FOREIGN KEY' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T7  EXPECTED ERRORS: CHECK / NOT NULL / UNIQUE / FOREIGN KEY"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, category_id, unit_price) VALUES ('Bad Price Medicine', 1, -10)",
+  "results": [],
+  "error": "ERROR: new row for relation \"products\" violates check constraint \"ck_product_price\"",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, category_id, unit_price, reorder_level) VALUES ('Bad Reorder Medicine', 1, 10, -5)",
+  "results": [],
+  "error": "ERROR: new row for relation \"products\" violates check constraint \"ck_product_reorder\"",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, category_id, unit_price) VALUES (NULL, 1, 10)",
+  "results": [],
+  "error": "ERROR: null value in column \"name\" of relation \"products\" violates not-null constraint",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, category_id, unit_price) VALUES ('Panadol 500mg Tablets', 1, 10)",
+  "results": [],
+  "error": "ERROR: duplicate key value violates unique constraint \"uq_product_name\"",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO products (name, category_id, unit_price) VALUES ('Orphan Medicine', 999, 10)",
+  "results": [],
+  "error": "ERROR: insert or update on table \"products\" violates foreign key constraint \"fk_products_category\"",
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM categories WHERE category_id = 1",
+  "results": [],
+  "error": "ERROR: update or delete on table \"categories\" violates foreign key constraint \"fk_products_category\" on table \"products\"",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO customers (name, phone) VALUES ('Bad Phone', '12345')",
+  "results": [],
+  "error": "ERROR: new row for relation \"customers\" violates check constraint \"ck_customer_phone\"",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO customers (name, phone) SELECT 'Phone Thief', phone FROM customers WHERE customer_id = 2",
+  "results": [],
+  "error": "ERROR: duplicate key value violates unique constraint \"uq_customer_phone\"",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T7b transaction with SAVEPOINTs: CHECK / PK / immutability errors, then ROLLBACK' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T7b transaction with SAVEPOINTs: CHECK / PK / immutability errors, then ROLLBACK"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "BEGIN",
+  "results": [],
+  "error": null,
+  "info": "BEGIN"
+ },
+ {
+  "sql": "INSERT INTO sales (customer_id, employee_id, payment_method) VALUES (2, 6, 'Cash')",
+  "results": [],
+  "error": null,
+  "info": "INSERT 0 1"
+ },
+ {
+  "sql": "SAVEPOINT s1",
+  "results": [],
+  "error": null,
+  "info": "SAVEPOINT"
+ },
+ {
+  "sql": "INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 0, 35 FROM sales",
+  "results": [],
+  "error": "ERROR: new row for relation \"sale_items\" violates check constraint \"ck_item_quantity\"",
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK TO SAVEPOINT s1",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, -35 FROM sales",
+  "results": [],
+  "error": "ERROR: new row for relation \"sale_items\" violates check constraint \"ck_item_price\"",
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK TO SAVEPOINT s1",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, 35 FROM sales",
+  "results": [],
+  "error": null,
+  "info": "INSERT 0 1"
+ },
+ {
+  "sql": "SAVEPOINT s2",
+  "results": [],
+  "error": null,
+  "info": "SAVEPOINT"
+ },
+ {
+  "sql": "INSERT INTO sale_items (sale_id, product_id, quantity, unit_price) SELECT MAX(sale_id), 1, 1, 35 FROM sales",
+  "results": [],
+  "error": "ERROR: duplicate key value violates unique constraint \"pk_sale_items\"",
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK TO SAVEPOINT s2",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "UPDATE sale_items SET quantity = 5 WHERE sale_id = (SELECT MAX(sale_id) FROM sales) AND product_id = 1",
+  "results": [],
+  "error": "ERROR: Sale items cannot be updated; delete the line and add it again",
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK TO SAVEPOINT s2",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "SELECT total_amount AS total_before_delete FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales)",
+  "results": [
+   {
+    "columns": [
+     "total_before_delete"
+    ],
+    "rows": [
+     [
+      35
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM sale_items WHERE sale_id = (SELECT MAX(sale_id) FROM sales) AND product_id = 1",
+  "results": [],
+  "error": null,
+  "info": "DELETE 1"
+ },
+ {
+  "sql": "SELECT total_amount AS total_after_delete FROM sales WHERE sale_id = (SELECT MAX(sale_id) FROM sales)",
+  "results": [
+   {
+    "columns": [
+     "total_after_delete"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "SELECT 'T8  EXPECTED ERRORS: EER subclass rule and purchase-order triggers' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T8  EXPECTED ERRORS: EER subclass rule and purchase-order triggers"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO pharmacists (employee_id, license_no) VALUES (6, 'PC-XXX-0001')",
+  "results": [],
+  "error": "ERROR: Only employees with role Pharmacist can be stored in pharmacists",
+  "info": null
+ },
+ {
+  "sql": "INSERT INTO stock_batches (product_id, po_id, batch_no, received_qty, quantity, expiry_date, cost_price)\nSELECT 1, po_id, 'TEST-01', 10, 10, '2028-01-01', 20 FROM purchase_orders WHERE status = 'Cancelled' LIMIT 1",
+  "results": [],
+  "error": "ERROR: Cannot add stock to a cancelled purchase order",
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_receive_stock(1, '2026-11-18', '[{\"product_id\":1,\"qty\":10,\"cost_price\":20,\"expiry_date\":\"2026-11-01\",\"batch_no\":\"OLD-01\"}]')",
+  "results": [],
+  "error": "ERROR: Batch is already expired on the purchase-order date",
+  "info": null
+ },
+ {
+  "sql": "UPDATE purchase_orders SET status = 'Pending' WHERE po_id = 1",
+  "results": [],
+  "error": "ERROR: A Received or Cancelled purchase order cannot change status",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T9  sp_receive_stock: two batches, total_cost calculated by trigger' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T9  sp_receive_stock: two batches, total_cost calculated by trigger"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT sp_receive_stock(2, '2026-11-18', '[{\"product_id\":7,\"qty\":100,\"cost_price\":340.5,\"expiry_date\":\"2028-06-30\",\"batch_no\":\"AUG-2611-01\"},{\"product_id\":14,\"qty\":80,\"cost_price\":295,\"expiry_date\":\"2028-05-31\",\"batch_no\":\"NEX-2611-01\"}]') AS new_po_id",
+  "results": [
+   {
+    "columns": [
+     "new_po_id"
+    ],
+    "rows": [
+     [
+      32
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT po_id, supplier_id, order_date, status, total_cost FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders)",
+  "results": [
+   {
+    "columns": [
+     "po_id",
+     "supplier_id",
+     "order_date",
+     "status",
+     "total_cost"
+    ],
+    "rows": [
+     [
+      32,
+      2,
+      "2026-11-18",
+      "Received",
+      57650
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT product_id, product_name, on_hand, reorder_level FROM v_product_stock WHERE product_id IN (7, 14) ORDER BY product_id",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "product_name",
+     "on_hand",
+     "reorder_level"
+    ],
+    "rows": [
+     [
+      7,
+      "Augmentin 625mg Tablets",
+      103,
+      40
+     ],
+     [
+      14,
+      "Nexum 40mg Capsules",
+      86,
+      40
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM stock_batches WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders)",
+  "results": [],
+  "error": null,
+  "info": "DELETE 2"
+ },
+ {
+  "sql": "SELECT total_cost AS total_cost_after_batch_delete FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders)",
+  "results": [
+   {
+    "columns": [
+     "total_cost_after_batch_delete"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM purchase_orders WHERE po_id = (SELECT MAX(po_id) FROM purchase_orders)",
+  "results": [],
+  "error": null,
+  "info": "DELETE 1"
+ },
+ {
+  "sql": "SELECT 'T10 monthly report functions (October 2026)' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T10 monthly report functions (October 2026)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT * FROM fn_monthly_report(2026, 10)",
+  "results": [
+   {
+    "columns": [
+     "report_month",
+     "bills",
+     "units_sold",
+     "revenue",
+     "cost",
+     "profit",
+     "margin_pct"
+    ],
+    "rows": [
+     [
+      "2026-10",
+      22,
+      154,
+      26965,
+      20459.33,
+      6505.67,
+      24.13
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT * FROM fn_monthly_top_products(2026, 10, 5)",
+  "results": [
+   {
+    "columns": [
+     "product",
+     "units",
+     "revenue",
+     "profit"
+    ],
+    "rows": [
+     [
+      "Augmentin 625mg Tablets",
+      9,
+      4320,
+      1186.56
+     ],
+     [
+      "Nexum 40mg Capsules",
+      10,
+      4200,
+      849.8
+     ],
+     [
+      "Telfast 120mg Tablets",
+      4,
+      1520,
+      411.64
+     ],
+     [
+      "Panadol 500mg Tablets",
+      52,
+      1820,
+      407.47
+     ],
+     [
+      "Benylin Cough Syrup 100ml",
+      6,
+      1920,
+      384.18
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT * FROM fn_monthly_report(2026, 13)",
+  "results": [],
+  "error": "ERROR: Month must be 1-12 and year 2000-2100",
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T10b CALL sp_refresh_stock_alerts()' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T10b CALL sp_refresh_stock_alerts()"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "CALL sp_refresh_stock_alerts()",
+  "results": [],
+  "error": null,
+  "info": "CALL"
+ },
+ {
+  "sql": "SELECT alert_type, COUNT(*) AS alerts FROM stock_alerts GROUP BY alert_type ORDER BY alert_type",
+  "results": [
+   {
+    "columns": [
+     "alert_type",
+     "alerts"
+    ],
+    "rows": [
+     [
+      "LOW_STOCK",
+      7
+     ],
+     [
+      "NEAR_EXPIRY",
+      3
+     ],
+     [
+      "EXPIRED",
+      2
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "DELETE FROM stock_alerts",
+  "results": [],
+  "error": null,
+  "info": "DELETE 12"
+ },
+ {
+  "sql": "SELECT 'T11 PostgreSQL extras: RETURNING, partial index plan, writable CTE' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T11 PostgreSQL extras: RETURNING, partial index plan, writable CTE"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "BEGIN",
+  "results": [],
+  "error": null,
+  "info": "BEGIN"
+ },
+ {
+  "sql": "UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 1 RETURNING product_id, name, unit_price",
+  "results": [
+   {
+    "columns": [
+     "product_id",
+     "name",
+     "unit_price"
+    ],
+    "rows": [
+     [
+      1,
+      "Panadol 500mg Tablets",
+      40
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT table_name, record_id, action, old_value, new_value FROM audit_log",
+  "results": [
+   {
+    "columns": [
+     "table_name",
+     "record_id",
+     "action",
+     "old_value",
+     "new_value"
+    ],
+    "rows": [
+     [
+      "products",
+      1,
+      "PRICE_CHANGE",
+      "35.00",
+      "40.00"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "ROLLBACK",
+  "results": [],
+  "error": null,
+  "info": "ROLLBACK"
+ },
+ {
+  "sql": "WITH moved AS (DELETE FROM stock_alerts WHERE FALSE RETURNING *) SELECT COUNT(*) AS rows_moved FROM moved",
+  "results": [
+   {
+    "columns": [
+     "rows_moved"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "EXPLAIN (COSTS OFF) SELECT batch_id FROM stock_batches WHERE product_id = 1 AND quantity > 0 ORDER BY expiry_date",
+  "results": [
+   {
+    "columns": [
+     "QUERY PLAN"
+    ],
+    "rows": [
+     [
+      "Index Scan using idx_batches_fefo on stock_batches"
+     ],
+     [
+      "  Index Cond: (product_id = 1)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "EXPLAIN (COSTS OFF) SELECT product_id FROM products WHERE to_tsvector('english', name || ' ' || COALESCE(generic_name, '')) @@ to_tsquery('english', 'paracetamol')",
+  "results": [
+   {
+    "columns": [
+     "QUERY PLAN"
+    ],
+    "rows": [
+     [
+      "Bitmap Heap Scan on products"
+     ],
+     [
+      "  Recheck Cond: (to_tsvector('english'::regconfig, (((name)::text || ' '::text) || (COALESCE(generic_name, ''::character varying))::text)) @@ '''paracetamol'''::tsquery)"
+     ],
+     [
+      "  ->  Bitmap Index Scan on idx_products_fts"
+     ],
+     [
+      "        Index Cond: (to_tsvector('english'::regconfig, (((name)::text || ' '::text) || (COALESCE(generic_name, ''::character varying))::text)) @@ '''paracetamol'''::tsquery)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT 'T12 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch)' AS test",
+  "results": [
+   {
+    "columns": [
+     "test"
+    ],
+    "rows": [
+     [
+      "T12 consistency audit: every figure kept by a trigger must equal the value recomputed from the detail rows (0 = no mismatch)"
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS sale_total_mismatches FROM sales s\nWHERE  s.total_amount <> (SELECT SUM(si.line_total) FROM sale_items si WHERE si.sale_id = s.sale_id)",
+  "results": [
+   {
+    "columns": [
+     "sale_total_mismatches"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS po_total_mismatches FROM purchase_orders p\nWHERE  p.total_cost <> COALESCE((SELECT SUM(b.received_qty * b.cost_price) FROM stock_batches b WHERE b.po_id = p.po_id), 0)",
+  "results": [
+   {
+    "columns": [
+     "po_total_mismatches"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS stock_mismatches FROM stock_batches b\nWHERE  b.received_qty - b.quantity <> COALESCE((SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.batch_id = b.batch_id), 0)",
+  "results": [
+   {
+    "columns": [
+     "stock_mismatches"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ },
+ {
+  "sql": "SELECT COUNT(*) AS allocation_mismatches FROM sale_items si\nWHERE  si.quantity <> (SELECT SUM(a.quantity) FROM sale_allocations a WHERE a.sale_id = si.sale_id AND a.product_id = si.product_id)",
+  "results": [
+   {
+    "columns": [
+     "allocation_mismatches"
+    ],
+    "rows": [
+     [
+      0
+     ]
+    ]
+   }
+  ],
+  "error": null,
+  "info": null
+ }
+]

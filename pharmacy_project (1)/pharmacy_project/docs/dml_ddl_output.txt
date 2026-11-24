@@ -1,0 +1,389 @@
+mysql> USE pharmacy_db;
+OK, 0 row(s) affected
+
+mysql> START TRANSACTION;
+OK, 0 row(s) affected
+
+mysql> SELECT 'D1  INSERT one row (new customer)' AS step;
++-----------------------------------+
+| step                              |
++-----------------------------------+
+| D1  INSERT one row (new customer) |
++-----------------------------------+
+1 row(s)
+
+mysql> INSERT INTO customers (name, phone) VALUES ('Sara Imtiaz', '0300-5550101');
+OK, 1 row(s) affected
+
+mysql> SELECT customer_id, name, phone, registered_on FROM customers WHERE phone = '0300-5550101';
++-------------+-------------+--------------+---------------+
+| customer_id | name        | phone        | registered_on |
++-------------+-------------+--------------+---------------+
+| 41          | Sara Imtiaz | 0300-5550101 | 2026-11-18    |
++-------------+-------------+--------------+---------------+
+1 row(s)
+
+mysql> SELECT 'D2  INSERT several rows (two new products in one statement)' AS step;
++-------------------------------------------------------------+
+| step                                                        |
++-------------------------------------------------------------+
+| D2  INSERT several rows (two new products in one statement) |
++-------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO products (name, generic_name, category_id, unit_price, reorder_level, requires_prescription)
+    VALUES ('Panadol Extra Tablets', 'Paracetamol + Caffeine', 1, 55.00, 40, FALSE),
+           ('Hydrite Sachet', 'Oral rehydration salts', 3, 30.00, 60, FALSE);
+OK, 2 row(s) affected
+
+mysql> SELECT product_id, name, unit_price FROM products WHERE name IN ('Panadol Extra Tablets', 'Hydrite Sachet');
++------------+-----------------------+------------+
+| product_id | name                  | unit_price |
++------------+-----------------------+------------+
+| 43         | Hydrite Sachet        | 30.00      |
+| 42         | Panadol Extra Tablets | 55.00      |
++------------+-----------------------+------------+
+2 row(s)
+
+mysql> SELECT 'D3  INSERT ... SELECT (sub-query in DML): copy today''s low-stock list into stock_alerts' AS step;
++-----------------------------------------------------------------------------------------+
+| step                                                                                    |
++-----------------------------------------------------------------------------------------+
+| D3  INSERT ... SELECT (sub-query in DML): copy today's low-stock list into stock_alerts |
++-----------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO stock_alerts (alert_type, product_id, message)
+    SELECT 'LOW_STOCK', product_id, CONCAT(product_name, ' needs re-ordering (', on_hand, ' left)')
+    FROM   v_low_stock
+    WHERE  on_hand = 0;
+OK, 4 row(s) affected
+
+mysql> SELECT alert_id, alert_type, product_id, message FROM stock_alerts;
++----------+------------+------------+------------------------------------------------------+
+| alert_id | alert_type | product_id | message                                              |
++----------+------------+------------+------------------------------------------------------+
+| 1        | LOW_STOCK  | 15         | Gaviscon Liquid 150ml needs re-ordering (0 left)     |
+| 2        | LOW_STOCK  | 23         | Benylin Cough Syrup 100ml needs re-ordering (0 left) |
+| 3        | LOW_STOCK  | 42         | Panadol Extra Tablets needs re-ordering (0 left)     |
+| 4        | LOW_STOCK  | 43         | Hydrite Sachet needs re-ordering (0 left)            |
++----------+------------+------------+------------------------------------------------------+
+4 row(s)
+
+mysql> SELECT 'D4  UPDATE with a sub-query in WHERE: raise every antibiotic price by 5 percent' AS step;
++---------------------------------------------------------------------------------+
+| step                                                                            |
++---------------------------------------------------------------------------------+
+| D4  UPDATE with a sub-query in WHERE: raise every antibiotic price by 5 percent |
++---------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> UPDATE products
+    SET    unit_price = ROUND(unit_price * 1.05, 2)
+    WHERE  category_id = (SELECT category_id FROM categories WHERE category_name = 'Antibiotics');
+OK, 6 row(s) affected
+
+mysql> SELECT product_id, name, unit_price FROM products WHERE category_id = 2 ORDER BY product_id;
++------------+-------------------------+------------+
+| product_id | name                    | unit_price |
++------------+-------------------------+------------+
+| 7          | Augmentin 625mg Tablets | 504.00     |
+| 8          | Flagyl 400mg Tablets    | 94.50      |
+| 9          | Zithromax 500mg Tablets | 651.00     |
+| 10         | Cipro 500mg Tablets     | 273.00     |
+| 11         | Amoxil 500mg Capsules   | 220.50     |
+| 12         | Septran DS Tablets      | 136.50     |
++------------+-------------------------+------------+
+6 row(s)
+
+mysql> SELECT 'trigger trg_products_au wrote the audit trail:' AS note;
++------------------------------------------------+
+| note                                           |
++------------------------------------------------+
+| trigger trg_products_au wrote the audit trail: |
++------------------------------------------------+
+1 row(s)
+
+mysql> SELECT table_name, record_id, action, old_value, new_value FROM audit_log ORDER BY log_id;
++------------+-----------+--------------+-----------+-----------+
+| table_name | record_id | action       | old_value | new_value |
++------------+-----------+--------------+-----------+-----------+
+| products   | 7         | PRICE_CHANGE | 480.00    | 504.00    |
+| products   | 8         | PRICE_CHANGE | 90.00     | 94.50     |
+| products   | 9         | PRICE_CHANGE | 620.00    | 651.00    |
+| products   | 10        | PRICE_CHANGE | 260.00    | 273.00    |
+| products   | 11        | PRICE_CHANGE | 210.00    | 220.50    |
+| products   | 12        | PRICE_CHANGE | 130.00    | 136.50    |
++------------+-----------+--------------+-----------+-----------+
+6 row(s)
+
+mysql> SELECT 'D5  UPDATE with a correlated sub-query: best sellers (30+ units) get reorder level 80' AS step;
++---------------------------------------------------------------------------------------+
+| step                                                                                  |
++---------------------------------------------------------------------------------------+
+| D5  UPDATE with a correlated sub-query: best sellers (30+ units) get reorder level 80 |
++---------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> UPDATE products p
+    SET    reorder_level = 80
+    WHERE  (SELECT COALESCE(SUM(si.quantity), 0) FROM sale_items si WHERE si.product_id = p.product_id) >= 30
+      AND  reorder_level < 80;
+OK, 1 row(s) affected
+
+mysql> SELECT product_id, name, reorder_level FROM products WHERE reorder_level = 80 ORDER BY product_id;
++------------+-----------------------+---------------+
+| product_id | name                  | reorder_level |
++------------+-----------------------+---------------+
+| 1          | Panadol 500mg Tablets | 80            |
+| 17         | ORS Sachet            | 80            |
++------------+-----------------------+---------------+
+2 row(s)
+
+mysql> SELECT 'D6  DELETE with a sub-query: remove cancelled purchase orders that have no stock batches' AS step;
++------------------------------------------------------------------------------------------+
+| step                                                                                     |
++------------------------------------------------------------------------------------------+
+| D6  DELETE with a sub-query: remove cancelled purchase orders that have no stock batches |
++------------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS cancelled_before FROM purchase_orders WHERE status = 'Cancelled';
++------------------+
+| cancelled_before |
++------------------+
+| 3                |
++------------------+
+1 row(s)
+
+mysql> DELETE FROM purchase_orders
+    WHERE  status = 'Cancelled'
+      AND  po_id NOT IN (SELECT po_id FROM stock_batches);
+OK, 3 row(s) affected
+
+mysql> SELECT COUNT(*) AS cancelled_after FROM purchase_orders WHERE status = 'Cancelled';
++-----------------+
+| cancelled_after |
++-----------------+
+| 0               |
++-----------------+
+1 row(s)
+
+mysql> SELECT 'D7  UPSERT: INSERT ... ON DUPLICATE KEY UPDATE (category name is UNIQUE)' AS step;
++--------------------------------------------------------------------------+
+| step                                                                     |
++--------------------------------------------------------------------------+
+| D7  UPSERT: INSERT ... ON DUPLICATE KEY UPDATE (category name is UNIQUE) |
++--------------------------------------------------------------------------+
+1 row(s)
+
+mysql> INSERT INTO categories (category_name, description)
+    VALUES ('Dermatology', 'Creams, ointments and lotions for the skin')
+    ON DUPLICATE KEY UPDATE description = VALUES(description);
+OK, 2 row(s) affected
+
+mysql> SELECT category_id, category_name, description FROM categories WHERE category_name = 'Dermatology';
++-------------+---------------+--------------------------------------------+
+| category_id | category_name | description                                |
++-------------+---------------+--------------------------------------------+
+| 9           | Dermatology   | Creams, ointments and lotions for the skin |
++-------------+---------------+--------------------------------------------+
+1 row(s)
+
+mysql> SELECT 'D8  Savepoint: undo only the last of two price changes' AS step;
++--------------------------------------------------------+
+| step                                                   |
++--------------------------------------------------------+
+| D8  Savepoint: undo only the last of two price changes |
++--------------------------------------------------------+
+1 row(s)
+
+mysql> UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 1;
+OK, 1 row(s) affected
+
+mysql> SAVEPOINT after_panadol;
+OK, 0 row(s) affected
+
+mysql> UPDATE products SET unit_price = unit_price + 5 WHERE product_id = 3;
+OK, 1 row(s) affected
+
+mysql> ROLLBACK TO SAVEPOINT after_panadol;
+OK, 0 row(s) affected
+
+mysql> SELECT product_id, name, unit_price FROM products WHERE product_id IN (1, 3);
++------------+-----------------------+------------+
+| product_id | name                  | unit_price |
++------------+-----------------------+------------+
+| 1          | Panadol 500mg Tablets | 40.00      |
+| 3          | Brufen 400mg Tablets  | 95.00      |
++------------+-----------------------+------------+
+2 row(s)
+
+mysql> ROLLBACK;
+OK, 0 row(s) affected
+
+mysql> SELECT 'ROLLBACK done - nothing above was saved' AS step;
++-----------------------------------------+
+| step                                    |
++-----------------------------------------+
+| ROLLBACK done - nothing above was saved |
++-----------------------------------------+
+1 row(s)
+
+mysql> SELECT COUNT(*) AS products_now, (SELECT COUNT(*) FROM customers) AS customers_now,
+           (SELECT COUNT(*) FROM audit_log) AS audit_rows FROM products;
++--------------+---------------+------------+
+| products_now | customers_now | audit_rows |
++--------------+---------------+------------+
+| 41           | 40            | 0          |
++--------------+---------------+------------+
+1 row(s)
+
+mysql> SELECT 'DDL1  CREATE TABLE ... AS SELECT (sub-query in DDL): archive of expired stock' AS step;
++-------------------------------------------------------------------------------+
+| step                                                                          |
++-------------------------------------------------------------------------------+
+| DDL1  CREATE TABLE ... AS SELECT (sub-query in DDL): archive of expired stock |
++-------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> CREATE TABLE expired_stock_archive AS
+    SELECT batch_id, product_name, batch_no, quantity, expiry_date, loss_at_cost, CURRENT_DATE AS archived_on
+    FROM   v_expired_stock;
+OK, 2 row(s) affected
+
+mysql> SELECT * FROM expired_stock_archive;
++----------+---------------------------+-------------+----------+-------------+--------------+-------------+
+| batch_id | product_name              | batch_no    | quantity | expiry_date | loss_at_cost | archived_on |
++----------+---------------------------+-------------+----------+-------------+--------------+-------------+
+| 16       | Canesten Cream 20g        | CAN-2608-01 | 82       | 2026-10-31  | 21835.78     | 2026-11-18  |
+| 15       | Benylin Cough Syrup 100ml | BEN-2608-01 | 18       | 2026-11-05  | 4607.46      | 2026-11-18  |
++----------+---------------------------+-------------+----------+-------------+--------------+-------------+
+2 row(s)
+
+mysql> SELECT 'DDL2  CREATE VIEW over a sub-query: prescription-only medicines that sold in October' AS step;
++--------------------------------------------------------------------------------------+
+| step                                                                                 |
++--------------------------------------------------------------------------------------+
+| DDL2  CREATE VIEW over a sub-query: prescription-only medicines that sold in October |
++--------------------------------------------------------------------------------------+
+1 row(s)
+
+mysql> CREATE OR REPLACE VIEW v_rx_sold_october AS
+    SELECT p.product_id, p.name,
+           (SELECT SUM(si.quantity)
+            FROM   sale_items si JOIN sales s ON s.sale_id = si.sale_id
+            WHERE  si.product_id = p.product_id
+              AND  s.sale_date >= '2026-10-01' AND s.sale_date < '2026-11-01') AS units_sold
+    FROM   products p
+    WHERE  p.requires_prescription = TRUE;
+OK, 0 row(s) affected
+
+mysql> SELECT * FROM v_rx_sold_october WHERE units_sold IS NOT NULL ORDER BY units_sold DESC;
++------------+-------------------------+------------+
+| product_id | name                    | units_sold |
++------------+-------------------------+------------+
+| 7          | Augmentin 625mg Tablets | 9          |
+| 36         | Lipiget 20mg Tablets    | 4          |
+| 32         | Diamicron MR 60mg       | 3          |
+| 8          | Flagyl 400mg Tablets    | 2          |
+| 26         | Ventolin Inhaler 100mcg | 1          |
+| 35         | Concor 5mg Tablets      | 1          |
++------------+-------------------------+------------+
+6 row(s)
+
+mysql> SELECT 'DDL3  ALTER TABLE: add, modify, rename a column, add and drop a constraint' AS step;
++----------------------------------------------------------------------------+
+| step                                                                       |
++----------------------------------------------------------------------------+
+| DDL3  ALTER TABLE: add, modify, rename a column, add and drop a constraint |
++----------------------------------------------------------------------------+
+1 row(s)
+
+mysql> ALTER TABLE expired_stock_archive ADD COLUMN disposal_method VARCHAR(30) NOT NULL DEFAULT 'Return to supplier';
+OK, 0 row(s) affected
+
+mysql> ALTER TABLE expired_stock_archive MODIFY COLUMN disposal_method VARCHAR(60) NOT NULL DEFAULT 'Return to supplier';
+OK, 0 row(s) affected
+
+mysql> ALTER TABLE expired_stock_archive RENAME COLUMN disposal_method TO disposal;
+OK, 0 row(s) affected
+
+mysql> ALTER TABLE expired_stock_archive ADD CONSTRAINT ck_archive_qty CHECK (quantity >= 0);
+OK, 2 row(s) affected
+
+mysql> ALTER TABLE expired_stock_archive DROP CONSTRAINT ck_archive_qty;
+OK, 0 row(s) affected
+
+mysql> DESCRIBE expired_stock_archive;
++--------------+------------------+------+-----+--------------------+-------+
+| Field        | Type             | Null | Key | Default            | Extra |
++--------------+------------------+------+-----+--------------------+-------+
+| batch_id     | int(10) unsigned | NO   |     | NULL               |       |
+| product_name | varchar(100)     | NO   |     | NULL               |       |
+| batch_no     | varchar(30)      | NO   |     | NULL               |       |
+| quantity     | int(11)          | NO   |     | NULL               |       |
+| expiry_date  | date             | NO   |     | NULL               |       |
+| loss_at_cost | decimal(20,2)    | NO   |     | NULL               |       |
+| archived_on  | date             | NO   |     | NULL               |       |
+| disposal     | varchar(60)      | NO   |     | Return to supplier |       |
++--------------+------------------+------+-----+--------------------+-------+
+8 row(s)
+
+mysql> SELECT 'DDL4  CREATE INDEX, SHOW INDEX, DROP INDEX' AS step;
++--------------------------------------------+
+| step                                       |
++--------------------------------------------+
+| DDL4  CREATE INDEX, SHOW INDEX, DROP INDEX |
++--------------------------------------------+
+1 row(s)
+
+mysql> CREATE INDEX idx_archive_expiry ON expired_stock_archive (expiry_date);
+OK, 0 row(s) affected
+
+mysql> SHOW INDEX FROM expired_stock_archive;
++-----------------------+------------+--------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| Table                 | Non_unique | Key_name           | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Ignored |
++-----------------------+------------+--------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+| expired_stock_archive | 1          | idx_archive_expiry | 1            | expiry_date | A         | 2           | NULL     | NULL   |      | BTREE      |         |               | NO      |
++-----------------------+------------+--------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+
+1 row(s)
+
+mysql> DROP INDEX idx_archive_expiry ON expired_stock_archive;
+OK, 0 row(s) affected
+
+mysql> SELECT 'DDL5  RENAME TABLE, TRUNCATE TABLE, DROP TABLE / VIEW' AS step;
++-------------------------------------------------------+
+| step                                                  |
++-------------------------------------------------------+
+| DDL5  RENAME TABLE, TRUNCATE TABLE, DROP TABLE / VIEW |
++-------------------------------------------------------+
+1 row(s)
+
+mysql> RENAME TABLE expired_stock_archive TO expired_archive_2026;
+OK, 0 row(s) affected
+
+mysql> TRUNCATE TABLE expired_archive_2026;
+OK, 0 row(s) affected
+
+mysql> SELECT COUNT(*) AS rows_after_truncate FROM expired_archive_2026;
++---------------------+
+| rows_after_truncate |
++---------------------+
+| 0                   |
++---------------------+
+1 row(s)
+
+mysql> DROP TABLE expired_archive_2026;
+OK, 0 row(s) affected
+
+mysql> DROP VIEW v_rx_sold_october;
+OK, 0 row(s) affected
+
+mysql> SELECT 'DDL demo finished - temporary objects dropped' AS step;
++-----------------------------------------------+
+| step                                          |
++-----------------------------------------------+
+| DDL demo finished - temporary objects dropped |
++-----------------------------------------------+
+1 row(s)

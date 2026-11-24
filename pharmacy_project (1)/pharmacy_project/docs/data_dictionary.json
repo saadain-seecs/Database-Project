@@ -1,0 +1,625 @@
+[
+ {
+  "table": "categories",
+  "purpose": "Groups medicines into categories (analgesics, antibiotics ...).",
+  "rowcount": 10,
+  "columns": [
+   {
+    "column": "category_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "category_name",
+    "type": "varchar(60)",
+    "nullable": "NO",
+    "constraints": "UNIQUE",
+    "description": "Unique category name."
+   },
+   {
+    "column": "description",
+    "type": "varchar(200)",
+    "nullable": "YES",
+    "constraints": "",
+    "description": "Free-text note."
+   }
+  ]
+ },
+ {
+  "table": "products",
+  "purpose": "Catalogue of medicines and devices sold by the pharmacy.",
+  "rowcount": 41,
+  "columns": [
+   {
+    "column": "product_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "name",
+    "type": "varchar(100)",
+    "nullable": "NO",
+    "constraints": "UNIQUE",
+    "description": "Brand / product name with strength (unique)."
+   },
+   {
+    "column": "generic_name",
+    "type": "varchar(100)",
+    "nullable": "YES",
+    "constraints": "",
+    "description": "Active ingredient."
+   },
+   {
+    "column": "manufacturer",
+    "type": "varchar(80)",
+    "nullable": "YES",
+    "constraints": "",
+    "description": "Added later with ALTER TABLE (DDL demo); optional."
+   },
+   {
+    "column": "category_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> categories(category_id)",
+    "description": "Category the product belongs to."
+   },
+   {
+    "column": "unit_price",
+    "type": "decimal(10,2)",
+    "nullable": "NO",
+    "constraints": "CHECK unit_price >= 0",
+    "description": "Selling price per unit in PKR."
+   },
+   {
+    "column": "reorder_level",
+    "type": "int(11)",
+    "nullable": "NO",
+    "constraints": "CHECK reorder_level >= 0; DEFAULT 20",
+    "description": "Re-order when sellable stock falls below this."
+   },
+   {
+    "column": "requires_prescription",
+    "type": "tinyint(1)",
+    "nullable": "NO",
+    "constraints": "DEFAULT 0",
+    "description": "TRUE for prescription-only medicines."
+   }
+  ]
+ },
+ {
+  "table": "suppliers",
+  "purpose": "Wholesalers / distributors the pharmacy buys from.",
+  "rowcount": 12,
+  "columns": [
+   {
+    "column": "supplier_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "name",
+    "type": "varchar(100)",
+    "nullable": "NO",
+    "constraints": "UNIQUE",
+    "description": "Supplier trade name (unique)."
+   },
+   {
+    "column": "phone",
+    "type": "varchar(15)",
+    "nullable": "NO",
+    "constraints": "UNIQUE; CHECK phone regexp '^[0-9]{3,4}-[0-9]{7}$'",
+    "description": "Contact number, format 051-1234567."
+   },
+   {
+    "column": "address",
+    "type": "varchar(250)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Postal address."
+   },
+   {
+    "column": "is_active",
+    "type": "tinyint(1)",
+    "nullable": "NO",
+    "constraints": "DEFAULT 1",
+    "description": "FALSE = no longer used for orders."
+   }
+  ]
+ },
+ {
+  "table": "purchase_orders",
+  "purpose": "One delivery / order placed with a supplier.",
+  "rowcount": 30,
+  "columns": [
+   {
+    "column": "po_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "supplier_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> suppliers(supplier_id)",
+    "description": "Supplier the order was placed with."
+   },
+   {
+    "column": "order_date",
+    "type": "date",
+    "nullable": "NO",
+    "constraints": "DEFAULT curdate()",
+    "description": "Date of the order / delivery."
+   },
+   {
+    "column": "status",
+    "type": "enum('Pending','Received','Cancelled')",
+    "nullable": "NO",
+    "constraints": "DEFAULT Pending",
+    "description": "Pending, Received or Cancelled."
+   },
+   {
+    "column": "total_cost",
+    "type": "decimal(12,2)",
+    "nullable": "NO",
+    "constraints": "CHECK total_cost >= 0; DEFAULT 0.00",
+    "description": "Sum of received_qty x cost_price of its batches (maintained by trigger)."
+   }
+  ]
+ },
+ {
+  "table": "stock_batches",
+  "purpose": "Stock received in a purchase order, tracked per batch with its own expiry date.",
+  "rowcount": 52,
+  "columns": [
+   {
+    "column": "batch_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "product_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> products(product_id); UNIQUE",
+    "description": "Medicine in this batch."
+   },
+   {
+    "column": "po_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> purchase_orders(po_id)",
+    "description": "Purchase order that delivered it."
+   },
+   {
+    "column": "batch_no",
+    "type": "varchar(30)",
+    "nullable": "NO",
+    "constraints": "UNIQUE",
+    "description": "Manufacturer lot number (unique per product)."
+   },
+   {
+    "column": "received_qty",
+    "type": "int(11)",
+    "nullable": "NO",
+    "constraints": "CHECK received_qty > 0; CHECK quantity >= 0 and quantity <= received_qty",
+    "description": "Units delivered."
+   },
+   {
+    "column": "quantity",
+    "type": "int(11)",
+    "nullable": "NO",
+    "constraints": "CHECK quantity >= 0 and quantity <= received_qty",
+    "description": "Units still on the shelf (falls as sales are made)."
+   },
+   {
+    "column": "expiry_date",
+    "type": "date",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Last day the batch may be sold."
+   },
+   {
+    "column": "cost_price",
+    "type": "decimal(10,2)",
+    "nullable": "NO",
+    "constraints": "CHECK cost_price >= 0",
+    "description": "Purchase price per unit in PKR."
+   }
+  ]
+ },
+ {
+  "table": "customers",
+  "purpose": "Customers (includes one 'Walk-in Customer' for anonymous sales).",
+  "rowcount": 40,
+  "columns": [
+   {
+    "column": "customer_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "name",
+    "type": "varchar(100)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Customer name."
+   },
+   {
+    "column": "phone",
+    "type": "varchar(15)",
+    "nullable": "YES",
+    "constraints": "UNIQUE; CHECK phone is null or phone regexp '^[0-9]{3,4}-[0-9]{7}$'",
+    "description": "Mobile number 03xx-xxxxxxx; NULL for the walk-in customer."
+   },
+   {
+    "column": "email",
+    "type": "varchar(100)",
+    "nullable": "YES",
+    "constraints": "UNIQUE",
+    "description": "Added later with ALTER TABLE (DDL demo); optional, unique."
+   },
+   {
+    "column": "registered_on",
+    "type": "date",
+    "nullable": "NO",
+    "constraints": "DEFAULT curdate()",
+    "description": "Date the customer was registered."
+   }
+  ]
+ },
+ {
+  "table": "employees",
+  "purpose": "All staff - superclass of the EER specialisation.",
+  "rowcount": 12,
+  "columns": [
+   {
+    "column": "employee_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "name",
+    "type": "varchar(100)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Employee name."
+   },
+   {
+    "column": "role",
+    "type": "enum('Pharmacist','Cashier','Manager','Inventory Clerk')",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Pharmacist, Cashier, Manager or Inventory Clerk."
+   },
+   {
+    "column": "phone",
+    "type": "varchar(15)",
+    "nullable": "NO",
+    "constraints": "UNIQUE; CHECK phone regexp '^[0-9]{3,4}-[0-9]{7}$'",
+    "description": "Mobile number (unique)."
+   },
+   {
+    "column": "hire_date",
+    "type": "date",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Date joined."
+   },
+   {
+    "column": "is_active",
+    "type": "tinyint(1)",
+    "nullable": "NO",
+    "constraints": "DEFAULT 1",
+    "description": "FALSE after the employee leaves."
+   }
+  ]
+ },
+ {
+  "table": "pharmacists",
+  "purpose": "EER subclass: licensed pharmacists (extra attributes).",
+  "rowcount": 4,
+  "columns": [
+   {
+    "column": "employee_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> employees(employee_id)",
+    "description": "Same key as the employee (subclass)."
+   },
+   {
+    "column": "license_no",
+    "type": "varchar(20)",
+    "nullable": "NO",
+    "constraints": "UNIQUE",
+    "description": "Pharmacy-council licence number (unique)."
+   },
+   {
+    "column": "qualification",
+    "type": "varchar(60)",
+    "nullable": "NO",
+    "constraints": "DEFAULT Pharm-D",
+    "description": "Degree, default Pharm-D."
+   }
+  ]
+ },
+ {
+  "table": "cashiers",
+  "purpose": "EER subclass: cashiers (shift and counter).",
+  "rowcount": 4,
+  "columns": [
+   {
+    "column": "employee_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> employees(employee_id)",
+    "description": "Same key as the employee (subclass)."
+   },
+   {
+    "column": "shift",
+    "type": "enum('Morning','Evening','Night')",
+    "nullable": "NO",
+    "constraints": "DEFAULT Morning",
+    "description": "Morning, Evening or Night."
+   },
+   {
+    "column": "counter_no",
+    "type": "tinyint(3) unsigned",
+    "nullable": "NO",
+    "constraints": "CHECK counter_no between 1 and 6",
+    "description": "Billing counter 1-6."
+   }
+  ]
+ },
+ {
+  "table": "sales",
+  "purpose": "Header of a bill: who bought, who served, when and how paid.",
+  "rowcount": 56,
+  "columns": [
+   {
+    "column": "sale_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Bill number."
+   },
+   {
+    "column": "customer_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> customers(customer_id)",
+    "description": "Buyer."
+   },
+   {
+    "column": "employee_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> employees(employee_id)",
+    "description": "Pharmacist / cashier who served."
+   },
+   {
+    "column": "sale_date",
+    "type": "datetime",
+    "nullable": "NO",
+    "constraints": "DEFAULT current_timestamp()",
+    "description": "Date and time of the sale."
+   },
+   {
+    "column": "payment_method",
+    "type": "enum('Cash','Card','Mobile Wallet')",
+    "nullable": "NO",
+    "constraints": "DEFAULT Cash",
+    "description": "Cash, Card or Mobile Wallet."
+   },
+   {
+    "column": "total_amount",
+    "type": "decimal(12,2)",
+    "nullable": "NO",
+    "constraints": "CHECK total_amount >= 0; DEFAULT 0.00",
+    "description": "Bill total, maintained by trigger from the bill lines."
+   }
+  ]
+ },
+ {
+  "table": "sale_items",
+  "purpose": "Lines of a bill; resolves the Sales M:N Products relationship.",
+  "rowcount": 137,
+  "columns": [
+   {
+    "column": "sale_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> sales(sale_id)",
+    "description": "Bill the line belongs to."
+   },
+   {
+    "column": "product_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> products(product_id)",
+    "description": "Medicine sold."
+   },
+   {
+    "column": "quantity",
+    "type": "int(11)",
+    "nullable": "NO",
+    "constraints": "CHECK quantity > 0",
+    "description": "Units sold (> 0)."
+   },
+   {
+    "column": "unit_price",
+    "type": "decimal(10,2)",
+    "nullable": "NO",
+    "constraints": "CHECK unit_price >= 0",
+    "description": "Price charged on the day of sale."
+   }
+  ]
+ },
+ {
+  "table": "sale_allocations",
+  "purpose": "Which batch(es) every bill line was taken from (FEFO) with the batch cost - gives exact profit.",
+  "rowcount": 138,
+  "columns": [
+   {
+    "column": "sale_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> sale_items(sale_id)",
+    "description": "Bill number (part of the sale-line key)."
+   },
+   {
+    "column": "product_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> sale_items(product_id)",
+    "description": "Medicine (part of the sale-line key)."
+   },
+   {
+    "column": "batch_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK; FK -> stock_batches(batch_id)",
+    "description": "Batch the units were taken from."
+   },
+   {
+    "column": "quantity",
+    "type": "int(11)",
+    "nullable": "NO",
+    "constraints": "CHECK quantity > 0",
+    "description": "Units taken from that batch."
+   },
+   {
+    "column": "cost_price",
+    "type": "decimal(10,2)",
+    "nullable": "NO",
+    "constraints": "CHECK cost_price >= 0",
+    "description": "Batch cost per unit at the time of sale."
+   }
+  ]
+ },
+ {
+  "table": "stock_alerts",
+  "purpose": "Low-stock / near-expiry / expired alerts produced by the daily event.",
+  "rowcount": 0,
+  "columns": [
+   {
+    "column": "alert_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "alert_type",
+    "type": "enum('LOW_STOCK','NEAR_EXPIRY','EXPIRED')",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "LOW_STOCK, NEAR_EXPIRY or EXPIRED."
+   },
+   {
+    "column": "product_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "FK -> products(product_id)",
+    "description": "Product concerned."
+   },
+   {
+    "column": "batch_id",
+    "type": "int(10) unsigned",
+    "nullable": "YES",
+    "constraints": "FK -> stock_batches(batch_id)",
+    "description": "Batch concerned (NULL for low-stock alerts)."
+   },
+   {
+    "column": "message",
+    "type": "varchar(255)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Human-readable alert text."
+   },
+   {
+    "column": "created_at",
+    "type": "datetime",
+    "nullable": "NO",
+    "constraints": "DEFAULT current_timestamp()",
+    "description": "When the alert was generated."
+   }
+  ]
+ },
+ {
+  "table": "audit_log",
+  "purpose": "Audit trail written by triggers (price changes).",
+  "rowcount": 0,
+  "columns": [
+   {
+    "column": "log_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "PK",
+    "description": "Surrogate key."
+   },
+   {
+    "column": "table_name",
+    "type": "varchar(40)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Table that changed."
+   },
+   {
+    "column": "record_id",
+    "type": "int(10) unsigned",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Key of the changed row."
+   },
+   {
+    "column": "action",
+    "type": "varchar(20)",
+    "nullable": "NO",
+    "constraints": "",
+    "description": "Kind of change, e.g. PRICE_CHANGE."
+   },
+   {
+    "column": "old_value",
+    "type": "varchar(255)",
+    "nullable": "YES",
+    "constraints": "",
+    "description": "Value before."
+   },
+   {
+    "column": "new_value",
+    "type": "varchar(255)",
+    "nullable": "YES",
+    "constraints": "",
+    "description": "Value after."
+   },
+   {
+    "column": "changed_at",
+    "type": "datetime",
+    "nullable": "NO",
+    "constraints": "DEFAULT current_timestamp()",
+    "description": "Time of change."
+   },
+   {
+    "column": "changed_by",
+    "type": "varchar(80)",
+    "nullable": "NO",
+    "constraints": "DEFAULT current_user()",
+    "description": "Database user who made the change."
+   }
+  ]
+ }
+]

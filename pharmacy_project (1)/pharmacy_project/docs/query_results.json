@@ -1,0 +1,3351 @@
+[
+ {
+  "id": 1,
+  "topic": "DRL - JOIN, ORDER BY",
+  "title": "Product catalogue with its category",
+  "ra": "π product_id, name, category_name, unit_price, requires_prescription (Products ⋈ Categories)",
+  "sql": "SELECT p.product_id, p.name, c.category_name, p.unit_price, p.requires_prescription\nFROM   products p\nJOIN   categories c ON c.category_id = p.category_id\nORDER BY c.category_name, p.name",
+  "columns": [
+   "product_id",
+   "name",
+   "category_name",
+   "unit_price",
+   "requires_prescription"
+  ],
+  "rows": [
+   [
+    3,
+    "Brufen 400mg Tablets",
+    "Analgesics & Antipyretics",
+    95,
+    0
+   ],
+   [
+    2,
+    "Calpol 120mg/5ml Syrup",
+    "Analgesics & Antipyretics",
+    145,
+    0
+   ],
+   [
+    5,
+    "Disprin 300mg",
+    "Analgesics & Antipyretics",
+    28,
+    0
+   ],
+   [
+    1,
+    "Panadol 500mg Tablets",
+    "Analgesics & Antipyretics",
+    35,
+    0
+   ],
+   [
+    4,
+    "Ponstan Forte 500mg",
+    "Analgesics & Antipyretics",
+    120,
+    0
+   ],
+   [
+    6,
+    "Voltral 50mg Tablets",
+    "Analgesics & Antipyretics",
+    170,
+    1
+   ],
+   [
+    18,
+    "Buscopan 10mg Tablets",
+    "Antacids & Gastro",
+    140,
+    0
+   ],
+   [
+    15,
+    "Gaviscon Liquid 150ml",
+    "Antacids & Gastro",
+    450,
+    0
+   ],
+   [
+    16,
+    "Motilium 10mg Tablets",
+    "Antacids & Gastro",
+    160,
+    0
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    "Antacids & Gastro",
+    420,
+    0
+   ],
+   [
+    17,
+    "ORS Sachet",
+    "Antacids & Gastro",
+    25,
+    0
+   ],
+   [
+    13,
+    "Risek 20mg Capsules",
+    "Antacids & Gastro",
+    180,
+    0
+   ],
+   [
+    11,
+    "Amoxil 500mg Capsules",
+    "Antibiotics",
+    210,
+    1
+   ],
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    "Antibiotics",
+    480,
+    1
+   ],
+   [
+    10,
+    "Cipro 500mg Tablets",
+    "Antibiotics",
+    260,
+    1
+   ],
+   [
+    8,
+    "Flagyl 400mg Tablets",
+    "Antibiotics",
+    90,
+    1
+   ],
+   [
+    12,
+    "Septran DS Tablets",
+    "Antibiotics",
+    130,
+    1
+   ],
+   [
+    9,
+    "Zithromax 500mg Tablets",
+    "Antibiotics",
+    620,
+    1
+   ],
+   [
+    20,
+    "Avil 25mg Tablets",
+    "Antihistamines & Allergy",
+    40,
+    0
+   ],
+   [
+    21,
+    "Claritin 10mg Tablets",
+    "Antihistamines & Allergy",
+    150,
+    0
+   ],
+   [
+    22,
+    "Telfast 120mg Tablets",
+    "Antihistamines & Allergy",
+    380,
+    0
+   ],
+   [
+    19,
+    "Zyrtec 10mg Tablets",
+    "Antihistamines & Allergy",
+    110,
+    0
+   ],
+   [
+    35,
+    "Concor 5mg Tablets",
+    "Cardiovascular",
+    410,
+    1
+   ],
+   [
+    36,
+    "Lipiget 20mg Tablets",
+    "Cardiovascular",
+    330,
+    1
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    "Cardiovascular",
+    380,
+    1
+   ],
+   [
+    25,
+    "Actifed Syrup 90ml",
+    "Cough, Cold & Respiratory",
+    290,
+    0
+   ],
+   [
+    24,
+    "Arinac Forte Tablets",
+    "Cough, Cold & Respiratory",
+    85,
+    0
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    "Cough, Cold & Respiratory",
+    320,
+    0
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    "Cough, Cold & Respiratory",
+    550,
+    1
+   ],
+   [
+    37,
+    "Betnovate-N Cream 15g",
+    "Dermatology",
+    190,
+    1
+   ],
+   [
+    38,
+    "Canesten Cream 20g",
+    "Dermatology",
+    360,
+    0
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    "Diabetes Care",
+    470,
+    1
+   ],
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    "Diabetes Care",
+    1650,
+    0
+   ],
+   [
+    31,
+    "Glucophage 500mg Tablets",
+    "Diabetes Care",
+    120,
+    1
+   ],
+   [
+    40,
+    "Band-Aid Strips (20)",
+    "First Aid & Devices",
+    95,
+    0
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    "First Aid & Devices",
+    330,
+    0
+   ],
+   [
+    41,
+    "Digital Thermometer",
+    "First Aid & Devices",
+    450,
+    0
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    "Vitamins & Supplements",
+    650,
+    0
+   ],
+   [
+    30,
+    "Neurobion Tablets",
+    "Vitamins & Supplements",
+    290,
+    0
+   ],
+   [
+    27,
+    "Surbex Z Tablets",
+    "Vitamins & Supplements",
+    380,
+    0
+   ],
+   [
+    29,
+    "Vitamin C 500mg Tablets",
+    "Vitamins & Supplements",
+    150,
+    0
+   ]
+  ],
+  "rowcount": 41,
+  "error": null
+ },
+ {
+  "id": 2,
+  "topic": "DRL - WHERE, BETWEEN, LIKE, IN",
+  "title": "Cheap over-the-counter medicines (Rs 25-150)",
+  "ra": "π product_id, name, generic_name, unit_price (σ requires_prescription=false ∧ unit_price between 25 and 150 ∧ (name like 'P%' ∨ generic_name ∈ {Ibuprofen, Aspirin, Cetirizine}) (Products))",
+  "sql": "SELECT product_id, name, generic_name, unit_price\nFROM   products\nWHERE  requires_prescription = FALSE\n  AND  unit_price BETWEEN 25 AND 150\n  AND  (name LIKE 'P%' OR generic_name IN ('Ibuprofen', 'Aspirin', 'Cetirizine'))\nORDER BY unit_price DESC, name",
+  "columns": [
+   "product_id",
+   "name",
+   "generic_name",
+   "unit_price"
+  ],
+  "rows": [
+   [
+    4,
+    "Ponstan Forte 500mg",
+    "Mefenamic acid",
+    120
+   ],
+   [
+    19,
+    "Zyrtec 10mg Tablets",
+    "Cetirizine",
+    110
+   ],
+   [
+    3,
+    "Brufen 400mg Tablets",
+    "Ibuprofen",
+    95
+   ],
+   [
+    1,
+    "Panadol 500mg Tablets",
+    "Paracetamol",
+    35
+   ],
+   [
+    5,
+    "Disprin 300mg",
+    "Aspirin",
+    28
+   ]
+  ],
+  "rowcount": 5,
+  "error": null
+ },
+ {
+  "id": 3,
+  "topic": "DRL - IN, BETWEEN, ORDER BY",
+  "title": "October bills above Rs 1,000 paid by card or mobile wallet",
+  "ra": "σ payment_method ∈ {Card, Mobile Wallet} ∧ total_amount > 1000 ∧ sale_date in Oct-2026 (Sales)",
+  "sql": "SELECT sale_id, customer_id, sale_date, payment_method, total_amount\nFROM   sales\nWHERE  payment_method IN ('Card', 'Mobile Wallet')\n  AND  total_amount > 1000\n  AND  sale_date BETWEEN '2026-10-01 00:00:00' AND '2026-10-31 23:59:59'\nORDER BY total_amount DESC",
+  "columns": [
+   "sale_id",
+   "customer_id",
+   "sale_date",
+   "payment_method",
+   "total_amount"
+  ],
+  "rows": [
+   [
+    43,
+    22,
+    "2026-10-29 16:39:06",
+    "Card",
+    3910
+   ],
+   [
+    42,
+    21,
+    "2026-10-28 14:03:13",
+    "Mobile Wallet",
+    1780
+   ],
+   [
+    28,
+    21,
+    "2026-10-07 18:33:56",
+    "Mobile Wallet",
+    1370
+   ],
+   [
+    31,
+    1,
+    "2026-10-13 10:59:50",
+    "Mobile Wallet",
+    1150
+   ],
+   [
+    38,
+    12,
+    "2026-10-22 19:30:00",
+    "Mobile Wallet",
+    1120
+   ]
+  ],
+  "rowcount": 5,
+  "error": null
+ },
+ {
+  "id": 4,
+  "topic": "DRL - GROUP BY, VIEW",
+  "title": "Total sales per day (proposal report)",
+  "ra": "γ DATE(sale_date); COUNT(sale_id), SUM(quantity*unit_price) (Sales ⋈ Sale_Items)",
+  "sql": "SELECT sale_day, bills, units_sold, revenue, avg_bill\nFROM   v_daily_sales_summary\nORDER BY sale_day",
+  "columns": [
+   "sale_day",
+   "bills",
+   "units_sold",
+   "revenue",
+   "avg_bill"
+  ],
+  "rows": [
+   [
+    "2026-08-07",
+    1,
+    10,
+    250,
+    250
+   ],
+   [
+    "2026-08-11",
+    1,
+    3,
+    680,
+    680
+   ],
+   [
+    "2026-08-13",
+    1,
+    3,
+    84,
+    84
+   ],
+   [
+    "2026-08-14",
+    1,
+    7,
+    740,
+    740
+   ],
+   [
+    "2026-08-16",
+    1,
+    2,
+    240,
+    240
+   ],
+   [
+    "2026-08-21",
+    1,
+    5,
+    175,
+    175
+   ],
+   [
+    "2026-08-22",
+    1,
+    8,
+    1835,
+    1835
+   ],
+   [
+    "2026-08-23",
+    1,
+    7,
+    1950,
+    1950
+   ],
+   [
+    "2026-08-26",
+    1,
+    3,
+    1020,
+    1020
+   ],
+   [
+    "2026-09-03",
+    2,
+    25,
+    3455,
+    1727.5
+   ],
+   [
+    "2026-09-05",
+    1,
+    5,
+    1380,
+    1380
+   ],
+   [
+    "2026-09-06",
+    1,
+    2,
+    980,
+    980
+   ],
+   [
+    "2026-09-12",
+    1,
+    3,
+    520,
+    520
+   ],
+   [
+    "2026-09-13",
+    1,
+    5,
+    1900,
+    1900
+   ],
+   [
+    "2026-09-14",
+    1,
+    5,
+    1600,
+    1600
+   ],
+   [
+    "2026-09-16",
+    1,
+    3,
+    1510,
+    1510
+   ],
+   [
+    "2026-09-21",
+    2,
+    16,
+    4660,
+    2330
+   ],
+   [
+    "2026-09-22",
+    1,
+    6,
+    2640,
+    2640
+   ],
+   [
+    "2026-09-25",
+    1,
+    3,
+    875,
+    875
+   ],
+   [
+    "2026-09-26",
+    1,
+    6,
+    1610,
+    1610
+   ],
+   [
+    "2026-09-27",
+    2,
+    13,
+    925,
+    462.5
+   ],
+   [
+    "2026-10-03",
+    2,
+    2,
+    830,
+    415
+   ],
+   [
+    "2026-10-06",
+    1,
+    13,
+    4460,
+    4460
+   ],
+   [
+    "2026-10-07",
+    1,
+    6,
+    1370,
+    1370
+   ],
+   [
+    "2026-10-09",
+    1,
+    5,
+    700,
+    700
+   ],
+   [
+    "2026-10-10",
+    1,
+    5,
+    795,
+    795
+   ],
+   [
+    "2026-10-13",
+    1,
+    5,
+    1150,
+    1150
+   ],
+   [
+    "2026-10-14",
+    1,
+    5,
+    1680,
+    1680
+   ],
+   [
+    "2026-10-16",
+    1,
+    4,
+    395,
+    395
+   ],
+   [
+    "2026-10-18",
+    2,
+    10,
+    965,
+    482.5
+   ],
+   [
+    "2026-10-19",
+    1,
+    6,
+    1545,
+    1545
+   ],
+   [
+    "2026-10-20",
+    1,
+    3,
+    510,
+    510
+   ],
+   [
+    "2026-10-22",
+    2,
+    10,
+    2010,
+    1005
+   ],
+   [
+    "2026-10-25",
+    1,
+    50,
+    1690,
+    1690
+   ],
+   [
+    "2026-10-28",
+    2,
+    9,
+    2475,
+    1237.5
+   ],
+   [
+    "2026-10-29",
+    2,
+    13,
+    4650,
+    2325
+   ],
+   [
+    "2026-10-30",
+    1,
+    5,
+    820,
+    820
+   ],
+   [
+    "2026-10-31",
+    1,
+    3,
+    920,
+    920
+   ],
+   [
+    "2026-11-01",
+    1,
+    14,
+    2385,
+    2385
+   ],
+   [
+    "2026-11-07",
+    1,
+    3,
+    660,
+    660
+   ],
+   [
+    "2026-11-11",
+    1,
+    7,
+    675,
+    675
+   ],
+   [
+    "2026-11-12",
+    2,
+    13,
+    5940,
+    2970
+   ],
+   [
+    "2026-11-13",
+    4,
+    22,
+    5070,
+    1267.5
+   ],
+   [
+    "2026-11-15",
+    1,
+    10,
+    1540,
+    1540
+   ]
+  ],
+  "rowcount": 44,
+  "error": null
+ },
+ {
+  "id": 5,
+  "topic": "DRL - GROUP BY, aggregate functions",
+  "title": "Total sales per month (proposal report)",
+  "ra": "γ month(sale_date); COUNT(DISTINCT sale_id), SUM(quantity), SUM(quantity*unit_price) (Sales ⋈ Sale_Items)",
+  "sql": "SELECT DATE_FORMAT(s.sale_date, '%Y-%m')      AS sale_month,\n       COUNT(DISTINCT s.sale_id)              AS bills,\n       SUM(si.quantity)                       AS units_sold,\n       SUM(si.quantity * si.unit_price)       AS revenue\nFROM   sales s\nJOIN   sale_items si ON si.sale_id = s.sale_id\nGROUP BY DATE_FORMAT(s.sale_date, '%Y-%m')\nORDER BY sale_month",
+  "columns": [
+   "sale_month",
+   "bills",
+   "units_sold",
+   "revenue"
+  ],
+  "rows": [
+   [
+    "2026-08",
+    9,
+    48,
+    6974
+   ],
+   [
+    "2026-09",
+    15,
+    92,
+    22055
+   ],
+   [
+    "2026-10",
+    22,
+    154,
+    26965
+   ],
+   [
+    "2026-11",
+    10,
+    69,
+    16270
+   ]
+  ],
+  "rowcount": 4,
+  "error": null
+ },
+ {
+  "id": 6,
+  "topic": "DRL - GROUP BY, ORDER BY, LIMIT",
+  "title": "Top 10 best-selling medicines (proposal report)",
+  "ra": "τ units desc (γ product_id, name; SUM(quantity) → units (Sale_Items ⋈ Products))   [top 10]",
+  "sql": "SELECT p.product_id, p.name, SUM(si.quantity) AS units_sold,\n       SUM(si.quantity * si.unit_price)       AS revenue\nFROM   sale_items si\nJOIN   products p ON p.product_id = si.product_id\nGROUP BY p.product_id, p.name\nORDER BY units_sold DESC, revenue DESC\nLIMIT 10",
+  "columns": [
+   "product_id",
+   "name",
+   "units_sold",
+   "revenue"
+  ],
+  "rows": [
+   [
+    1,
+    "Panadol 500mg Tablets",
+    74,
+    2590
+   ],
+   [
+    17,
+    "ORS Sachet",
+    42,
+    1050
+   ],
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    23,
+    11040
+   ],
+   [
+    29,
+    "Vitamin C 500mg Tablets",
+    21,
+    3150
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    18,
+    7560
+   ],
+   [
+    4,
+    "Ponstan Forte 500mg",
+    17,
+    2040
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    14,
+    6580
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    14,
+    4620
+   ],
+   [
+    2,
+    "Calpol 120mg/5ml Syrup",
+    14,
+    2030
+   ],
+   [
+    3,
+    "Brufen 400mg Tablets",
+    14,
+    1330
+   ]
+  ],
+  "rowcount": 10,
+  "error": null
+ },
+ {
+  "id": 7,
+  "topic": "DRL - LEFT JOIN, GROUP BY",
+  "title": "Supplier-wise purchase cost, received orders only (proposal report)",
+  "ra": "γ supplier; COUNT(po_id), SUM(total_cost) (Suppliers ⟕ σ status='Received' (Purchase_Orders))",
+  "sql": "SELECT s.supplier_id, s.name AS supplier,\n       COUNT(po.po_id)                  AS received_orders,\n       COALESCE(SUM(po.total_cost), 0)  AS total_purchase_cost\nFROM   suppliers s\nLEFT JOIN purchase_orders po ON po.supplier_id = s.supplier_id AND po.status = 'Received'\nGROUP BY s.supplier_id, s.name\nORDER BY total_purchase_cost DESC",
+  "columns": [
+   "supplier_id",
+   "supplier",
+   "received_orders",
+   "total_purchase_cost"
+  ],
+  "rows": [
+   [
+    4,
+    "Potohar Medical Agencies",
+    2,
+    175439.95
+   ],
+   [
+    11,
+    "Pioneer Medico Agencies",
+    4,
+    125994.07
+   ],
+   [
+    5,
+    "Islamabad Drug House",
+    5,
+    115930.7
+   ],
+   [
+    3,
+    "Margalla Healthcare Supplies",
+    3,
+    113958.45
+   ],
+   [
+    1,
+    "Capital Medico Distributors",
+    2,
+    74101.2
+   ],
+   [
+    6,
+    "Faisal Medico Corporation",
+    4,
+    65363.45
+   ],
+   [
+    12,
+    "Green Valley Drug Distributors",
+    2,
+    45407.5
+   ],
+   [
+    2,
+    "Rawal Pharma Traders",
+    1,
+    15822.6
+   ],
+   [
+    9,
+    "Blue Line Pharma Wholesale",
+    1,
+    11538
+   ],
+   [
+    10,
+    "City Care Medical Supplies",
+    0,
+    0
+   ],
+   [
+    8,
+    "Indus Healthcare Traders",
+    0,
+    0
+   ],
+   [
+    7,
+    "Karakoram Pharma Distribution",
+    0,
+    0
+   ]
+  ],
+  "rowcount": 12,
+  "error": null
+ },
+ {
+  "id": 8,
+  "topic": "DRL - GROUP BY ... HAVING",
+  "title": "Customers with the highest spending (proposal report)",
+  "ra": "σ spent >= 2000 (γ customer; COUNT(sale_id), SUM(total_amount) → spent (Customers ⋈ Sales))",
+  "sql": "SELECT c.customer_id, c.name, COUNT(s.sale_id) AS bills, SUM(s.total_amount) AS total_spent\nFROM   customers c\nJOIN   sales s ON s.customer_id = c.customer_id\nGROUP BY c.customer_id, c.name\nHAVING SUM(s.total_amount) >= 2000\nORDER BY total_spent DESC\nLIMIT 10",
+  "columns": [
+   "customer_id",
+   "name",
+   "bills",
+   "total_spent"
+  ],
+  "rows": [
+   [
+    22,
+    "Talha Mirza",
+    7,
+    12895
+   ],
+   [
+    29,
+    "Junaid Malik",
+    4,
+    7460
+   ],
+   [
+    7,
+    "Asad Qureshi",
+    5,
+    7185
+   ],
+   [
+    1,
+    "Walk-in Customer",
+    6,
+    5770
+   ],
+   [
+    21,
+    "Adeel Siddiqui",
+    4,
+    4780
+   ],
+   [
+    17,
+    "Nadia Mirza",
+    2,
+    4180
+   ],
+   [
+    11,
+    "Bushra Abbasi",
+    1,
+    3970
+   ],
+   [
+    12,
+    "Amna Chaudhry",
+    3,
+    3900
+   ],
+   [
+    14,
+    "Rukhsana Butt",
+    2,
+    3280
+   ],
+   [
+    9,
+    "Noor Chaudhry",
+    2,
+    3260
+   ]
+  ],
+  "rowcount": 10,
+  "error": null
+ },
+ {
+  "id": 9,
+  "topic": "Sub-query (correlated, scalar)",
+  "title": "Products below their reorder level (proposal report)",
+  "ra": "π product_id, name, reorder_level (σ on_hand < reorder_level (Products))   where on_hand = Σ quantity of unexpired batches",
+  "sql": "SELECT p.product_id, p.name, p.reorder_level,\n       (SELECT COALESCE(SUM(b.quantity), 0)\n        FROM   stock_batches b\n        WHERE  b.product_id = p.product_id AND b.expiry_date >= CURRENT_DATE) AS on_hand\nFROM   products p\nWHERE  (SELECT COALESCE(SUM(b.quantity), 0)\n        FROM   stock_batches b\n        WHERE  b.product_id = p.product_id AND b.expiry_date >= CURRENT_DATE) < p.reorder_level\nORDER BY p.name",
+  "columns": [
+   "product_id",
+   "name",
+   "reorder_level",
+   "on_hand"
+  ],
+  "rows": [
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    40,
+    3
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    20,
+    0
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    40,
+    11
+   ],
+   [
+    15,
+    "Gaviscon Liquid 150ml",
+    15,
+    0
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    40,
+    6
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    40,
+    19
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    30,
+    18
+   ]
+  ],
+  "rowcount": 7,
+  "error": null
+ },
+ {
+  "id": 10,
+  "topic": "DRL - multi-table JOIN, aggregates",
+  "title": "Profit per product (proposal report)",
+  "ra": "γ product; SUM(qty), SUM(qty*price), SUM(qty*cost), SUM(qty*(price-cost)) (Sale_Allocations ⋈ Sale_Items ⋈ Products)",
+  "sql": "SELECT p.product_id, p.name,\n       SUM(a.quantity)                                    AS units_sold,\n       SUM(a.quantity * si.unit_price)                    AS revenue,\n       SUM(a.quantity * a.cost_price)                     AS cost,\n       SUM(a.quantity * (si.unit_price - a.cost_price))   AS profit\nFROM   sale_allocations a\nJOIN   sale_items si ON si.sale_id = a.sale_id AND si.product_id = a.product_id\nJOIN   products p    ON p.product_id = a.product_id\nGROUP BY p.product_id, p.name\nORDER BY profit DESC",
+  "columns": [
+   "product_id",
+   "name",
+   "units_sold",
+   "revenue",
+   "cost",
+   "profit"
+  ],
+  "rows": [
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    23,
+    11040,
+    8007.68,
+    3032.32
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    18,
+    7560,
+    6030.36,
+    1529.64
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    14,
+    6580,
+    5316.92,
+    1263.08
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    14,
+    4620,
+    3513.72,
+    1106.28
+   ],
+   [
+    29,
+    "Vitamin C 500mg Tablets",
+    21,
+    3150,
+    2354.96,
+    795.04
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    12,
+    3840,
+    3071.64,
+    768.36
+   ],
+   [
+    41,
+    "Digital Thermometer",
+    6,
+    2700,
+    1953,
+    747
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    9,
+    3420,
+    2718.72,
+    701.28
+   ],
+   [
+    27,
+    "Surbex Z Tablets",
+    8,
+    3040,
+    2370.24,
+    669.76
+   ],
+   [
+    1,
+    "Panadol 500mg Tablets",
+    74,
+    2590,
+    1999.76,
+    590.24
+   ],
+   [
+    13,
+    "Risek 20mg Capsules",
+    10,
+    1800,
+    1230.6,
+    569.4
+   ],
+   [
+    2,
+    "Calpol 120mg/5ml Syrup",
+    14,
+    2030,
+    1474.71,
+    555.29
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    4,
+    2200,
+    1675.24,
+    524.76
+   ],
+   [
+    35,
+    "Concor 5mg Tablets",
+    4,
+    1640,
+    1169.16,
+    470.84
+   ],
+   [
+    4,
+    "Ponstan Forte 500mg",
+    17,
+    2040,
+    1573.69,
+    466.31
+   ],
+   [
+    22,
+    "Telfast 120mg Tablets",
+    4,
+    1520,
+    1108.36,
+    411.64
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    2,
+    1300,
+    908.1,
+    391.9
+   ],
+   [
+    3,
+    "Brufen 400mg Tablets",
+    14,
+    1330,
+    939.82,
+    390.18
+   ],
+   [
+    25,
+    "Actifed Syrup 90ml",
+    4,
+    1160,
+    834.24,
+    325.76
+   ],
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    1,
+    1650,
+    1327.73,
+    322.27
+   ],
+   [
+    17,
+    "ORS Sachet",
+    42,
+    1050,
+    732.48,
+    317.52
+   ],
+   [
+    36,
+    "Lipiget 20mg Tablets",
+    4,
+    1320,
+    1060.88,
+    259.12
+   ],
+   [
+    40,
+    "Band-Aid Strips (20)",
+    7,
+    665,
+    474.04,
+    190.96
+   ],
+   [
+    38,
+    "Canesten Cream 20g",
+    2,
+    720,
+    532.58,
+    187.42
+   ],
+   [
+    19,
+    "Zyrtec 10mg Tablets",
+    6,
+    660,
+    474.96,
+    185.04
+   ],
+   [
+    18,
+    "Buscopan 10mg Tablets",
+    4,
+    560,
+    401.6,
+    158.4
+   ],
+   [
+    24,
+    "Arinac Forte Tablets",
+    7,
+    595,
+    457.03,
+    137.97
+   ],
+   [
+    16,
+    "Motilium 10mg Tablets",
+    3,
+    480,
+    390.03,
+    89.97
+   ],
+   [
+    31,
+    "Glucophage 500mg Tablets",
+    3,
+    360,
+    277.5,
+    82.5
+   ],
+   [
+    8,
+    "Flagyl 400mg Tablets",
+    4,
+    360,
+    291.8,
+    68.2
+   ],
+   [
+    20,
+    "Avil 25mg Tablets",
+    5,
+    200,
+    157.95,
+    42.05
+   ],
+   [
+    5,
+    "Disprin 300mg",
+    3,
+    84,
+    60.39,
+    23.61
+   ]
+  ],
+  "rowcount": 32,
+  "error": null
+ },
+ {
+  "id": 11,
+  "topic": "DRL - 4-table JOIN, GROUP BY ... WITH ROLLUP",
+  "title": "Revenue per category with a grand total",
+  "ra": "γ category; SUM(quantity), SUM(quantity*unit_price) (Sale_Items ⋈ Products ⋈ Categories)",
+  "sql": "SELECT COALESCE(c.category_name, '** ALL CATEGORIES **') AS category,\n       SUM(si.quantity)                                  AS units_sold,\n       SUM(si.quantity * si.unit_price)                  AS revenue\nFROM   sale_items si\nJOIN   products p    ON p.product_id  = si.product_id\nJOIN   categories c  ON c.category_id = p.category_id\nGROUP BY c.category_name WITH ROLLUP",
+  "columns": [
+   "category",
+   "units_sold",
+   "revenue"
+  ],
+  "rows": [
+   [
+    "Analgesics & Antipyretics",
+    122,
+    8074
+   ],
+   [
+    "Antacids & Gastro",
+    77,
+    11450
+   ],
+   [
+    "Antibiotics",
+    27,
+    11400
+   ],
+   [
+    "Antihistamines & Allergy",
+    15,
+    2380
+   ],
+   [
+    "Cardiovascular",
+    17,
+    6380
+   ],
+   [
+    "Cough, Cold & Respiratory",
+    27,
+    7795
+   ],
+   [
+    "Dermatology",
+    2,
+    720
+   ],
+   [
+    "Diabetes Care",
+    18,
+    8590
+   ],
+   [
+    "First Aid & Devices",
+    27,
+    7985
+   ],
+   [
+    "Vitamins & Supplements",
+    31,
+    7490
+   ],
+   [
+    "** ALL CATEGORIES **",
+    363,
+    72264
+   ]
+  ],
+  "rowcount": 11,
+  "error": null
+ },
+ {
+  "id": 12,
+  "topic": "DRL - LEFT OUTER JOIN",
+  "title": "Staff performance (employees with no sales are kept)",
+  "ra": "γ employee; COUNT(sale_id), SUM(total_amount) (Employees ⟕ Sales)",
+  "sql": "SELECT e.employee_id, e.name, e.role,\n       COUNT(s.sale_id)                 AS bills,\n       COALESCE(SUM(s.total_amount), 0) AS revenue\nFROM   employees e\nLEFT JOIN sales s ON s.employee_id = e.employee_id\nGROUP BY e.employee_id, e.name, e.role\nORDER BY revenue DESC, e.employee_id",
+  "columns": [
+   "employee_id",
+   "name",
+   "role",
+   "bills",
+   "revenue"
+  ],
+  "rows": [
+   [
+    2,
+    "Ayesha Siddiqui",
+    "Pharmacist",
+    8,
+    16285
+   ],
+   [
+    6,
+    "Hina Farooq",
+    "Cashier",
+    10,
+    15465
+   ],
+   [
+    4,
+    "Sana Rehman",
+    "Pharmacist",
+    7,
+    9525
+   ],
+   [
+    3,
+    "Usman Ghani",
+    "Pharmacist",
+    8,
+    9440
+   ],
+   [
+    8,
+    "Rabia Khan",
+    "Cashier",
+    10,
+    9260
+   ],
+   [
+    7,
+    "Kamran Ali",
+    "Cashier",
+    5,
+    5045
+   ],
+   [
+    5,
+    "Bilal Ahmed",
+    "Pharmacist",
+    4,
+    4015
+   ],
+   [
+    9,
+    "Zeeshan Malik",
+    "Cashier",
+    4,
+    3229
+   ],
+   [
+    1,
+    "Tariq Mehmood",
+    "Manager",
+    0,
+    0
+   ],
+   [
+    10,
+    "Naveed Akhtar",
+    "Inventory Clerk",
+    0,
+    0
+   ],
+   [
+    11,
+    "Farah Naz",
+    "Inventory Clerk",
+    0,
+    0
+   ],
+   [
+    12,
+    "Imran Shah",
+    "Inventory Clerk",
+    0,
+    0
+   ]
+  ],
+  "rowcount": 12,
+  "error": null
+ },
+ {
+  "id": 13,
+  "topic": "RA difference via LEFT JOIN ... IS NULL",
+  "title": "Registered customers who never bought anything",
+  "ra": "π customer_id, name (Customers) − π customer_id, name (Customers ⋈ Sales)",
+  "sql": "SELECT c.customer_id, c.name, c.phone, c.registered_on\nFROM   customers c\nLEFT JOIN sales s ON s.customer_id = c.customer_id\nWHERE  s.sale_id IS NULL\nORDER BY c.customer_id",
+  "columns": [
+   "customer_id",
+   "name",
+   "phone",
+   "registered_on"
+  ],
+  "rows": [
+   [
+    4,
+    "Hira Javed",
+    "0303-8589227",
+    "2025-03-31"
+   ],
+   [
+    6,
+    "Saad Khan",
+    "0333-3349161",
+    "2026-03-09"
+   ],
+   [
+    10,
+    "Amna Sheikh",
+    "0327-5183540",
+    "2025-09-07"
+   ],
+   [
+    16,
+    "Iqra Hashmi",
+    "0339-9187176",
+    "2026-04-25"
+   ],
+   [
+    19,
+    "Hira Malik",
+    "0314-5512679",
+    "2025-02-01"
+   ],
+   [
+    20,
+    "Shahzaib Rana",
+    "0329-8141659",
+    "2026-04-11"
+   ],
+   [
+    24,
+    "Hamza Javed",
+    "0315-7201463",
+    "2025-01-08"
+   ],
+   [
+    25,
+    "Omar Mirza",
+    "0313-6114948",
+    "2025-04-09"
+   ],
+   [
+    27,
+    "Omar Malik",
+    "0349-2007429",
+    "2025-03-16"
+   ],
+   [
+    31,
+    "Kiran Hussain",
+    "0339-2521977",
+    "2026-04-13"
+   ],
+   [
+    32,
+    "Mehwish Chaudhry",
+    "0324-5796954",
+    "2026-06-02"
+   ],
+   [
+    33,
+    "Hamza Chaudhry",
+    "0342-7559481",
+    "2026-01-31"
+   ],
+   [
+    34,
+    "Nadia Hashmi",
+    "0339-1588298",
+    "2025-08-29"
+   ],
+   [
+    35,
+    "Omar Javed",
+    "0300-5714616",
+    "2025-12-29"
+   ],
+   [
+    36,
+    "Asad Aslam",
+    "0330-1359901",
+    "2026-02-01"
+   ],
+   [
+    37,
+    "Ali Raza",
+    "0303-8066680",
+    "2025-04-07"
+   ],
+   [
+    38,
+    "Rizwan Mirza",
+    "0342-7901398",
+    "2025-02-18"
+   ],
+   [
+    39,
+    "Junaid Hashmi",
+    "0323-4452404",
+    "2026-07-12"
+   ],
+   [
+    40,
+    "Hamza Siddiqui",
+    "0315-8712778",
+    "2025-10-01"
+   ]
+  ],
+  "rowcount": 19,
+  "error": null
+ },
+ {
+  "id": 14,
+  "topic": "VIEW",
+  "title": "Batches expiring within 30 days (proposal view)",
+  "ra": "π ... (σ quantity>0 ∧ expiry_date between today and today+30 (Stock_Batches ⋈ Products))",
+  "sql": "SELECT batch_id, product_name, batch_no, quantity, expiry_date, days_left, stock_value_at_cost\nFROM   v_expiring_30_days\nORDER BY days_left",
+  "columns": [
+   "batch_id",
+   "product_name",
+   "batch_no",
+   "quantity",
+   "expiry_date",
+   "days_left",
+   "stock_value_at_cost"
+  ],
+  "rows": [
+   [
+    6,
+    "Avil 25mg Tablets",
+    "AVI-2608-01",
+    105,
+    "2026-11-30",
+    12,
+    3316.95
+   ],
+   [
+    40,
+    "Motilium 10mg Tablets",
+    "MOT-2608-01",
+    73,
+    "2026-12-05",
+    17,
+    9490.73
+   ],
+   [
+    22,
+    "Actifed Syrup 90ml",
+    "ACT-2608-01",
+    53,
+    "2026-12-14",
+    26,
+    11053.68
+   ]
+  ],
+  "rowcount": 3,
+  "error": null
+ },
+ {
+  "id": 15,
+  "topic": "VIEW",
+  "title": "Expired stock still on the shelf, with the loss at cost",
+  "ra": "",
+  "sql": "SELECT batch_id, product_name, batch_no, quantity, expiry_date, days_expired, loss_at_cost\nFROM   v_expired_stock\nORDER BY loss_at_cost DESC",
+  "columns": [
+   "batch_id",
+   "product_name",
+   "batch_no",
+   "quantity",
+   "expiry_date",
+   "days_expired",
+   "loss_at_cost"
+  ],
+  "rows": [
+   [
+    16,
+    "Canesten Cream 20g",
+    "CAN-2608-01",
+    82,
+    "2026-10-31",
+    18,
+    21835.78
+   ],
+   [
+    15,
+    "Benylin Cough Syrup 100ml",
+    "BEN-2608-01",
+    18,
+    "2026-11-05",
+    13,
+    4607.46
+   ]
+  ],
+  "rowcount": 2,
+  "error": null
+ },
+ {
+  "id": 16,
+  "topic": "DRL - CASE, AVG",
+  "title": "Margin band of every product (selling price vs average purchase cost)",
+  "ra": "",
+  "sql": "SELECT p.product_id, p.name, p.unit_price,\n       ROUND(AVG(b.cost_price), 2)                                            AS avg_cost,\n       ROUND(100 * (p.unit_price - AVG(b.cost_price)) / p.unit_price, 1)      AS margin_pct,\n       CASE WHEN 100 * (p.unit_price - AVG(b.cost_price)) / p.unit_price >= 30 THEN 'High'\n            WHEN 100 * (p.unit_price - AVG(b.cost_price)) / p.unit_price >= 24 THEN 'Medium'\n            ELSE 'Low' END                                                    AS margin_band\nFROM   products p\nJOIN   stock_batches b ON b.product_id = p.product_id\nGROUP BY p.product_id, p.name, p.unit_price\nORDER BY margin_pct DESC, p.name",
+  "columns": [
+   "product_id",
+   "name",
+   "unit_price",
+   "avg_cost",
+   "margin_pct",
+   "margin_band"
+  ],
+  "rows": [
+   [
+    37,
+    "Betnovate-N Cream 15g",
+    190,
+    129.24,
+    32,
+    "High"
+   ],
+   [
+    13,
+    "Risek 20mg Capsules",
+    180,
+    125.63,
+    30.2,
+    "High"
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    650,
+    454.05,
+    30.1,
+    "High"
+   ],
+   [
+    10,
+    "Cipro 500mg Tablets",
+    260,
+    183.65,
+    29.4,
+    "Medium"
+   ],
+   [
+    21,
+    "Claritin 10mg Tablets",
+    150,
+    106.72,
+    28.9,
+    "Medium"
+   ],
+   [
+    40,
+    "Band-Aid Strips (20)",
+    95,
+    67.72,
+    28.7,
+    "Medium"
+   ],
+   [
+    35,
+    "Concor 5mg Tablets",
+    410,
+    292.29,
+    28.7,
+    "Medium"
+   ],
+   [
+    3,
+    "Brufen 400mg Tablets",
+    95,
+    67.9,
+    28.5,
+    "Medium"
+   ],
+   [
+    18,
+    "Buscopan 10mg Tablets",
+    140,
+    100.4,
+    28.3,
+    "Medium"
+   ],
+   [
+    12,
+    "Septran DS Tablets",
+    130,
+    93.19,
+    28.3,
+    "Medium"
+   ],
+   [
+    25,
+    "Actifed Syrup 90ml",
+    290,
+    208.56,
+    28.1,
+    "Medium"
+   ],
+   [
+    5,
+    "Disprin 300mg",
+    28,
+    20.13,
+    28.1,
+    "Medium"
+   ],
+   [
+    41,
+    "Digital Thermometer",
+    450,
+    325.5,
+    27.7,
+    "Medium"
+   ],
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    480,
+    348.16,
+    27.5,
+    "Medium"
+   ],
+   [
+    22,
+    "Telfast 120mg Tablets",
+    380,
+    277.09,
+    27.1,
+    "Medium"
+   ],
+   [
+    19,
+    "Zyrtec 10mg Tablets",
+    110,
+    80.19,
+    27.1,
+    "Medium"
+   ],
+   [
+    30,
+    "Neurobion Tablets",
+    290,
+    212.13,
+    26.9,
+    "Medium"
+   ],
+   [
+    38,
+    "Canesten Cream 20g",
+    360,
+    264.87,
+    26.4,
+    "Medium"
+   ],
+   [
+    2,
+    "Calpol 120mg/5ml Syrup",
+    145,
+    106.91,
+    26.3,
+    "Medium"
+   ],
+   [
+    27,
+    "Surbex Z Tablets",
+    380,
+    282,
+    25.8,
+    "Medium"
+   ],
+   [
+    11,
+    "Amoxil 500mg Capsules",
+    210,
+    156.17,
+    25.6,
+    "Medium"
+   ],
+   [
+    29,
+    "Vitamin C 500mg Tablets",
+    150,
+    112,
+    25.3,
+    "Medium"
+   ],
+   [
+    1,
+    "Panadol 500mg Tablets",
+    35,
+    26.23,
+    25.1,
+    "Medium"
+   ],
+   [
+    17,
+    "ORS Sachet",
+    25,
+    18.74,
+    25,
+    "Medium"
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    550,
+    418.81,
+    23.9,
+    "Low"
+   ],
+   [
+    24,
+    "Arinac Forte Tablets",
+    85,
+    65.29,
+    23.2,
+    "Low"
+   ],
+   [
+    31,
+    "Glucophage 500mg Tablets",
+    120,
+    92.15,
+    23.2,
+    "Low"
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    330,
+    257.35,
+    22,
+    "Low"
+   ],
+   [
+    4,
+    "Ponstan Forte 500mg",
+    120,
+    94.48,
+    21.3,
+    "Low"
+   ],
+   [
+    20,
+    "Avil 25mg Tablets",
+    40,
+    31.59,
+    21,
+    "Low"
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    380,
+    302.08,
+    20.5,
+    "Low"
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    420,
+    335.02,
+    20.2,
+    "Low"
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    320,
+    255.97,
+    20,
+    "Low"
+   ],
+   [
+    6,
+    "Voltral 50mg Tablets",
+    170,
+    136.08,
+    20,
+    "Low"
+   ],
+   [
+    36,
+    "Lipiget 20mg Tablets",
+    330,
+    265.22,
+    19.6,
+    "Low"
+   ],
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    1650,
+    1327.73,
+    19.5,
+    "Low"
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    470,
+    379.78,
+    19.2,
+    "Low"
+   ],
+   [
+    8,
+    "Flagyl 400mg Tablets",
+    90,
+    72.95,
+    18.9,
+    "Low"
+   ],
+   [
+    16,
+    "Motilium 10mg Tablets",
+    160,
+    130.01,
+    18.7,
+    "Low"
+   ],
+   [
+    9,
+    "Zithromax 500mg Tablets",
+    620,
+    506.59,
+    18.3,
+    "Low"
+   ]
+  ],
+  "rowcount": 40,
+  "error": null
+ },
+ {
+  "id": 17,
+  "topic": "RA union (∪)",
+  "title": "Customers who bought an antibiotic OR a vitamin/supplement",
+  "ra": "π cid, name (σ cat='Antibiotics' (Customers ⋈ Sales ⋈ Sale_Items ⋈ Products ⋈ Categories)) ∪ π cid, name (σ cat='Vitamins & Supplements' (...))",
+  "sql": "SELECT c.customer_id, c.name\nFROM   customers c JOIN sales s ON s.customer_id = c.customer_id\n       JOIN sale_items si ON si.sale_id = s.sale_id\n       JOIN products p ON p.product_id = si.product_id\n       JOIN categories g ON g.category_id = p.category_id\nWHERE  g.category_name = 'Antibiotics'\nUNION\nSELECT c.customer_id, c.name\nFROM   customers c JOIN sales s ON s.customer_id = c.customer_id\n       JOIN sale_items si ON si.sale_id = s.sale_id\n       JOIN products p ON p.product_id = si.product_id\n       JOIN categories g ON g.category_id = p.category_id\nWHERE  g.category_name = 'Vitamins & Supplements'\nORDER BY customer_id",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "rows": [
+   [
+    1,
+    "Walk-in Customer"
+   ],
+   [
+    2,
+    "Maryam Hussain"
+   ],
+   [
+    3,
+    "Iqra Raza"
+   ],
+   [
+    5,
+    "Amna Mirza"
+   ],
+   [
+    7,
+    "Asad Qureshi"
+   ],
+   [
+    8,
+    "Mehwish Aslam"
+   ],
+   [
+    9,
+    "Noor Chaudhry"
+   ],
+   [
+    12,
+    "Amna Chaudhry"
+   ],
+   [
+    13,
+    "Fatima Qureshi"
+   ],
+   [
+    21,
+    "Adeel Siddiqui"
+   ],
+   [
+    22,
+    "Talha Mirza"
+   ],
+   [
+    23,
+    "Amna Raza"
+   ],
+   [
+    26,
+    "Amna Siddiqui"
+   ],
+   [
+    28,
+    "Mehwish Rana"
+   ],
+   [
+    29,
+    "Junaid Malik"
+   ],
+   [
+    30,
+    "Ali Hussain"
+   ]
+  ],
+  "rowcount": 16,
+  "error": null
+ },
+ {
+  "id": 18,
+  "topic": "RA intersection (∩)",
+  "title": "Customers who bought BOTH a pain-killer and an antacid/gastro product",
+  "ra": "π cid, name (σ cat='Analgesics & Antipyretics' (...)) ∩ π cid, name (σ cat='Antacids & Gastro' (...))",
+  "sql": "SELECT c.customer_id, c.name\nFROM   customers c JOIN sales s ON s.customer_id = c.customer_id\n       JOIN sale_items si ON si.sale_id = s.sale_id\n       JOIN products p ON p.product_id = si.product_id\n       JOIN categories g ON g.category_id = p.category_id\nWHERE  g.category_name = 'Analgesics & Antipyretics'\nINTERSECT\nSELECT c.customer_id, c.name\nFROM   customers c JOIN sales s ON s.customer_id = c.customer_id\n       JOIN sale_items si ON si.sale_id = s.sale_id\n       JOIN products p ON p.product_id = si.product_id\n       JOIN categories g ON g.category_id = p.category_id\nWHERE  g.category_name = 'Antacids & Gastro'\nORDER BY customer_id",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "rows": [
+   [
+    1,
+    "Walk-in Customer"
+   ],
+   [
+    2,
+    "Maryam Hussain"
+   ],
+   [
+    7,
+    "Asad Qureshi"
+   ],
+   [
+    9,
+    "Noor Chaudhry"
+   ],
+   [
+    12,
+    "Amna Chaudhry"
+   ],
+   [
+    14,
+    "Rukhsana Butt"
+   ],
+   [
+    17,
+    "Nadia Mirza"
+   ],
+   [
+    21,
+    "Adeel Siddiqui"
+   ],
+   [
+    22,
+    "Talha Mirza"
+   ],
+   [
+    29,
+    "Junaid Malik"
+   ]
+  ],
+  "rowcount": 10,
+  "error": null
+ },
+ {
+  "id": 19,
+  "topic": "RA difference (−)",
+  "title": "Products that have never been sold",
+  "ra": "π product_id, name (Products) − π product_id, name (Products ⋈ Sale_Items)",
+  "sql": "SELECT product_id, name FROM products\nEXCEPT\nSELECT p.product_id, p.name FROM products p JOIN sale_items si ON si.product_id = p.product_id\nORDER BY product_id",
+  "columns": [
+   "product_id",
+   "name"
+  ],
+  "rows": [
+   [
+    6,
+    "Voltral 50mg Tablets"
+   ],
+   [
+    9,
+    "Zithromax 500mg Tablets"
+   ],
+   [
+    10,
+    "Cipro 500mg Tablets"
+   ],
+   [
+    11,
+    "Amoxil 500mg Capsules"
+   ],
+   [
+    12,
+    "Septran DS Tablets"
+   ],
+   [
+    15,
+    "Gaviscon Liquid 150ml"
+   ],
+   [
+    21,
+    "Claritin 10mg Tablets"
+   ],
+   [
+    30,
+    "Neurobion Tablets"
+   ],
+   [
+    37,
+    "Betnovate-N Cream 15g"
+   ]
+  ],
+  "rowcount": 9,
+  "error": null
+ },
+ {
+  "id": 20,
+  "topic": "RA DIVISION (÷) via double NOT EXISTS",
+  "title": "Customers who bought EVERY First-Aid & Devices product",
+  "ra": "(π customer_id, product_id (Sales ⋈ Sale_Items)) ÷ (π product_id (σ category_name='First Aid & Devices' (Products ⋈ Categories)))",
+  "sql": "SELECT c.customer_id, c.name\nFROM   customers c\nWHERE  NOT EXISTS (\n         SELECT 1\n         FROM   products p\n         JOIN   categories g ON g.category_id = p.category_id\n         WHERE  g.category_name = 'First Aid & Devices'\n           AND  NOT EXISTS (\n                  SELECT 1\n                  FROM   sales s\n                  JOIN   sale_items si ON si.sale_id = s.sale_id\n                  WHERE  s.customer_id = c.customer_id\n                    AND  si.product_id = p.product_id))\nORDER BY c.customer_id",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "rows": [
+   [
+    5,
+    "Amna Mirza"
+   ],
+   [
+    9,
+    "Noor Chaudhry"
+   ],
+   [
+    22,
+    "Talha Mirza"
+   ]
+  ],
+  "rowcount": 3,
+  "error": null
+ },
+ {
+  "id": 21,
+  "topic": "Sub-query - scalar, uncorrelated",
+  "title": "Products priced above the average product price",
+  "ra": "",
+  "sql": "SELECT product_id, name, unit_price\nFROM   products\nWHERE  unit_price > (SELECT AVG(unit_price) FROM products)\nORDER BY unit_price DESC",
+  "columns": [
+   "product_id",
+   "name",
+   "unit_price"
+  ],
+  "rows": [
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    1650
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    650
+   ],
+   [
+    9,
+    "Zithromax 500mg Tablets",
+    620
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    550
+   ],
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    480
+   ],
+   [
+    32,
+    "Diamicron MR 60mg",
+    470
+   ],
+   [
+    41,
+    "Digital Thermometer",
+    450
+   ],
+   [
+    15,
+    "Gaviscon Liquid 150ml",
+    450
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    420
+   ],
+   [
+    35,
+    "Concor 5mg Tablets",
+    410
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    380
+   ],
+   [
+    27,
+    "Surbex Z Tablets",
+    380
+   ],
+   [
+    22,
+    "Telfast 120mg Tablets",
+    380
+   ],
+   [
+    38,
+    "Canesten Cream 20g",
+    360
+   ],
+   [
+    36,
+    "Lipiget 20mg Tablets",
+    330
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    330
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    320
+   ]
+  ],
+  "rowcount": 17,
+  "error": null
+ },
+ {
+  "id": 22,
+  "topic": "Sub-query - correlated",
+  "title": "Products dearer than the average of their own category",
+  "ra": "",
+  "sql": "SELECT p.product_id, p.name, p.unit_price\nFROM   products p\nWHERE  p.unit_price > (SELECT AVG(p2.unit_price)\n                       FROM   products p2\n                       WHERE  p2.category_id = p.category_id)\nORDER BY p.category_id, p.unit_price DESC",
+  "columns": [
+   "product_id",
+   "name",
+   "unit_price"
+  ],
+  "rows": [
+   [
+    6,
+    "Voltral 50mg Tablets",
+    170
+   ],
+   [
+    2,
+    "Calpol 120mg/5ml Syrup",
+    145
+   ],
+   [
+    4,
+    "Ponstan Forte 500mg",
+    120
+   ],
+   [
+    9,
+    "Zithromax 500mg Tablets",
+    620
+   ],
+   [
+    7,
+    "Augmentin 625mg Tablets",
+    480
+   ],
+   [
+    15,
+    "Gaviscon Liquid 150ml",
+    450
+   ],
+   [
+    14,
+    "Nexum 40mg Capsules",
+    420
+   ],
+   [
+    22,
+    "Telfast 120mg Tablets",
+    380
+   ],
+   [
+    26,
+    "Ventolin Inhaler 100mcg",
+    550
+   ],
+   [
+    23,
+    "Benylin Cough Syrup 100ml",
+    320
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    650
+   ],
+   [
+    27,
+    "Surbex Z Tablets",
+    380
+   ],
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    1650
+   ],
+   [
+    35,
+    "Concor 5mg Tablets",
+    410
+   ],
+   [
+    34,
+    "Norvasc 5mg Tablets",
+    380
+   ],
+   [
+    38,
+    "Canesten Cream 20g",
+    360
+   ],
+   [
+    41,
+    "Digital Thermometer",
+    450
+   ],
+   [
+    39,
+    "Dettol Antiseptic 250ml",
+    330
+   ]
+  ],
+  "rowcount": 18,
+  "error": null
+ },
+ {
+  "id": 23,
+  "topic": "Sub-query - IN",
+  "title": "Customers who have bought at least one prescription-only medicine",
+  "ra": "",
+  "sql": "SELECT customer_id, name\nFROM   customers\nWHERE  customer_id IN (SELECT s.customer_id\n                       FROM   sales s\n                       JOIN   sale_items si ON si.sale_id = s.sale_id\n                       JOIN   products p    ON p.product_id = si.product_id\n                       WHERE  p.requires_prescription = TRUE)\nORDER BY customer_id",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "rows": [
+   [
+    1,
+    "Walk-in Customer"
+   ],
+   [
+    2,
+    "Maryam Hussain"
+   ],
+   [
+    3,
+    "Iqra Raza"
+   ],
+   [
+    5,
+    "Amna Mirza"
+   ],
+   [
+    7,
+    "Asad Qureshi"
+   ],
+   [
+    8,
+    "Mehwish Aslam"
+   ],
+   [
+    11,
+    "Bushra Abbasi"
+   ],
+   [
+    12,
+    "Amna Chaudhry"
+   ],
+   [
+    13,
+    "Fatima Qureshi"
+   ],
+   [
+    14,
+    "Rukhsana Butt"
+   ],
+   [
+    17,
+    "Nadia Mirza"
+   ],
+   [
+    21,
+    "Adeel Siddiqui"
+   ],
+   [
+    22,
+    "Talha Mirza"
+   ],
+   [
+    23,
+    "Amna Raza"
+   ],
+   [
+    26,
+    "Amna Siddiqui"
+   ],
+   [
+    29,
+    "Junaid Malik"
+   ]
+  ],
+  "rowcount": 16,
+  "error": null
+ },
+ {
+  "id": 24,
+  "topic": "Sub-query - EXISTS",
+  "title": "Suppliers that currently have a Pending purchase order",
+  "ra": "",
+  "sql": "SELECT s.supplier_id, s.name, s.phone\nFROM   suppliers s\nWHERE  EXISTS (SELECT 1 FROM purchase_orders po\n               WHERE  po.supplier_id = s.supplier_id AND po.status = 'Pending')\nORDER BY s.supplier_id",
+  "columns": [
+   "supplier_id",
+   "name",
+   "phone"
+  ],
+  "rows": [
+   [
+    8,
+    "Indus Healthcare Traders",
+    "051-5530808"
+   ],
+   [
+    9,
+    "Blue Line Pharma Wholesale",
+    "051-2341909"
+   ],
+   [
+    12,
+    "Green Valley Drug Distributors",
+    "051-5584212"
+   ]
+  ],
+  "rowcount": 3,
+  "error": null
+ },
+ {
+  "id": 25,
+  "topic": "Sub-query - ALL",
+  "title": "Products costing more than EVERY antibiotic",
+  "ra": "",
+  "sql": "SELECT product_id, name, unit_price\nFROM   products\nWHERE  unit_price > ALL (SELECT p.unit_price\n                         FROM   products p JOIN categories c ON c.category_id = p.category_id\n                         WHERE  c.category_name = 'Antibiotics')\nORDER BY unit_price DESC",
+  "columns": [
+   "product_id",
+   "name",
+   "unit_price"
+  ],
+  "rows": [
+   [
+    33,
+    "Glucometer Test Strips (50)",
+    1650
+   ],
+   [
+    28,
+    "Calcium + Vitamin D3 Tablets",
+    650
+   ]
+  ],
+  "rowcount": 2,
+  "error": null
+ },
+ {
+  "id": 26,
+  "topic": "Sub-query in HAVING",
+  "title": "Staff whose average bill is above the pharmacy-wide average bill",
+  "ra": "",
+  "sql": "SELECT e.employee_id, e.name, COUNT(*) AS bills, ROUND(AVG(s.total_amount), 2) AS avg_bill\nFROM   employees e\nJOIN   sales s ON s.employee_id = e.employee_id\nGROUP BY e.employee_id, e.name\nHAVING AVG(s.total_amount) > (SELECT AVG(total_amount) FROM sales)\nORDER BY avg_bill DESC",
+  "columns": [
+   "employee_id",
+   "name",
+   "bills",
+   "avg_bill"
+  ],
+  "rows": [
+   [
+    2,
+    "Ayesha Siddiqui",
+    8,
+    2035.63
+   ],
+   [
+    6,
+    "Hina Farooq",
+    10,
+    1546.5
+   ],
+   [
+    4,
+    "Sana Rehman",
+    7,
+    1360.71
+   ]
+  ],
+  "rowcount": 3,
+  "error": null
+ },
+ {
+  "id": 27,
+  "topic": "CTE + window function",
+  "title": "Running (cumulative) revenue by day",
+  "ra": "",
+  "sql": "WITH daily AS (\n    SELECT sale_day, revenue FROM v_daily_sales_summary\n)\nSELECT sale_day, revenue,\n       SUM(revenue) OVER (ORDER BY sale_day) AS cumulative_revenue\nFROM   daily\nORDER BY sale_day",
+  "columns": [
+   "sale_day",
+   "revenue",
+   "cumulative_revenue"
+  ],
+  "rows": [
+   [
+    "2026-08-07",
+    250,
+    250
+   ],
+   [
+    "2026-08-11",
+    680,
+    930
+   ],
+   [
+    "2026-08-13",
+    84,
+    1014
+   ],
+   [
+    "2026-08-14",
+    740,
+    1754
+   ],
+   [
+    "2026-08-16",
+    240,
+    1994
+   ],
+   [
+    "2026-08-21",
+    175,
+    2169
+   ],
+   [
+    "2026-08-22",
+    1835,
+    4004
+   ],
+   [
+    "2026-08-23",
+    1950,
+    5954
+   ],
+   [
+    "2026-08-26",
+    1020,
+    6974
+   ],
+   [
+    "2026-09-03",
+    3455,
+    10429
+   ],
+   [
+    "2026-09-05",
+    1380,
+    11809
+   ],
+   [
+    "2026-09-06",
+    980,
+    12789
+   ],
+   [
+    "2026-09-12",
+    520,
+    13309
+   ],
+   [
+    "2026-09-13",
+    1900,
+    15209
+   ],
+   [
+    "2026-09-14",
+    1600,
+    16809
+   ],
+   [
+    "2026-09-16",
+    1510,
+    18319
+   ],
+   [
+    "2026-09-21",
+    4660,
+    22979
+   ],
+   [
+    "2026-09-22",
+    2640,
+    25619
+   ],
+   [
+    "2026-09-25",
+    875,
+    26494
+   ],
+   [
+    "2026-09-26",
+    1610,
+    28104
+   ],
+   [
+    "2026-09-27",
+    925,
+    29029
+   ],
+   [
+    "2026-10-03",
+    830,
+    29859
+   ],
+   [
+    "2026-10-06",
+    4460,
+    34319
+   ],
+   [
+    "2026-10-07",
+    1370,
+    35689
+   ],
+   [
+    "2026-10-09",
+    700,
+    36389
+   ],
+   [
+    "2026-10-10",
+    795,
+    37184
+   ],
+   [
+    "2026-10-13",
+    1150,
+    38334
+   ],
+   [
+    "2026-10-14",
+    1680,
+    40014
+   ],
+   [
+    "2026-10-16",
+    395,
+    40409
+   ],
+   [
+    "2026-10-18",
+    965,
+    41374
+   ],
+   [
+    "2026-10-19",
+    1545,
+    42919
+   ],
+   [
+    "2026-10-20",
+    510,
+    43429
+   ],
+   [
+    "2026-10-22",
+    2010,
+    45439
+   ],
+   [
+    "2026-10-25",
+    1690,
+    47129
+   ],
+   [
+    "2026-10-28",
+    2475,
+    49604
+   ],
+   [
+    "2026-10-29",
+    4650,
+    54254
+   ],
+   [
+    "2026-10-30",
+    820,
+    55074
+   ],
+   [
+    "2026-10-31",
+    920,
+    55994
+   ],
+   [
+    "2026-11-01",
+    2385,
+    58379
+   ],
+   [
+    "2026-11-07",
+    660,
+    59039
+   ],
+   [
+    "2026-11-11",
+    675,
+    59714
+   ],
+   [
+    "2026-11-12",
+    5940,
+    65654
+   ],
+   [
+    "2026-11-13",
+    5070,
+    70724
+   ],
+   [
+    "2026-11-15",
+    1540,
+    72264
+   ]
+  ],
+  "rowcount": 44,
+  "error": null
+ },
+ {
+  "id": 28,
+  "topic": "Derived table + RANK()",
+  "title": "Best-selling product (by revenue) inside every category",
+  "ra": "",
+  "sql": "SELECT category_name, product, revenue\nFROM  (SELECT c.category_name, p.name AS product,\n              SUM(si.quantity * si.unit_price) AS revenue,\n              RANK() OVER (PARTITION BY c.category_id\n                           ORDER BY SUM(si.quantity * si.unit_price) DESC) AS rnk\n       FROM   sale_items si\n       JOIN   products p   ON p.product_id  = si.product_id\n       JOIN   categories c ON c.category_id = p.category_id\n       GROUP BY c.category_id, c.category_name, p.product_id, p.name) ranked\nWHERE  rnk = 1\nORDER BY revenue DESC",
+  "columns": [
+   "category_name",
+   "product",
+   "revenue"
+  ],
+  "rows": [
+   [
+    "Antibiotics",
+    "Augmentin 625mg Tablets",
+    11040
+   ],
+   [
+    "Antacids & Gastro",
+    "Nexum 40mg Capsules",
+    7560
+   ],
+   [
+    "Diabetes Care",
+    "Diamicron MR 60mg",
+    6580
+   ],
+   [
+    "First Aid & Devices",
+    "Dettol Antiseptic 250ml",
+    4620
+   ],
+   [
+    "Cough, Cold & Respiratory",
+    "Benylin Cough Syrup 100ml",
+    3840
+   ],
+   [
+    "Cardiovascular",
+    "Norvasc 5mg Tablets",
+    3420
+   ],
+   [
+    "Vitamins & Supplements",
+    "Vitamin C 500mg Tablets",
+    3150
+   ],
+   [
+    "Analgesics & Antipyretics",
+    "Panadol 500mg Tablets",
+    2590
+   ],
+   [
+    "Antihistamines & Allergy",
+    "Telfast 120mg Tablets",
+    1520
+   ],
+   [
+    "Dermatology",
+    "Canesten Cream 20g",
+    720
+   ]
+  ],
+  "rowcount": 10,
+  "error": null
+ },
+ {
+  "id": 29,
+  "topic": "EER - superclass/subclass JOIN",
+  "title": "Pharmacists with licence number and their sales",
+  "ra": "γ employee; COUNT(sale_id), SUM(total_amount) ((Employees ⋈ Pharmacists) ⟕ Sales)",
+  "sql": "SELECT e.employee_id, e.name, ph.license_no, ph.qualification,\n       COUNT(s.sale_id) AS bills, COALESCE(SUM(s.total_amount), 0) AS revenue\nFROM   employees e\nJOIN   pharmacists ph ON ph.employee_id = e.employee_id\nLEFT JOIN sales s     ON s.employee_id  = e.employee_id\nGROUP BY e.employee_id, e.name, ph.license_no, ph.qualification\nORDER BY revenue DESC",
+  "columns": [
+   "employee_id",
+   "name",
+   "license_no",
+   "qualification",
+   "bills",
+   "revenue"
+  ],
+  "rows": [
+   [
+    2,
+    "Ayesha Siddiqui",
+    "PC-ISB-0412",
+    "Pharm-D",
+    8,
+    16285
+   ],
+   [
+    4,
+    "Sana Rehman",
+    "PC-RWP-0733",
+    "Pharm-D",
+    7,
+    9525
+   ],
+   [
+    3,
+    "Usman Ghani",
+    "PC-ISB-0587",
+    "Pharm-D",
+    8,
+    9440
+   ],
+   [
+    5,
+    "Bilal Ahmed",
+    "PC-ISB-0921",
+    "B.Pharm",
+    4,
+    4015
+   ]
+  ],
+  "rowcount": 4,
+  "error": null
+ },
+ {
+  "id": 30,
+  "topic": "FEFO evidence - row-constructor IN sub-query",
+  "title": "Sale lines that were served from more than one batch",
+  "ra": "",
+  "sql": "SELECT a.sale_id, p.name AS product, b.batch_no, b.expiry_date, a.quantity, a.cost_price\nFROM   sale_allocations a\nJOIN   stock_batches b ON b.batch_id   = a.batch_id\nJOIN   products p      ON p.product_id = a.product_id\nWHERE  (a.sale_id, a.product_id) IN (SELECT sale_id, product_id\n                                     FROM   sale_allocations\n                                     GROUP BY sale_id, product_id\n                                     HAVING COUNT(*) > 1)\nORDER BY a.sale_id, b.expiry_date",
+  "columns": [
+   "sale_id",
+   "product",
+   "batch_no",
+   "expiry_date",
+   "quantity",
+   "cost_price"
+  ],
+  "rows": [
+   [
+    40,
+    "Panadol 500mg Tablets",
+    "PAN-2608-01",
+    "2028-01-31",
+    37,
+    27.51
+   ],
+   [
+    40,
+    "Panadol 500mg Tablets",
+    "PAN-2609-02",
+    "2028-05-31",
+    7,
+    24.94
+   ]
+  ],
+  "rowcount": 2,
+  "error": null
+ },
+ {
+  "id": 31,
+  "topic": "DRL - GROUP BY, multi-table JOIN",
+  "title": "Monthly profit and margin (the figures sp_monthly_report returns)",
+  "ra": "",
+  "sql": "SELECT DATE_FORMAT(s.sale_date, '%Y-%m')                              AS sale_month,\n       SUM(a.quantity * si.unit_price)                                AS revenue,\n       SUM(a.quantity * a.cost_price)                                 AS cost,\n       SUM(a.quantity * (si.unit_price - a.cost_price))               AS profit,\n       ROUND(100 * SUM(a.quantity * (si.unit_price - a.cost_price))\n                 / SUM(a.quantity * si.unit_price), 2)                AS margin_pct\nFROM   sale_allocations a\nJOIN   sales s       ON s.sale_id = a.sale_id\nJOIN   sale_items si ON si.sale_id = a.sale_id AND si.product_id = a.product_id\nGROUP BY DATE_FORMAT(s.sale_date, '%Y-%m')\nORDER BY sale_month",
+  "columns": [
+   "sale_month",
+   "revenue",
+   "cost",
+   "profit",
+   "margin_pct"
+  ],
+  "rows": [
+   [
+    "2026-08",
+    6974,
+    5280.24,
+    1693.76,
+    24.29
+   ],
+   [
+    "2026-09",
+    22055,
+    16830.52,
+    5224.48,
+    23.69
+   ],
+   [
+    "2026-10",
+    26965,
+    20459.33,
+    6505.67,
+    24.13
+   ],
+   [
+    "2026-11",
+    16270,
+    12319.8,
+    3950.2,
+    24.28
+   ]
+  ],
+  "rowcount": 4,
+  "error": null
+ },
+ {
+  "id": 32,
+  "topic": "DRL - stock valuation by category",
+  "title": "Value of sellable stock at cost price",
+  "ra": "",
+  "sql": "SELECT c.category_name,\n       SUM(b.quantity)                  AS units_on_shelf,\n       SUM(b.quantity * b.cost_price)   AS stock_value_at_cost\nFROM   stock_batches b\nJOIN   products p   ON p.product_id  = b.product_id\nJOIN   categories c ON c.category_id = p.category_id\nWHERE  b.expiry_date >= CURRENT_DATE AND b.quantity > 0\nGROUP BY c.category_id, c.category_name\nORDER BY stock_value_at_cost DESC",
+  "columns": [
+   "category_name",
+   "units_on_shelf",
+   "stock_value_at_cost"
+  ],
+  "rows": [
+   [
+    "Vitamins & Supplements",
+    528,
+    133506.38
+   ],
+   [
+    "Diabetes Care",
+    243,
+    114524.44
+   ],
+   [
+    "First Aid & Devices",
+    390,
+    90188.6
+   ],
+   [
+    "Antibiotics",
+    385,
+    83030.9
+   ],
+   [
+    "Analgesics & Antipyretics",
+    767,
+    56167.14
+   ],
+   [
+    "Antacids & Gastro",
+    570,
+    52959.67
+   ],
+   [
+    "Antihistamines & Allergy",
+    446,
+    47062.15
+   ],
+   [
+    "Cardiovascular",
+    134,
+    37891.09
+   ],
+   [
+    "Cough, Cold & Respiratory",
+    155,
+    24076.62
+   ],
+   [
+    "Dermatology",
+    135,
+    22815.8
+   ]
+  ],
+  "rowcount": 10,
+  "error": null
+ },
+ {
+  "id": 33,
+  "topic": "DRL - self-join (market-basket)",
+  "title": "Pairs of medicines that were bought together at least twice",
+  "ra": "",
+  "sql": "SELECT p1.name AS product_a, p2.name AS product_b, COUNT(*) AS times_together\nFROM   sale_items a\nJOIN   sale_items b  ON b.sale_id = a.sale_id AND a.product_id < b.product_id\nJOIN   products p1   ON p1.product_id = a.product_id\nJOIN   products p2   ON p2.product_id = b.product_id\nGROUP BY p1.product_id, p1.name, p2.product_id, p2.name\nHAVING COUNT(*) >= 2\nORDER BY times_together DESC, product_a, product_b",
+  "columns": [
+   "product_a",
+   "product_b",
+   "times_together"
+  ],
+  "rows": [
+   [
+    "Augmentin 625mg Tablets",
+    "Nexum 40mg Capsules",
+    3
+   ],
+   [
+    "Brufen 400mg Tablets",
+    "Vitamin C 500mg Tablets",
+    3
+   ],
+   [
+    "ORS Sachet",
+    "Vitamin C 500mg Tablets",
+    3
+   ],
+   [
+    "Panadol 500mg Tablets",
+    "ORS Sachet",
+    3
+   ],
+   [
+    "Augmentin 625mg Tablets",
+    "ORS Sachet",
+    2
+   ],
+   [
+    "Brufen 400mg Tablets",
+    "Diamicron MR 60mg",
+    2
+   ],
+   [
+    "Brufen 400mg Tablets",
+    "Digital Thermometer",
+    2
+   ],
+   [
+    "Calpol 120mg/5ml Syrup",
+    "Dettol Antiseptic 250ml",
+    2
+   ],
+   [
+    "Calpol 120mg/5ml Syrup",
+    "ORS Sachet",
+    2
+   ],
+   [
+    "Dettol Antiseptic 250ml",
+    "Band-Aid Strips (20)",
+    2
+   ],
+   [
+    "Flagyl 400mg Tablets",
+    "Dettol Antiseptic 250ml",
+    2
+   ],
+   [
+    "Nexum 40mg Capsules",
+    "Diamicron MR 60mg",
+    2
+   ],
+   [
+    "Nexum 40mg Capsules",
+    "Telfast 120mg Tablets",
+    2
+   ],
+   [
+    "ORS Sachet",
+    "Dettol Antiseptic 250ml",
+    2
+   ],
+   [
+    "ORS Sachet",
+    "Surbex Z Tablets",
+    2
+   ],
+   [
+    "Panadol 500mg Tablets",
+    "Dettol Antiseptic 250ml",
+    2
+   ],
+   [
+    "Panadol 500mg Tablets",
+    "Surbex Z Tablets",
+    2
+   ],
+   [
+    "Ponstan Forte 500mg",
+    "Nexum 40mg Capsules",
+    2
+   ],
+   [
+    "Ponstan Forte 500mg",
+    "ORS Sachet",
+    2
+   ],
+   [
+    "Ponstan Forte 500mg",
+    "Vitamin C 500mg Tablets",
+    2
+   ],
+   [
+    "Surbex Z Tablets",
+    "Dettol Antiseptic 250ml",
+    2
+   ],
+   [
+    "Ventolin Inhaler 100mcg",
+    "Vitamin C 500mg Tablets",
+    2
+   ],
+   [
+    "Vitamin C 500mg Tablets",
+    "Dettol Antiseptic 250ml",
+    2
+   ]
+  ],
+  "rowcount": 23,
+  "error": null
+ },
+ {
+  "id": 34,
+  "topic": "DRL - date arithmetic",
+  "title": "Purchase orders per month with value of the stock received",
+  "ra": "",
+  "sql": "SELECT DATE_FORMAT(order_date, '%Y-%m') AS order_month,\n       COUNT(*)                         AS orders,\n       SUM(status = 'Received')         AS received,\n       SUM(status = 'Pending')          AS pending,\n       SUM(status = 'Cancelled')        AS cancelled,\n       SUM(total_cost)                  AS value_received\nFROM   purchase_orders\nGROUP BY DATE_FORMAT(order_date, '%Y-%m')\nORDER BY order_month",
+  "columns": [
+   "order_month",
+   "orders",
+   "received",
+   "pending",
+   "cancelled",
+   "value_received"
+  ],
+  "rows": [
+   [
+    "2026-08",
+    16,
+    16,
+    0,
+    0,
+    640471.42
+   ],
+   [
+    "2026-09",
+    4,
+    3,
+    0,
+    1,
+    47494.7
+   ],
+   [
+    "2026-10",
+    4,
+    3,
+    0,
+    1,
+    33785.9
+   ],
+   [
+    "2026-11",
+    6,
+    2,
+    3,
+    1,
+    21803.9
+   ]
+  ],
+  "rowcount": 4,
+  "error": null
+ }
+]
