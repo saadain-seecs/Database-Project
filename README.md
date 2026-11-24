@@ -45,11 +45,10 @@ MySQL, PostgreSQL, MongoDB (document model), Python, CustomTkinter, Matplotlib
 - Developed and tested on MariaDB 10.11 and PostgreSQL 16.
 
 ## Screenshots
-_Add screenshots of the dashboard, billing screen and ERD here._
+<img width="959" height="512" alt="Screenshot 2026-11-24 221008" src="https://github.com/user-attachments/assets/19ece952-bf63-4d51-aaf4-d466fd7e8e2a" />
 
-## Notes
-- The login is an application-level login. Anyone with the MySQL account password could still open the database directly.
-- The MongoDB pipelines were verified on an emulator, not a real server.
+
+
 
 ## Team
 CS220 Database Systems, BESE 2K25, NUST Islamabad
@@ -57,5 +56,4 @@ CS220 Database Systems, BESE 2K25, NUST Islamabad
 - Hashir Saleem
 - Abdul Ahad
 
-## License
-Educational project. Add a license (for example MIT) if you want others to reuse it.
+
