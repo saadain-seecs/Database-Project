@@ -46,6 +46,8 @@ MySQL, PostgreSQL, MongoDB (document model), Python, CustomTkinter, Matplotlib
 
 ## Screenshots
 <img width="959" height="512" alt="Screenshot 2026-11-24 221008" src="https://github.com/user-attachments/assets/19ece952-bf63-4d51-aaf4-d466fd7e8e2a" />
+<img width="1918" height="1008" alt="image" src="https://github.com/user-attachments/assets/10721034-9f0e-464d-8021-a3fde3c6b930" />
+<img width="1378" height="937" alt="image" src="https://github.com/user-attachments/assets/198f221f-acf7-405b-bec7-2b4354df6686" />
 
 
 
